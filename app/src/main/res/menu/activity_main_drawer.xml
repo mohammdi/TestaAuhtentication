@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/home_english" />
+        <item
+            android:id="@+id/nav_linkManagment"
+            android:icon="@drawable/ic_link_management"
+            android:title="@string/linkManagement_english" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_transaction"
+            android:title="@string/transactios_english" />
+
+        <item
+            android:id="@+id/nav_notifications"
+            android:icon="@drawable/ic_notification"
+            android:title="@string/notification_english" />
+
+    </group>
+
+    <item android:title="Other">
+        <menu>
+            <item
+                android:id="@+id/nav_about_us"
+                android:title="@string/aboutUs_english" />
+            <item
+                android:id="@+id/nav_privacy_policy"
+                android:title="@string/privacy_polilcy_english" />
+        </menu>
+    </item>
+
+</menu>

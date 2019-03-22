@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mahmood_mohammadi.testaauhtentication.activities.ConfirmCodeActivity"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        tools:ignore="UselessParent">
+
+        <EditText
+            android:id="@+id/confCode"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/btn_login_bg"
+            android:hint="@string/hint_confirm_code"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:inputType="textCapWords"
+            android:textColor="@color/bg_register"
+            android:textColorHint="@color/input_register_hint"
+            android:textSize="16dp"
+            tools:ignore="Deprecated" />
+
+        <TextView
+            android:id="@+id/resend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/reSend"
+            android:textColor="@color/lbl_name"
+            android:textSize="17dp"
+            android:layout_gravity="center"
+            tools:ignore="RtlHardcoded" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:id="@+id/btn_submit"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@drawable/image_btn_shape"
+            android:text="@string/confirm"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+
+             />
+
+    </LinearLayout>
+
+</LinearLayout>

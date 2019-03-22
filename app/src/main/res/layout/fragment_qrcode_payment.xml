@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.QRCodePaymentFragment"
+    android:padding="16dp">
+    <!-- TODO: Update blank fragment layout -->
+   <SurfaceView
+       android:id="@+id/camera-scanner-view"
+       android:layout_width="match_parent"
+       android:layout_height="400dp"
+       android:layout_centerVertical="true"
+       />
+    <TextView
+
+        android:id="@+id/txt-result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/focus_on_qr_code"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/normal_textSize"
+        android:layout_alignBottom="@id/camera-scanner-view"
+        android:layout_margin="8dp"/>
+
+</RelativeLayout>

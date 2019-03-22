@@ -1,0 +1,109 @@
+<resources>
+    <string name="app_name">Test_Keyoub</string>
+
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_name">name</string>
+    <string name="hint_user_name">user name</string>
+    <string name="hint_family">famaily</string>
+    <string name="btn_register">REGISTER</string>
+    <string name="btn_login_by_google">login google account</string>
+    <string name="btn_link_to_register">Not a member? Sign up now.</string>
+    <string name="btn_link_to_login">Already registred! Login Me.</string>
+    <string name="welcome">Welcome</string>
+    <string name="btn_logout">LOGOUT</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="name">Fullname</string>
+    <string name="phone">Enter your Email</string>
+    <string name="inter_confirm_code">enter ConfirmCode</string>
+    <string name="reSend">resend code</string>
+    <string name="hint_confirm_code">Confirm Code</string>
+    <string name="confirm">Confirm</string>
+    <string name="email">Email</string>
+    <string name="register">register</string>
+    <string name="password">password</string>
+    <string name="emailTittle">enter your email</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="welcom">به سیستم پرداخت  keyoub  خوش امدید ...</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="facebook_action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <!--string realate to dashboard-->
+    <string name="contact_english">contact</string>
+    <string name="content_peofile_description">test</string>
+    <string name="contact_pesian">مخاطبین</string>
+    <string name="addMony_english">addMony</string>
+    <string name="addMony_persian">اضافه کردن پول</string>
+    <string name="QRCodePay_english">QRCode pay</string>
+    <string name="QRCodePay_persian">پرداخت باQRCode</string>
+    <string name="transactios_english">history</string>
+    <string name="transationS_persian">تاریخچه</string>
+    <string name="walletManagement_english">wallet Manegment</string>
+    <string name="walletManagement_persian">مدیریت کیف پول</string>
+    <string name="linkManagement_english">link Managment</string>
+    <string name="linkManagement_persina">مدیریت لینک ها</string>
+    <string name="home_english">home</string>
+    <string name="home_persian">خانه</string>
+
+
+    <!--menu drawer-->
+    <string name="notification_english">notification</string>
+    <string name="notification_persian">اعلان ها</string>
+    <string name="aboutUs_english">about us</string>
+    <string name="aboutUs_persian">در باره ی ما </string>
+    <string name="privacy_polilcy_english">privacy policy</string>
+    <string name="privacy_polilcy_persian">قوانین حریم شخصی</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
+
+
+    <!--create wallet-->
+    <string name="hint_Wallet_id_english">wallet ID</string>
+    <string name="hint_Wallet_id_persian">شناسه کیف پول </string>
+    <string name="hint_wallet_type_english">wallet type</string>
+    <string name="hint_wallet_type_persian">نوع کیف پول </string>
+    <string name="hint_wallet_Name_english">wallet name</string>
+    <string name="hint_wallet_Name_persian">نام کیف پول </string>
+    <string name="hint_wallet_description_english">description</string>
+    <string name="hint_wallet_description_persian">توضیحات</string>
+    <string name="hint_wallet_pass_payment_english">password payment</string>
+    <string name="hint_wallet_pass_payment_persian">رمز عبور</string>
+    <string name="spinner_selectable_english">choose  ...</string>
+    <string name="spinner_selectable_persian">انتخاب کنید ...</string>
+
+
+    <!--spinner-->
+    <string name="wallet_type_personal_english" >personal</string>
+    <string name="wallet_type_personal_persian" >شخصی</string>
+    <string name="wallet_type_business_english" >business</string>
+    <string name="wallet_type_business_persian" >تجاری</string>
+    <string-array name="spinner_item">
+        <item>personal</item>
+        <item>business</item>
+    </string-array>
+
+
+    <!--scannerFragment-->
+    <string name="focus_on_qr_code">pleas focus on qr code</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

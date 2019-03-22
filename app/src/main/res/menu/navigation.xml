@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:textsize="http://schemas.android.com/apk/res-auto">
+
+
+
+
+
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home_english"
+        />
+
+    <item
+        android:id="@+id/navigation_contact"
+        android:icon="@drawable/ic_contacs"
+        android:title="@string/contact_english"/>
+    <item
+        android:id="@+id/navigation_qr_code_pay"
+        android:icon="@drawable/ic_qr_code_pay"
+        android:title="@string/QRCodePay_english"/>
+
+    <item
+        android:id="@+id/navigation_add_money"
+        android:icon="@drawable/ic_qr_add_money"
+        android:title="@string/addMony_english"/>
+
+    <item
+        android:id="@+id/navigation_wallet_management"
+        android:icon="@drawable/ic_wallet_management"
+        android:title="@string/walletManagement_english"
+        />
+
+    <!--<item-->
+    <!--android:id="@+id/navigation_linkManagement"-->
+    <!--android:icon="@drawable/ic_link_management"-->
+    <!--android:title="@string/linkManagement_english"/>-->
+
+    <!--<item-->
+    <!--android:id="@+id/navigation_history"-->
+    <!--android:icon="@drawable/ic_transaction"-->
+    <!--android:title="@string/transactios_english"/>-->m
+
+</menu>
