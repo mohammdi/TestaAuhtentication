@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/btn_login_bg"
-            android:hint="@string/hint_confirm_code"
+            android:hint="@string/hint_confirm_code_english"
             android:padding="10dp"
             android:singleLine="true"
             android:inputType="textCapWords"
@@ -38,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/reSend"
+            android:text="@string/reSend_english"
             android:textColor="@color/lbl_name"
             android:textSize="17dp"
             android:layout_gravity="center"
@@ -50,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
             android:background="@drawable/image_btn_shape"
-            android:text="@string/confirm"
+            android:text="@string/confirm_english"
             android:textColor="@color/white"
             android:textSize="16dp"
 

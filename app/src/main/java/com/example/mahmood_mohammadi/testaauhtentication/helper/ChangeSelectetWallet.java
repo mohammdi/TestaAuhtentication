@@ -2,7 +2,7 @@ package com.example.mahmood_mohammadi.testaauhtentication.helper;
 
 import android.content.Context;
 
-import com.example.mahmood_mohammadi.testaauhtentication.ObjectModel.Wallet;
+import com.example.mahmood_mohammadi.testaauhtentication.dal.l.model.Wallet;
 import com.example.mahmood_mohammadi.testaauhtentication.staticRepository.PutExtraKey;
 
 import org.json.JSONException;
@@ -20,11 +20,11 @@ public class ChangeSelectetWallet {
         hashMap.put(PutExtraKey.WALLET_NAME ,wallet.getName());
         hashMap.put(PutExtraKey.WALLET_ID,wallet.getId().toString());
         hashMap.put(PutExtraKey.WALLET_PASS,wallet.getPassPayment());
-        hashMap.put(PutExtraKey.WALLET_TYPE,wallet.getTypeId().toString());
+        hashMap.put(PutExtraKey.WALLET_TYPE,String.valueOf(wallet.getWalletType().getId()));
         hashMap.put(PutExtraKey.PUBLIC_ID,wallet.getPublicId());
         hashMap.put(PutExtraKey.WALLET_ADDRESS,wallet.getAddress());
-        hashMap.put(PutExtraKey.WALLET_LOGO ,wallet.getBannerPath().toString());
-        hashMap.put(PutExtraKey.BANNER,wallet.getLogoPath().toString());
+        hashMap.put(PutExtraKey.WALLET_LOGO ,wallet.getBannerPath());
+        hashMap.put(PutExtraKey.BANNER,wallet.getLogoPath());
 
         dataSharedPrefrence.savetosharedpref(hashMap);
 

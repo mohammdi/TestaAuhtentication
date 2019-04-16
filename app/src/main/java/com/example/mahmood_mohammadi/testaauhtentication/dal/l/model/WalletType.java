@@ -1,4 +1,4 @@
-package com.example.mahmood_mohammadi.testaauhtentication.ObjectModel;
+package com.example.mahmood_mohammadi.testaauhtentication.dal.l.model;
 
 public class WalletType {
 

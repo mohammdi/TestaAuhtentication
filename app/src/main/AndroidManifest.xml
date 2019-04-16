@@ -21,7 +21,8 @@
         android:label="keyob payment getaway"
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
 
         <!-- <activity android:name=".activities.MainActivity"> -->
         <!-- <intent-filter> -->
@@ -35,15 +36,16 @@
         <activity android:name=".activities.ConfirmCodeActivity" />
         <activity android:name=".activities.GetDetaileActivity" />
         <activity android:name=".activities.HomeActivity" />
-        <activity android:name=".activities.SplashScreenActivity">
+        <activity
+            android:name=".activities.SplashScreenActivity"
+            android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.LogineActivity"
+            android:name=".activities.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".activities.CreateWalletActivity" />
         <activity android:name=".activities.WalletDetail" />

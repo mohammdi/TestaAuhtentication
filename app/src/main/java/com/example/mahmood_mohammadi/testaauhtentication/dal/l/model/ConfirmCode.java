@@ -1,4 +1,4 @@
-package com.example.mahmood_mohammadi.testaauhtentication.ObjectModel;
+package com.example.mahmood_mohammadi.testaauhtentication.dal.l.model;
 
 /**
  * Created by Mahmood_mohammadi on 11/6/2018.

@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
-import com.example.mahmood_mohammadi.testaauhtentication.ObjectModel.Wallet;
+import com.example.mahmood_mohammadi.testaauhtentication.dal.l.model.Wallet;
 import com.example.mahmood_mohammadi.testaauhtentication.R;
 import com.example.mahmood_mohammadi.testaauhtentication.helper.ApiService;
 import com.example.mahmood_mohammadi.testaauhtentication.staticRepository.PutExtraKey;
@@ -64,16 +64,16 @@ public class WalletDetail extends AppCompatActivity{
 
         Map<String, String> params = new HashMap<>();
         params.put("id", String.valueOf(wallet.getId()));
-        params.put("typeId", String.valueOf(wallet.getTypeId()));
+        params.put("typeId", String.valueOf(wallet.getWalletType().getId()));
         params.put("userId", String.valueOf(wallet.getUserId()));
         params.put("name", wallet.getName());
         params.put("passPayment", wallet.getPassPayment());
 
         jsonObject = new JSONObject(params);
-        apiService.updateWallet(new ApiService.OnResponsReceiveByJsonObject() {
+        apiService.updateWallet(new ApiService.OnResponseReceivedByJsonObject() {
 
             @Override
-            public void recieve(JSONObject message) {
+            public void receive(JSONObject message) {
                 Toast.makeText(WalletDetail.this, (CharSequence) message, Toast.LENGTH_SHORT).show();
 
             }

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.mahmood_mohammadi.testaauhtentication.ObjectModel.WalletType;
+import com.example.mahmood_mohammadi.testaauhtentication.dal.l.model.WalletType;
 import com.example.mahmood_mohammadi.testaauhtentication.R;
 
 import java.util.List;

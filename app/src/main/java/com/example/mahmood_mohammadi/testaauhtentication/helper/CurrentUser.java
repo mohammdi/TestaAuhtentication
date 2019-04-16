@@ -2,12 +2,11 @@ package com.example.mahmood_mohammadi.testaauhtentication.helper;
 
 import android.content.Context;
 
-import com.example.mahmood_mohammadi.testaauhtentication.ObjectModel.Users;
+import com.example.mahmood_mohammadi.testaauhtentication.dal.l.model.Users;
 
 import org.json.JSONException;
 
 import java.util.HashMap;
-import java.util.Map;
 
 
 public class CurrentUser {
@@ -22,8 +21,7 @@ public class CurrentUser {
     public Users getCurrentUser() throws JSONException {
         HashMap<String, String> dataString = dshp.loadData();
         Users user = new Users();
-        user.setId(dataString.get("id"));
-        user.setUserId(dataString.get("userId"));
+        user.setId(Long.valueOf("id"));
         user.setMobileNumber(dataString.get("mobileNumber"));
         user.setEmail(dataString.get("email"));
         user.setPassword(dataString.get("Password"));

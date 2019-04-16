@@ -1,27 +1,42 @@
 <resources>
     <string name="app_name">Test_Keyoub</string>
 
-    <string name="hint_email">Email</string>
-    <string name="hint_password">Password</string>
+    <string name="hint_email_english">Email</string>
+    <string name="hint_email_persian">ایمیل</string>
+    <string name="hint_password_english">Password</string>
+    <string name="hint_password_persian">رمزعبور</string>
     <string name="hint_name">name</string>
-    <string name="hint_user_name">user name</string>
+    <string name="hint_user_name_english">user name</string>
+    <string name="hint_user_name_persian">نام کاربری</string>
     <string name="hint_family">famaily</string>
-    <string name="btn_register">REGISTER</string>
-    <string name="btn_login_by_google">login google account</string>
+    <string name="btn_register_english">REGISTER</string>
+    <string name="btn_register_persian">ثبت نام</string>
+    <string name="btn_login_by_google_english">login google account</string>
+    <string name="btn_login_by_google_persian">ثبت نام با گوگل </string>
     <string name="btn_link_to_register">Not a member? Sign up now.</string>
     <string name="btn_link_to_login">Already registred! Login Me.</string>
     <string name="welcome">Welcome</string>
     <string name="btn_logout">LOGOUT</string>
-    <string name="btn_login">LOGIN</string>
-    <string name="name">Fullname</string>
-    <string name="phone">Enter your Email</string>
-    <string name="inter_confirm_code">enter ConfirmCode</string>
-    <string name="reSend">resend code</string>
-    <string name="hint_confirm_code">Confirm Code</string>
-    <string name="confirm">Confirm</string>
-    <string name="email">Email</string>
-    <string name="register">register</string>
-    <string name="password">password</string>
+    <string name="btn_login_english">LOGIN</string>
+    <string name="btn_login_persian">ورود</string>
+    <string name="name_english">FullName</string>
+    <string name="name_persian">فامیلی</string>
+    <string name="phone_english">Enter your phone number:</string>
+    <string name="phone_persian">شماره موبایل:</string>
+    <string name="inter_confirm_code_english">enter ConfirmCode</string>
+    <string name="inter_confirm_code_persian">کد تایید...</string>
+    <string name="reSend_english">resend code</string>
+    <string name="reSend_persian">سعی دوباره</string>
+    <string name="hint_confirm_code_english">Confirm Code</string>
+    <string name="hint_confirm_code_persian">کد تایید</string>
+    <string name="confirm_english">Confirm</string>
+    <string name="confirm_persian">تایید</string>
+    <string name="email_english">Email</string>
+    <string name="email_persian">ایمیل</string>
+    <string name="register_english">register</string>
+    <string name="register_persian">ثبت نام</string>
+    <string name="password_english">password</string>
+    <string name="password_persian">رمز عبور</string>
     <string name="emailTittle">enter your email</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
@@ -100,10 +115,12 @@
         <item>business</item>
     </string-array>
 
-
     <!--scannerFragment-->
     <string name="focus_on_qr_code">pleas focus on qr code</string>
 
+     <!-- internet status-->
+    <string name="internet_is_off_english">internet  unavailable !!!</string>
+    <string name="internet_is_off_persian">شما به انیترنت دسترسی ندارید !!!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

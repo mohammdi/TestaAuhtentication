@@ -23,6 +23,11 @@ import com.example.mahmood_mohammadi.testaauhtentication.fragment.ContactFragmen
 import com.example.mahmood_mohammadi.testaauhtentication.fragment.HomeFragment;
 import com.example.mahmood_mohammadi.testaauhtentication.fragment.QRCodePaymentFragment;
 import com.example.mahmood_mohammadi.testaauhtentication.fragment.WalletManagmentFragment;
+import com.example.mahmood_mohammadi.testaauhtentication.helper.DataSharedPrefrence;
+
+import org.json.JSONException;
+
+import java.util.HashMap;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -47,6 +52,8 @@ public class HomeActivity extends AppCompatActivity {
     private static final String TAG_NOTIFICATIONS = "notifications";
     private static final String TAG_SETTINGS = "settings";
     public static String CURRENT_TAG = TAG_HOME;
+    HashMap<String, String> selectedWalletAtrr = new HashMap<>();
+
 
     // toolbar titles respected to selected nav menu item
     private String[] activityTitles;
@@ -115,6 +122,12 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        DataSharedPrefrence sharedPrefrence =new DataSharedPrefrence(this);
+        try {
+            selectedWalletAtrr = sharedPrefrence.loadData();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
 
@@ -125,6 +138,8 @@ public class HomeActivity extends AppCompatActivity {
 
         setUpViwe();
     }
+
+
 
     private void setUpViwe() {
 //        setUpToolBar();
@@ -145,5 +160,6 @@ public class HomeActivity extends AppCompatActivity {
         actionBarToggle.syncState();
     }
 */
+
 
 }

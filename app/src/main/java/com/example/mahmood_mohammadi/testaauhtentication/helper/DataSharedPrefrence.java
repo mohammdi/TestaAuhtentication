@@ -4,11 +4,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.example.mahmood_mohammadi.testaauhtentication.dal.l.model.Wallet;
+import com.example.mahmood_mohammadi.testaauhtentication.staticRepository.PutExtraKey;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Mahmood_mohammadi on 3/27/2018.
@@ -16,34 +20,33 @@ import java.util.HashMap;
 
 public class DataSharedPrefrence {
 
+    public static final String TAG_SAVE_PREFERENCE = "save_preference";
     private SharedPreferences sharedPreferences;
     private Context context;
+
 
     public DataSharedPrefrence(Context context) {
 
         sharedPreferences = context.getSharedPreferences("user storage", context.MODE_PRIVATE);
     }
 
-
+   /**
+    * save selected  wallet that to share preference to access all app part
+    */
     public void savetosharedpref(HashMap<String,String> data) throws JSONException {
 
         if (data != null) {
             SharedPreferences.Editor e = sharedPreferences.edit();
-            JSONArray jsonArray = new JSONArray();
-
+            JSONObject jsonObject = new JSONObject();
             for (String d : data.keySet()) {
-                JSONObject jsonObject = new JSONObject();
                 jsonObject.put("name", d);
                 jsonObject.put("value", data.get(d));
-                jsonArray.put(jsonObject);
-
-
             }
-            e.putString("saveData", jsonArray.toString());
+            e.putString("selected_wallet", jsonObject.toString());
             e.apply();
         }
         else {
-            Log.i("rrrrr","nothing data for save !!!! ");
+            Log.i(TAG_SAVE_PREFERENCE,"nothing data for save !!!! ");
         }
 
     }
@@ -62,5 +65,20 @@ public class DataSharedPrefrence {
         }
         return user;
 
+    }
+
+
+    public static HashMap<String,String> convertToHashmap(Wallet wallet){
+        HashMap<String,String> map = new HashMap<>();
+        map.put(PutExtraKey.WALLET_ID,String.valueOf(wallet.getId()));
+        map.put(PutExtraKey.WALLET_NAME,wallet.getName());
+        map.put(PutExtraKey.WALLET_TYPE,String.valueOf(wallet.getWalletType()));
+        map.put(PutExtraKey.USER_ID,String.valueOf(wallet.getUserId()));
+        map.put(PutExtraKey.WALLET_CREATE_DATE,String.valueOf(wallet.getCreateDate()));
+        map.put(PutExtraKey.WALLET_ADDRESS,wallet.getAddress());
+        map.put(PutExtraKey.WALLET_PASS,wallet.getPassPayment());
+        map.put(PutExtraKey.WALLET_Default,String.valueOf(wallet.getDefault()));
+        map.put(PutExtraKey.WALLET_SELECTED,String.valueOf(wallet.getSelected()));
+        return map;
     }
 }

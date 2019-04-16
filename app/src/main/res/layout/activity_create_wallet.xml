@@ -83,7 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/image_btn_shape"
-        android:text="@string/confirm"
+        android:text="@string/confirm_english"
         android:textColor="@color/white"
         />
 

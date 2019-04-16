@@ -48,9 +48,9 @@ public class ConfirmCodeActivity extends AppCompatActivity {
 
         params.put("confirmCode", ConfCode);
         jsonObject = new JSONObject(params);
-        apiService.verficationConfcode(new ApiService.OnResponsReceive() {
+        apiService.verificationConfCode(new ApiService.OnResponsReceive() {
             @Override
-            public void recieve(String message) {
+            public void receive(String message) {
                 if (message != null) {
 
                     Intent intent = new Intent(ConfirmCodeActivity.this, GetDetaileActivity.class);

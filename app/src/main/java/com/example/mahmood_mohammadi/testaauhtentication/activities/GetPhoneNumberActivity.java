@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mahmood_mohammadi.testaauhtentication.ObjectModel.Users;
+import com.example.mahmood_mohammadi.testaauhtentication.dal.l.model.Users;
 import com.example.mahmood_mohammadi.testaauhtentication.R;
 import com.example.mahmood_mohammadi.testaauhtentication.helper.ApiService;
 
@@ -54,7 +54,7 @@ public class GetPhoneNumberActivity extends AppCompatActivity {
         jsonObject = new JSONObject(params);
         apiService.getConFirmCode(new ApiService.OnResponsReceive() {
             @Override
-            public void recieve(String message) {
+            public void receive(String message) {
                 if (message != null) {
 
                     Intent intent = new Intent(GetPhoneNumberActivity.this, ConfirmCodeActivity.class);

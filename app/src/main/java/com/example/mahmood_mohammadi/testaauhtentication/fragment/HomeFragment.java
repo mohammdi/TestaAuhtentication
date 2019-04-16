@@ -14,14 +14,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.mahmood_mohammadi.testaauhtentication.ObjectModel.Wallet;
+import com.example.mahmood_mohammadi.testaauhtentication.dal.l.dao.WalletDao;
+import com.example.mahmood_mohammadi.testaauhtentication.dal.l.model.Wallet;
 import com.example.mahmood_mohammadi.testaauhtentication.R;
+import com.example.mahmood_mohammadi.testaauhtentication.dal.l.model.WalletType;
 import com.example.mahmood_mohammadi.testaauhtentication.helper.ChangeSelectetWallet;
-import com.example.mahmood_mohammadi.testaauhtentication.helper.FackWalletInfoData;
 import com.example.mahmood_mohammadi.testaauhtentication.helper.HomeWalletListReCycelerView;
 
 import org.json.JSONException;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -34,23 +37,52 @@ public class HomeFragment extends Fragment implements HomeWalletListReCycelerVie
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        recyclerView =(RecyclerView)view.findViewById(R.id.home_wallet_Recycle_View);
+        recyclerView = view.findViewById(R.id.home_wallet_Recycle_View);
 
         setUpToolBar();
-         wallets = generateData();
-        setUprecyclerView(wallets);
+         wallets =  generateData();
+         if (wallets.size()>0){
+             setUpRecyclerView(wallets);
+         }
 
         return view;
     }
 
     private List<Wallet> generateData() {
 
-        FackWalletInfoData fackWalletInfoData =  new FackWalletInfoData();
-        return fackWalletInfoData.getData(this.getContext());
+        WalletDao walletDao = new WalletDao(getContext());
+        List<Wallet> walletList = new ArrayList<>();
+        List<HashMap<String, String> > mapWallets  = walletDao.getWalletList();
+        for (HashMap<String ,String> map :mapWallets)
+        if (mapWallets.size()>0){
+            Wallet wallet = new Wallet();
+            WalletType walletType = new WalletType();
+            wallet.setId(Long.valueOf(map.get(WalletDao.KEY_WALLET_ID)));
+            wallet.setName(map.get(WalletDao.KEY_WALLET_NAME));
+            walletType.setId(Long.valueOf(map.get(WalletDao.KEY_WALLET_WALLET_TYPE)));
+            if (walletType.getId()==1L) {
+                walletType.setName("personal");
+            }else{
+                walletType.setName("business");
+            }
+            wallet.setWalletType((walletType));
+            wallet.setUserId(Long.valueOf(map.get(WalletDao.KEY_WALLET_WALLET_USER_ID)));
+            wallet.setSelected(Boolean.valueOf(map.get(WalletDao.KEY_WALLET_IS_SELECTED)));
+            wallet.setDefault(Boolean.valueOf(map.get(WalletDao.Key_WALLET_IS_DEFAULT)));
+            wallet.setAddress(map.get(WalletDao.KEY_WALLET_ADDRESS));
+            wallet.setBannerPath(map.get(WalletDao.KEY_WALLET_BANNER));
+            /*wallet.setWalletAddress(mapWallets.get(WalletDao.KEY_WALLET_ADDRESS)); */   //  fix walletAddress And Address Field in dataBase
+            wallet.setPassPayment(map.get(WalletDao.KEY_WALLET_PASS_PAYMENT));
+            wallet.setPublicId(map.get(WalletDao.KEY_WALLET_PUBLIC_ID));
+            wallet.setCreateDate(map.get(WalletDao.KEY_WALLET_CREATE_DATE));
+            wallet.setLogoPath(map.get(WalletDao.KEY_WALLET_LOGO));
+            walletList.add(wallet);
+        }
+        return walletList;
     }
 
 
-    public void setUprecyclerView(List<Wallet> walletList) {
+    public void setUpRecyclerView(List<Wallet> walletList) {
 
         if (walletList.size() > 0) {
 

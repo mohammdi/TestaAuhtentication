@@ -11,15 +11,13 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
-import com.example.mahmood_mohammadi.testaauhtentication.ObjectModel.Wallet;
-import com.example.mahmood_mohammadi.testaauhtentication.ObjectModel.WalletType;
+import com.example.mahmood_mohammadi.testaauhtentication.dal.l.model.Wallet;
+import com.example.mahmood_mohammadi.testaauhtentication.dal.l.model.WalletType;
 import com.example.mahmood_mohammadi.testaauhtentication.R;
 import com.example.mahmood_mohammadi.testaauhtentication.helper.ApiService;
-import com.example.mahmood_mohammadi.testaauhtentication.helper.GsonUtils;
 import com.example.mahmood_mohammadi.testaauhtentication.helper.NothingSelectedSpinnerAdapter;
 import com.example.mahmood_mohammadi.testaauhtentication.staticRepository.PutExtraKey;
 import com.example.mahmood_mohammadi.testaauhtentication.helper.SpinnerAdapter;
-import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -111,16 +109,16 @@ public class CreateWalletActivity extends AppCompatActivity {
         wallet.setId(walletID);
         wallet.setName(walletName);
         wallet.setPassPayment(walletpass);
-        wallet.setTypeId(typeId);
+//        wallet.setWalletType();
 
         Map<String,Wallet> params = new HashMap<>();
         params.put("wallet", wallet);
         jsonObject= new JSONObject(params);
         if (owner.equals(PutExtraKey.EDIT)){
 
-            apiService.updateWallet(new ApiService.OnResponsReceiveByJsonObject() {
+            apiService.updateWallet(new ApiService.OnResponseReceivedByJsonObject() {
                 @Override
-                public void recieve(JSONObject message) {
+                public void receive(JSONObject message) {
                     try {
                         String msg = (String) message.get(message.toString());
                         Toast.makeText(CreateWalletActivity.this,msg+"",Toast.LENGTH_LONG);
@@ -138,9 +136,9 @@ public class CreateWalletActivity extends AppCompatActivity {
 
         }else {
 
-            apiService.createWallet(new ApiService.OnResponsReceiveByJsonObject() {
+            apiService.createWallet(new ApiService.OnResponseReceivedByJsonObject() {
                 @Override
-                public void recieve(JSONObject message) {
+                public void receive(JSONObject message) {
                     String msg = null;
                     try {
                         msg = (String) message.get(message.toString());

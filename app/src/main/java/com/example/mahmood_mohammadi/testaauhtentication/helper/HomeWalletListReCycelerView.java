@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.mahmood_mohammadi.testaauhtentication.ObjectModel.Wallet;
+import com.example.mahmood_mohammadi.testaauhtentication.dal.l.model.Wallet;
 import com.example.mahmood_mohammadi.testaauhtentication.R;
 
 import java.util.List;
@@ -45,7 +45,7 @@ public class HomeWalletListReCycelerView extends RecyclerView.Adapter<HomeWallet
         Wallet wallet = walletList.get(position);
         holder.name_Wllet.setText(wallet.getName());
 //        holder.public_Id.setText(wallet.getPublicId());
-        holder.background.setBackground(wallet.getLogoPath());
+//        holder.background.setBackground(wallet.getLogoPath());
 
 
     }

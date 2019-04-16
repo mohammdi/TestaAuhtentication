@@ -1,25 +1,24 @@
-package com.example.mahmood_mohammadi.testaauhtentication.ObjectModel;
+package com.example.mahmood_mohammadi.testaauhtentication.dal.l.model;
 
-import android.graphics.drawable.Drawable;
 
 import java.io.Serializable;
 
 public class Wallet implements Serializable {
 
-    private Long id ;
+    private Long id;
     private String name;
-    private String createDate ;
-    private String  publicId ;
+    private String createDate;
+    private String publicId;
     private String passPayment;
     private String walletAddress;
-    private Long TypeId;
+    private WalletType walletType;
     private Long userId;
-    private Boolean isdefault;
+    private Boolean isDefault;
     private Boolean isSelected;
     /* business wallet type field*/
 
-    private Drawable logoPath;
-    private Drawable bannerPath;
+    private String logoPath;
+    private String bannerPath;
     private String address;
 
 
@@ -47,11 +46,11 @@ public class Wallet implements Serializable {
         this.createDate = createDate;
     }
 
-    public String  getPublicId() {
+    public String getPublicId() {
         return publicId;
     }
 
-    public void setPublicId(String  publicId) {
+    public void setPublicId(String publicId) {
         this.publicId = publicId;
     }
 
@@ -71,12 +70,12 @@ public class Wallet implements Serializable {
         this.walletAddress = walletAddress;
     }
 
-    public Long getTypeId() {
-        return TypeId;
+    public WalletType getWalletType() {
+        return walletType;
     }
 
-    public void setTypeId(Long typeId) {
-        TypeId = typeId;
+    public void setWalletType(WalletType walletType) {
+        this.walletType = walletType;
     }
 
     public Long getUserId() {
@@ -87,19 +86,19 @@ public class Wallet implements Serializable {
         this.userId = userId;
     }
 
-    public Drawable getLogoPath() {
+    public String getLogoPath() {
         return logoPath;
     }
 
-    public void setLogoPath(Drawable logoPath) {
+    public void setLogoPath(String logoPath) {
         this.logoPath = logoPath;
     }
 
-    public Drawable getBannerPath() {
+    public String getBannerPath() {
         return bannerPath;
     }
 
-    public void setBannerPath(Drawable bannerPath) {
+    public void setBannerPath(String bannerPath) {
         this.bannerPath = bannerPath;
     }
 
@@ -111,12 +110,12 @@ public class Wallet implements Serializable {
         this.address = address;
     }
 
-    public Boolean getIsdefault() {
-        return isdefault;
+    public Boolean getDefault() {
+        return isDefault;
     }
 
-    public void setIsdefault(Boolean isdefault) {
-        this.isdefault = isdefault;
+    public void setDefault(Boolean aDefault) {
+        isDefault = aDefault;
     }
 
     public Boolean getSelected() {

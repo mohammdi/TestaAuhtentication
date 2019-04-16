@@ -3,7 +3,7 @@ package com.example.mahmood_mohammadi.testaauhtentication.helper;
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
 
-import com.example.mahmood_mohammadi.testaauhtentication.ObjectModel.Wallet;
+import com.example.mahmood_mohammadi.testaauhtentication.dal.l.model.Wallet;
 import com.example.mahmood_mohammadi.testaauhtentication.R;
 
 import java.util.ArrayList;
@@ -29,26 +29,26 @@ public class FackWalletInfoData {
                 case 0:
                      {
                          wallet.setName("school");
-                        wallet.setLogoPath(ContextCompat.getDrawable(context,R.drawable.image_btn_shape));
-                        wallet.setBannerPath(ContextCompat.getDrawable(context,R.drawable.ic_delete));
+//                        wallet.setLogoPath(ContextCompat.getDrawable(context,R.drawable.image_btn_shape));
+//                        wallet.setBannerPath(ContextCompat.getDrawable(context,R.drawable.ic_delete));
                     }
                     break;
                 case 1 :
                     wallet.setName("mahmood");
-                    wallet.setLogoPath(ContextCompat.getDrawable(context,R.drawable.image_profile_shape));
-                    wallet.setBannerPath(ContextCompat.getDrawable(context,R.drawable.ic_audiotrack_dark));
+//                    wallet.setLogoPath(ContextCompat.getDrawable(context,R.drawable.image_profile_shape));
+//                    wallet.setBannerPath(ContextCompat.getDrawable(context,R.drawable.ic_audiotrack_dark));
                     break;
 
                 case 2 :
                     wallet.setName("working");
-                    wallet.setLogoPath(ContextCompat.getDrawable(context,R.drawable.sprinner_item_shape));
-                    wallet.setBannerPath(ContextCompat.getDrawable(context,R.drawable.ic_edite));
+//                    wallet.setLogoPath(ContextCompat.getDrawable(context,R.drawable.sprinner_item_shape));
+//                    wallet.setBannerPath(ContextCompat.getDrawable(context,R.drawable.ic_edite));
                     break;
                 case 3 :
 
                     wallet.setName("kyoub");
-                    wallet.setLogoPath(ContextCompat.getDrawable(context,R.drawable.image_btn_shape));
-                    wallet.setBannerPath(ContextCompat.getDrawable(context,R.drawable.ic_mr_button_connected_00_dark));
+//                    wallet.setLogoPath(ContextCompat.getDrawable(context,R.drawable.image_btn_shape));
+//                    wallet.setBannerPath(ContextCompat.getDrawable(context,R.drawable.ic_mr_button_connected_00_dark));
                     break;
             }
            wallet_list.add(wallet);

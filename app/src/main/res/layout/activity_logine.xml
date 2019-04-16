@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mahmood_mohammadi.testaauhtentication.activities.LogineActivity"
+    tools:context="com.example.mahmood_mohammadi.testaauhtentication.activities.LoginActivity"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp">
@@ -21,13 +21,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/btn_login_bg"
-            android:hint="@string/hint_user_name"
+            android:hint="@string/hint_user_name_persian"
             android:padding="10dp"
             android:singleLine="true"
             android:inputType="textCapWords"
             android:textColor="@color/bg_register"
             android:textColorHint="@color/input_register_hint"
             tools:ignore="Deprecated"
+            android:fontFamily="@font/iransans"
             android:textSize="16dp"/>
 
         <EditText
@@ -36,12 +37,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/btn_login_bg"
-            android:hint="@string/hint_password"
+            android:hint="@string/hint_password_persian"
             android:inputType="textPassword"
             android:padding="10dp"
-            android:textColor="@color/input_register_hint"
-            android:textColorHint="@color/bg_register"
+            android:textColor="@color/bg_register"
+            android:textColorHint="@color/input_register_hint"
             android:maxLines="1"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="viewEnd"
             android:textSize="16dp"/>
 
         <!-- Login Button -->
@@ -52,7 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
             android:background="@drawable/image_btn_shape"
-            android:text="@string/btn_login"
+            android:text="@string/btn_login_persian"
+            android:fontFamily="@font/iransans"
             android:textColor="@color/white" />
 
         <!-- Link to Login Screen -->
@@ -63,10 +67,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/image_profile_shape"
-            android:text="@string/btn_register"
+            android:text="@string/btn_register_persian"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="15dp"
+            android:fontFamily="@font/iransans"
             tools:ignore="SpUsage" />
 
         <LinearLayout
@@ -89,10 +94,10 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/btn_login_by_google"
+                android:text="@string/btn_login_by_google_persian"
                 android:layout_gravity="right"
                 android:background="@color/black_overlay"
-
+                android:fontFamily="@font/iransans"
                 />
         </LinearLayout>
     </LinearLayout>

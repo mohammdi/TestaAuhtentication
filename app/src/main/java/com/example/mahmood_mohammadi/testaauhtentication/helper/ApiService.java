@@ -2,7 +2,6 @@ package com.example.mahmood_mohammadi.testaauhtentication.helper;
 
 import android.content.Context;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -12,11 +11,10 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.mahmood_mohammadi.testaauhtentication.staticRepository.MyURLRepository;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -34,14 +32,18 @@ public class ApiService {
     }
 
 
-    public void Authenticate (final OnResponsReceiveByJsonObject onRespons , JSONObject credentioan) throws Exception {
+    public void Authenticate (final OnResponseReceivedByJsonObject onRespons , JSONObject credentioan) throws Exception {
         requestQueue = Volley.newRequestQueue(context);
 
         try {
             JsonObjectRequest jsonObj = new JsonObjectRequest(Request.Method.GET, MyURLRepository.GET_BY_USER_ID_WALLET_URL,credentioan, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    onRespons.recieve(response);
+                    try {
+                        onRespons.receive(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -75,8 +77,8 @@ public class ApiService {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            String message = parsToMessge(response);
-                            confirmCodeReceive.recieve(message);
+                            String message = parsToMessage(response);
+                            confirmCodeReceive.receive(message);
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -98,14 +100,17 @@ public class ApiService {
 
     }
 
-    public void getWalletByuserId(final OnResponsReceiveByJsonObject responsReceive, JSONObject usreId) {
+    public void getWallets(final OnResponseReceivedByJsonObject responsReceive) {
         requestQueue = Volley.newRequestQueue(context);
-//        String url="http://192.168.1.101:8081/rest/filter/showAll/wallet";
         try {
-            JsonObjectRequest jsonObj = new JsonObjectRequest(Request.Method.GET, MyURLRepository.GET_BY_USER_ID_WALLET_URL, usreId, new Response.Listener<JSONObject>() {
+            final JsonObjectRequest jsonObj = new JsonObjectRequest(Request.Method.GET, MyURLRepository.GET_BY_USER_ID_WALLET_URL, null,new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    responsReceive.recieve(response);
+                    try {
+                        responsReceive.receive(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -131,7 +136,7 @@ public class ApiService {
     }
 
 
-    public void createWallet(final OnResponsReceiveByJsonObject createWallet_ResponsReceive, JSONObject wallet_json) {
+    public void createWallet(final OnResponseReceivedByJsonObject createWallet_ResponsReceive, JSONObject wallet_json) {
 
         requestQueue = Volley.newRequestQueue(context);
 //        String url ="http://192.168.1.101:8081/rest/filter/create/wallet";
@@ -157,7 +162,7 @@ public class ApiService {
     }
 
 
-    public void updateWallet(final OnResponsReceiveByJsonObject updateWallet_responseReceive, JSONObject wallet_json) {
+    public void updateWallet(final OnResponseReceivedByJsonObject updateWallet_responseReceive, JSONObject wallet_json) {
         requestQueue = Volley.newRequestQueue(context);
 //        String url = "http://192.168.1.101:8081/rest/filter/update/wallet";
 
@@ -214,7 +219,7 @@ public class ApiService {
     }
 
 
-    public void verficationConfcode(final OnResponsReceive onResponsReceive, JSONObject jsonObject) {
+    public void verificationConfCode(final OnResponsReceive onResponsReceive, JSONObject jsonObject) {
 
         requestQueue = Volley.newRequestQueue(context);
         String url = "My URL";
@@ -224,8 +229,8 @@ public class ApiService {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            String message = parsToMessge(response);
-                            onResponsReceive.recieve(message);
+                            String message = parsToMessage(response);
+                            onResponsReceive.receive(message);
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -245,7 +250,7 @@ public class ApiService {
         }
     }
 
-    public String parsToMessge(JSONObject jsonObject) {
+    public String parsToMessage(JSONObject jsonObject) {
         String message = null;
 
         try {
@@ -257,9 +262,16 @@ public class ApiService {
     }
 
 
-    public interface OnResponsReceiveByJsonObject {
+    public interface OnResponseReceivedByJsonObject {
 
-        void recieve(JSONObject message);
+        void receive(JSONObject message) throws JSONException;
+
+        void onError(VolleyError message);
+    }
+
+    public interface OnResponseReceivedByJsonArray {
+
+        void receive(JSONArray message) throws JSONException;
 
         void onError(VolleyError message);
     }
@@ -267,7 +279,7 @@ public class ApiService {
 
     public interface OnResponsReceive {
 
-        void recieve(String message);
+        void receive(String message);
 
         void onError();
     }

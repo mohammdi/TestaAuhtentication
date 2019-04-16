@@ -12,15 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.mahmood_mohammadi.testaauhtentication.ObjectModel.Users;
-import com.example.mahmood_mohammadi.testaauhtentication.ObjectModel.Wallet;
+import com.android.volley.VolleyError;
+import com.example.mahmood_mohammadi.testaauhtentication.dal.l.model.Users;
+import com.example.mahmood_mohammadi.testaauhtentication.dal.l.model.Wallet;
 import com.example.mahmood_mohammadi.testaauhtentication.R;
 import com.example.mahmood_mohammadi.testaauhtentication.activities.CreateWalletActivity;
 import com.example.mahmood_mohammadi.testaauhtentication.activities.WalletDetail;
 import com.example.mahmood_mohammadi.testaauhtentication.helper.ApiService;
 import com.example.mahmood_mohammadi.testaauhtentication.helper.CurrentUser;
 import com.example.mahmood_mohammadi.testaauhtentication.helper.FackWalletInfoData;
-import com.example.mahmood_mohammadi.testaauhtentication.helper.GsonUtils;
 import com.example.mahmood_mohammadi.testaauhtentication.helper.MyReCycelerView;
 import com.example.mahmood_mohammadi.testaauhtentication.staticRepository.PutExtraKey;
 
@@ -56,7 +56,7 @@ public class WalletManagmentFragment extends Fragment implements MyReCycelerView
         /*apiService = new ApiService(this.getActivity());
         getWallets();*/
 
-        setUprecyclerView(dataList);
+        setUpRecyclerView(dataList);
 
         setupFloatActionbutton(view);
 
@@ -65,7 +65,7 @@ public class WalletManagmentFragment extends Fragment implements MyReCycelerView
 
 
 
-    public void setUprecyclerView(List<Wallet> walletList) {
+    public void setUpRecyclerView(List<Wallet> walletList) {
 
         if (walletList.size() > 0) {
 
@@ -82,7 +82,7 @@ public class WalletManagmentFragment extends Fragment implements MyReCycelerView
     }
 
 
-   /* public void setUprecyclerView() {
+   /* public void setUpRecyclerView() {
 
         if (walletList.size() > 0) {
 
@@ -102,8 +102,8 @@ public class WalletManagmentFragment extends Fragment implements MyReCycelerView
         CurrentUser currentUser = new CurrentUser(this.getContext());
         try {
             myCurrentUser = currentUser.getCurrentUser();
-            String id = myCurrentUser.getId();
-            userId = Long.getLong(id);
+            Long id = myCurrentUser.getId();
+            userId =(id);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -134,21 +134,19 @@ public class WalletManagmentFragment extends Fragment implements MyReCycelerView
         params.put("userId", userId);
         jsonObject = new JSONObject(params);
 
-        apiService.getWalletByuserId(new ApiService.OnResponsReceive() {
+        apiService.getWallets(new ApiService.OnResponseReceivedByJsonObject() {
+
+
             @Override
-            public void recieve(String message) {
-                Wallet wallet = new Wallet();
-                if (message != null) {
-                    walletList = GsonUtils.toList(message, Wallet.class);
-                    Toast.makeText(view.getContext(), "wallet of this user ", Toast.LENGTH_SHORT).show();
-                }
+            public void receive(JSONObject message) throws JSONException {
+
             }
 
             @Override
-            public void onError() {
-                Toast.makeText(view.getContext(), "ERORR", Toast.LENGTH_SHORT).show();
+            public void onError(VolleyError message) {
+
             }
-        }, jsonObject);
+        });
     }
 
     @Override
@@ -161,9 +159,9 @@ public class WalletManagmentFragment extends Fragment implements MyReCycelerView
         intent.putExtra(PutExtraKey.WALLET_NAME, w.getName());
         intent.putExtra(PutExtraKey.PUBLIC_ID, w.getPublicId());
         intent.putExtra(PutExtraKey.WALLET_ID, w.getId());
-        intent.putExtra(PutExtraKey.WALLET_TYPE ,w.getTypeId());
+        intent.putExtra(PutExtraKey.WALLET_TYPE ,w.getWalletType().getId());
         intent.putExtra(PutExtraKey.WALLET_PASS, w.getPassPayment());
-        if (wallet.getTypeId() == 2) {
+        if (wallet.getWalletType().getId() == 2) {
             intent.putExtra(PutExtraKey.WALLET_ADDRESS, w.getWalletAddress());
         }
         startActivity(intent);

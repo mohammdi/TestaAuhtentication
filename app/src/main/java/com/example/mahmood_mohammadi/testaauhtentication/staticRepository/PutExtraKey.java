@@ -13,12 +13,17 @@ public class PutExtraKey {
     public static final String BANNER = "banner";
     public static final String WALLET_ADDRESS = "WalletAddress";
     public static final String WALLET_TYPE = "walletType";
-    public static final String WALLET_LOGO = "walletType";
+    public static final String WALLET_CREATE_DATE = "walletCreateDate";
+    public static final String WALLET_LOGO = "walletLogo";
+    public static final String WALLET_Default= "walletDefault";
+    public static final String WALLET_SELECTED= "walletSelected";
+    public static final String WALLET_= "walletDefault";
     public static final String WALLET_LIST= "WalletList";
 
 
     //    Users
     public static final String USERS = "users";
+    public static final String USER_ID = "userId";
 
 
     // general
