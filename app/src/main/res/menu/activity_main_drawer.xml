@@ -4,22 +4,22 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home"
-            android:title="@string/home_english" />
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_profile"
+            android:title="پروفایل کاربری ‍‍‍‍" />
         <item
-            android:id="@+id/nav_linkManagment"
-            android:icon="@drawable/ic_link_management"
-            android:title="@string/linkManagement_english" />
+            android:id="@+id/nav_wallet_create"
+            android:icon="@drawable/ic_wallet"
+            android:title="ایحاد بگسک تجاری " />
         <item
-            android:id="@+id/nav_history"
-            android:icon="@drawable/ic_transaction"
-            android:title="@string/transactios_english" />
+            android:id="@+id/nav_support"
+            android:icon="@drawable/ic_support"
+            android:title="پشتیبانی" />
 
         <item
-            android:id="@+id/nav_notifications"
-            android:icon="@drawable/ic_notification"
-            android:title="@string/notification_english" />
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_setting"
+            android:title="تنظیمات" />
 
     </group>
 
@@ -27,10 +27,13 @@
         <menu>
             <item
                 android:id="@+id/nav_about_us"
-                android:title="@string/aboutUs_english" />
+                android:title="دعوت دوستان"/>
             <item
-                android:id="@+id/nav_privacy_policy"
-                android:title="@string/privacy_polilcy_english" />
+                android:id="@+id/nav_share"
+                android:title="شریک سازی" />
+            <item
+                android:id="@+id/nav_feedback"
+                android:title="پیشنهادات" />
         </menu>
     </item>
 

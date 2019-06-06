@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context="com.example.mahmood_mohammadi.testaauhtentication.activities.HomeActivity">
+        tools:context="com.keyob.payment.gateway.activities.HomeActivity">
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appBar"
@@ -27,45 +27,331 @@
                 android:background="@color/bg_main"
                 android:weightSum="1"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:titleTextAppearance="@style/toolbar_Style" />
+                app:titleTextAppearance="@style/toolbar_Style" >
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/wallet_pic"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="0.5dp"
+                    app:civ_shadow="true"
+                    app:civ_shadow_radius="1"
+                    android:src="@drawable/icon"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_alignParentEnd="true"
+                    />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/home_notification"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="30dp"
+                        android:src="@drawable/ic_action_name"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginEnd="30sp"/>
+                    <TextView
+                        android:id="@+id/action_bar_walletName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="محمود محمدی"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/iransans"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_alignParentEnd="true"
+                        />
+                    <TextView
+                        android:id="@+id/home_balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10.000 af"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/iransans"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"
+                        android:layout_below="@+id/action_bar_walletName"
+                        android:layout_alignParentEnd="true"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                        android:layout_marginEnd="10dp"
+                        />
+                </RelativeLayout>
 
-            <TextView
+            </android.support.v7.widget.Toolbar>
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="home fragment"
-                android:textAlignment="center"
-                android:textSize="50dp"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/home_action_tag"
+                    android:layout_width="wrap_content"
+                    android:text="/keyob/544f-Q4f"
+                    android:textStyle="bold"
+                    android:textColor="@color/btn_login_bg"
+                    android:shadowColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/iransans"
+                    android:textSize="19sp"
+                    android:clickable="true"
+                    android:layout_alignParentEnd="true"/>
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_wight_share"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_toStartOf="@id/home_action_tag"/>
+            </RelativeLayout>
         </android.support.design.widget.AppBarLayout>
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/bg_main"
+            android:layout_height="fill_parent"
+            android:layout_margin="0dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/home_wallet_Recycle_View"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:layoutDirection="ltr"
-                android:minHeight="20dp"
-                android:textAlignment="center"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+                android:layout_height="0dp"
+                android:weightSum="10"
+                android:orientation="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            </android.support.v7.widget.RecyclerView>
+                <GridLayout
+                    android:id="@+id/home_grid_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="470dp"
+                    android:alignmentMode="alignMargins"
+                    android:layout_weight="0"
+                    android:columnCount="2"
+                    android:columnOrderPreserved="true"
+                    android:background="@drawable/bg_home_test"
+                    android:padding="14dp"
+                    android:rowCount="3"
+                    app:layout_behavior="">
+
+                    <!-- row  1-->
+                    <android.support.v7.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight=".35"
+                        android:layout_columnWeight=".35"
+                        android:layout_margin="20dp"
+                        app:cardCornerRadius="@dimen/cardCornerRadios"
+                        app:cardElevation="@dimen/cardElevation">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="1dp"
+                                android:padding="1dp"
+                                android:src="@drawable/icon" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="0dp"
+                                android:fontFamily="@font/iransans"
+                                android:text="در خواست پول"
+                                android:textColor="@color/black_overlay"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                    <!-- column 1-->
+                    <android.support.v7.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="0.35"
+                        android:layout_columnWeight="0.35"
+                        android:layout_margin="20dp"
+                        app:cardCornerRadius="@dimen/cardCornerRadios"
+                        app:cardElevation="@dimen/cardElevation">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/icon_google" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:fontFamily="@font/iransans"
+                                android:text="پرداخت "
+                                android:textColor="@color/black_overlay"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                    <!-- column 2-->
+
+                    <!-- row  2-->
+                    <android.support.v7.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="0.35"
+                        android:layout_columnWeight="0.35"
+                        android:layout_margin="20dp"
+                        app:cardCornerRadius="@dimen/cardCornerRadios"
+                        app:cardElevation="@dimen/cardElevation">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/icon_google" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/iransans"
+                                android:text="اضافه کردن پول"
+                                android:textColor="@color/black_overlay"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                    <!-- column 1-->
+                    <android.support.v7.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="0.35"
+                        android:layout_columnWeight="0.35"
+                        android:layout_margin="20dp"
+                        app:cardCornerRadius="@dimen/cardCornerRadios"
+                        app:cardElevation="@dimen/cardElevation">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/icon" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:fontFamily="@font/iransans"
+                                android:text="ایجاد لینک"
+                                android:textColor="@color/black_overlay"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                    <!-- column 2-->
+                    <android.support.v7.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="0.35"
+                        android:layout_columnWeight="0.35"
+                        android:layout_margin="20dp"
+                        app:cardCornerRadius="@dimen/cardCornerRadios"
+                        app:cardElevation="@dimen/cardElevation">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/icon_google" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/iransans"
+                                android:text="اضافه کردن پول"
+                                android:textColor="@color/black_overlay"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                    <!-- column 1-->
+                    <android.support.v7.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="0.35"
+                        android:layout_columnWeight="0.35"
+                        android:layout_margin="20dp"
+                        app:cardCornerRadius="@dimen/cardCornerRadios"
+                        app:cardElevation="@dimen/cardElevation">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/icon" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:fontFamily="@font/iransans"
+                                android:text="ایجاد لینک"
+                                android:textColor="@color/black_overlay"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                </GridLayout>
+
         </LinearLayout>
+        </ScrollView>
     </android.support.design.widget.CoordinatorLayout>
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
-
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header_main"
+            app:menu="@menu/activity_main_drawer"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

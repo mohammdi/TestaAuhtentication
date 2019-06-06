@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mahmood_mohammadi.testaauhtentication.activities.ConfirmCodeActivity"
+    tools:context="com.keyob.payment.gateway.activities.ConfirmCodeActivity"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp">
@@ -23,13 +23,13 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/btn_login_bg"
-            android:hint="@string/hint_confirm_code_english"
+            android:hint="@string/hint_confirm_code_persian"
             android:padding="10dp"
             android:singleLine="true"
             android:inputType="textCapWords"
             android:textColor="@color/bg_register"
             android:textColorHint="@color/input_register_hint"
-            android:textSize="16dp"
+            android:textSize="20dp"
             tools:ignore="Deprecated" />
 
         <TextView
@@ -37,7 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/reSend_english"
+            android:text="@string/reSend_persian"
+            android:fontFamily="@font/iransans"
             android:textColor="@color/lbl_name"
             android:textSize="17dp"
             android:layout_gravity="center"
@@ -49,9 +50,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
             android:background="@drawable/image_btn_shape"
-            android:text="@string/confirm_english"
+            android:fontFamily="@font/iransans"
+            android:text="@string/confirm_persian"
             android:textColor="@color/white"
-            android:textSize="16dp"
+            android:textSize="20dp"
 
              />
 

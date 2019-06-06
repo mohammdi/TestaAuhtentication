@@ -30,19 +30,19 @@
         android:textSize="16dp"
         tools:ignore="Deprecated" />
 
-    <Spinner
-        android:id="@+id/spinner_wallet_type"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@drawable/spinner_boder"
-        android:spinnerMode="dialog"
-        android:entries="@string/spinner_selectable_english"
-        tools:listitem="@layout/spinner_items_layout"
-        tools:listfooter="@layout/spinner_items_layout"
-        android:layout_marginRight="5dp"
-        android:textDirection="firstStrong"
-        android:layout_marginLeft="5dp">
-    </Spinner>
+    <!--<Spinner-->
+        <!--android:id="@+id/spinner_wallet_type"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:background="@drawable/spinner_boder"-->
+        <!--android:spinnerMode="dialog"-->
+        <!--android:entries="@string/spinner_selectable_english"-->
+        <!--tools:listitem="@layout/spinner_items_layout"-->
+        <!--tools:listfooter="@layout/spinner_items_layout"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:textDirection="firstStrong"-->
+        <!--android:layout_marginLeft="5dp">-->
+    <!--</Spinner>-->
 
 
     <EditText

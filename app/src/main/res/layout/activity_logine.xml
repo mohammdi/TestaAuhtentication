@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mahmood_mohammadi.testaauhtentication.activities.LoginActivity"
+    tools:context="com.keyob.payment.gateway.activities.LoginActivity"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp">
@@ -74,31 +74,31 @@
             android:fontFamily="@font/iransans"
             tools:ignore="SpUsage" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:orientation="horizontal"-->
 
-            android:layout_marginTop="45dp"
+            <!--android:layout_marginTop="45dp"-->
 
-            >
+            <!--&gt;-->
 
-            <ImageView
-                android:id="@+id/icon_google"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/icon_google"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="5dp"
-                />
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/btn_login_by_google_persian"
-                android:layout_gravity="right"
-                android:background="@color/black_overlay"
-                android:fontFamily="@font/iransans"
-                />
-        </LinearLayout>
+            <!--<ImageView-->
+                <!--android:id="@+id/icon_google"-->
+                <!--android:layout_width="30dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:src="@drawable/icon_google"-->
+                <!--android:layout_marginLeft="25dp"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--/>-->
+            <!--<Button-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:text="@string/btn_login_by_google_persian"-->
+                <!--android:layout_gravity="right"-->
+                <!--android:background="@color/black_overlay"-->
+                <!--android:fontFamily="@font/iransans"-->
+                <!--/>-->
+        <!--</LinearLayout>-->
     </LinearLayout>
 </RelativeLayout>

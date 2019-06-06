@@ -26,7 +26,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="HeaderBar">
+    <style name="HeaderBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:background">@color/bg_main</item>
     </style>
 

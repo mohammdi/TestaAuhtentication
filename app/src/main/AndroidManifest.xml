@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mahmood_mohammadi.testaauhtentication">
+    package="com.keyob.payment.gateway">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE0"/>
 
     <uses-feature android:name="android.hardware.wifi" />
 
@@ -15,10 +16,10 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-    <application
+      <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
-        android:label="keyob payment getaway"
+        android:label="@string/app_name"
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -32,12 +33,12 @@
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->
         <!-- </activity> -->
-        <activity android:name=".activities.GetPhoneNumberActivity" />
-        <activity android:name=".activities.ConfirmCodeActivity" />
-        <activity android:name=".activities.GetDetaileActivity" />
-        <activity android:name=".activities.HomeActivity" />
+        <activity android:name="com.keyob.payment.gateway.activities.GetPhoneNumberActivity" />
+        <activity android:name="com.keyob.payment.gateway.activities.ConfirmCodeActivity" />
+        <activity android:name="com.keyob.payment.gateway.activities.GetDetaileActivity" />
+        <activity android:name="com.keyob.payment.gateway.activities.HomeActivity" />
         <activity
-            android:name=".activities.SplashScreenActivity"
+            android:name="com.keyob.payment.gateway.activities.SplashScreenActivity"
             android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,11 +46,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.LoginActivity"
+            android:name="com.keyob.payment.gateway.activities.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".activities.CreateWalletActivity" />
-        <activity android:name=".activities.WalletDetail" />
-        <activity android:name=".activities.EditeWalletActivity"></activity>
+        <activity android:name="com.keyob.payment.gateway.activities.CreateWalletActivity" />
+        <activity android:name="com.keyob.payment.gateway.activities.WalletDetail" />
+        <activity android:name="com.keyob.payment.gateway.activities.EditeWalletActivity"></activity>
 
         <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES"  android:value="barcode"/>
     </application>

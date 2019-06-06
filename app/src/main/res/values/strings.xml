@@ -1,14 +1,16 @@
 <resources>
-    <string name="app_name">Test_Keyoub</string>
+    <string name="app_name">keyob</string>
 
     <string name="hint_email_english">Email</string>
     <string name="hint_email_persian">ایمیل</string>
     <string name="hint_password_english">Password</string>
     <string name="hint_password_persian">رمزعبور</string>
-    <string name="hint_name">name</string>
+    <string name="hint_name_english">name</string>
+    <string name="hint_name_persian">نام :</string>
     <string name="hint_user_name_english">user name</string>
     <string name="hint_user_name_persian">نام کاربری</string>
-    <string name="hint_family">famaily</string>
+    <string name="hint_family_english">family</string>
+    <string name="hint_family_persian">نام خانوادگی</string>
     <string name="btn_register_english">REGISTER</string>
     <string name="btn_register_persian">ثبت نام</string>
     <string name="btn_login_by_google_english">login google account</string>
@@ -38,6 +40,10 @@
     <string name="password_english">password</string>
     <string name="password_persian">رمز عبور</string>
     <string name="emailTittle">enter your email</string>
+    <string name="publicId_english">کد عمومی :</string>
+    <string name="publicId_persian">: public Id</string>
+    <string name="wallet_balance_english">balance</string>
+    <string name="wallet_balance_persian">موجودی</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
@@ -62,7 +68,7 @@
     <!--string realate to dashboard-->
     <string name="contact_english">contact</string>
     <string name="content_peofile_description">test</string>
-    <string name="contact_pesian">مخاطبین</string>
+    <string name="contact_persian">مخاطبین</string>
     <string name="addMony_english">addMony</string>
     <string name="addMony_persian">اضافه کردن پول</string>
     <string name="QRCodePay_english">QRCode pay</string>
@@ -75,6 +81,8 @@
     <string name="linkManagement_persina">مدیریت لینک ها</string>
     <string name="home_english">home</string>
     <string name="home_persian">خانه</string>
+    <string name="walletList_english">wallet list</string>
+    <string name="walletList_persian">کیف پول</string>
 
 
     <!--menu drawer-->
@@ -106,10 +114,10 @@
 
 
     <!--spinner-->
-    <string name="wallet_type_personal_english" >personal</string>
-    <string name="wallet_type_personal_persian" >شخصی</string>
-    <string name="wallet_type_business_english" >business</string>
-    <string name="wallet_type_business_persian" >تجاری</string>
+    <string name="wallet_type_personal_english">personal</string>
+    <string name="wallet_type_personal_persian">شخصی</string>
+    <string name="wallet_type_business_english">business</string>
+    <string name="wallet_type_business_persian">تجاری</string>
     <string-array name="spinner_item">
         <item>personal</item>
         <item>business</item>
@@ -118,7 +126,7 @@
     <!--scannerFragment-->
     <string name="focus_on_qr_code">pleas focus on qr code</string>
 
-     <!-- internet status-->
+    <!-- internet status-->
     <string name="internet_is_off_english">internet  unavailable !!!</string>
     <string name="internet_is_off_persian">شما به انیترنت دسترسی ندارید !!!</string>
     <!-- TODO: Remove or change this placeholder text -->
