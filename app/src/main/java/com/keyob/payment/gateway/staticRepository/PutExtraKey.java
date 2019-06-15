@@ -18,7 +18,9 @@ public class PutExtraKey {
     public static final String WALLET_Default= "walletDefault";
     public static final String WALLET_SELECTED= "walletSelected";
     public static final String WALLET_= "walletDefault";
-    public static final String WALLET_LIST= "WalletList";
+    public static final String WALLET_LIST= "walletList";
+    public static final String WALLET_TAG= "walletTag";
+    public static final String BALANCE= "balance";
 
 
     //    Users

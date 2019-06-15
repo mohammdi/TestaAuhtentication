@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.keyob.payment.gateway.R;
-import com.keyob.payment.gateway.dal.model.Wallet;
+import com.keyob.payment.gateway.model.Wallet;
 import com.keyob.payment.gateway.navigation.model.NavigationData;
 
 import java.util.ArrayList;

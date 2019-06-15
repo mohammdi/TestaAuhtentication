@@ -12,14 +12,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.keyob.payment.gateway.R;
-import com.keyob.payment.gateway.activities.HomeActivity;
-import com.keyob.payment.gateway.dal.model.Wallet;
-import com.keyob.payment.gateway.helper.DataBase.ChangeSelectetWallet;
-import com.keyob.payment.gateway.helper.DataBase.FackWalletInfoData;
+import com.keyob.payment.gateway.model.Wallet;
+import com.keyob.payment.gateway.helper.dataBase.FackWalletInfoData;
 import com.keyob.payment.gateway.helper.reCycelerViewHandler.HomeWalletListReCycelerView;
 import com.keyob.payment.gateway.navigation.adapter.NavigationAdapter;
-
-import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;

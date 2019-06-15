@@ -1,6 +1,7 @@
 package com.keyob.payment.gateway.helper.reCycelerViewHandler;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +10,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.keyob.payment.gateway.dal.model.Wallet;
+import com.keyob.payment.gateway.helper.PicassoImageDownloader;
+import com.keyob.payment.gateway.model.HomeDto;
 import com.keyob.payment.gateway.R;
+import com.keyob.payment.gateway.network.MyURLRepository;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.List;
 
 
@@ -19,15 +24,16 @@ public class WalletListRecyclerViewAdapter extends RecyclerView.Adapter<WalletLi
 
 
     private Context context;
-    private List<Wallet> walletList;
+    private List<HomeDto> walletList;
     private OnItemClickListener onItemClickListener;
+    private HomeDto wallet;
 
     public interface OnItemClickListener {
         void onclick(int position);
     }
 
 
-    public WalletListRecyclerViewAdapter(Context context, List<Wallet> walletList) {
+    public WalletListRecyclerViewAdapter(Context context, List<HomeDto> walletList) {
         this.context = context;
         this.walletList = walletList;
     }
@@ -43,13 +49,12 @@ public class WalletListRecyclerViewAdapter extends RecyclerView.Adapter<WalletLi
     @Override
     public void onBindViewHolder(WalletviewHolder holder, int position) {
 
-        Wallet wallet = walletList.get(position);
+        wallet = walletList.get(position);
         holder.name_Wllet.setText(wallet.getName());
         holder.public_Id.setText(wallet.getPublicId());
-        holder.logoPath.setBackground(wallet.getLogoPath());
-        holder.delete_btn.setId(position);
-        holder.edit_btn.setId(position + 12);
-
+        holder.balance.setText(String.valueOf(wallet.getBalance()));
+        File imageFile = new File(PicassoImageDownloader.getFileName(wallet.getPublicId()));
+        Picasso.with(context).load(imageFile).into(holder.logoPath);
     }
 
     @Override
@@ -62,7 +67,7 @@ public class WalletListRecyclerViewAdapter extends RecyclerView.Adapter<WalletLi
 
         private TextView name_Wllet;
         private TextView public_Id;
-        private TextView investory;
+        private TextView balance;
         private RelativeLayout background;
         private ImageView edit_btn;
         private ImageView logoPath;
@@ -75,11 +80,10 @@ public class WalletListRecyclerViewAdapter extends RecyclerView.Adapter<WalletLi
             super(itemView);
             name_Wllet = (TextView) itemView.findViewById(R.id.w_m_wallet_name);
             public_Id = (TextView) itemView.findViewById(R.id.w_m_publicId_id);
-            investory = (TextView) itemView.findViewById(R.id.w_m_wallet_balance);
+            balance = (TextView) itemView.findViewById(R.id.w_m_wallet_balance);
             background = (RelativeLayout) itemView.findViewById(R.id.relative_layout);
             logoPath= (ImageView) itemView.findViewById(R.id.w_m_wallet_logo);
-            delete_btn = (ImageView) itemView.findViewById(R.id.delete_icon);
-            edit_btn = (ImageView) itemView.findViewById(R.id.edit_icon);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -100,6 +104,10 @@ public class WalletListRecyclerViewAdapter extends RecyclerView.Adapter<WalletLi
             });
 
         }
+
+//        public void setImage(Long id) {
+//            Picasso.with(itemView.getContext()).load(PicassoImageDownloader.getImageUrl(wallet.getId())).into(logoPath);
+//        }
     }
 }
 

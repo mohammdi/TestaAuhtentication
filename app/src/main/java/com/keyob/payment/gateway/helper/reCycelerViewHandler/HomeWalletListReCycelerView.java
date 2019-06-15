@@ -1,6 +1,8 @@
 package com.keyob.payment.gateway.helper.reCycelerViewHandler;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.keyob.payment.gateway.R;
-import com.keyob.payment.gateway.dal.model.Wallet;
+import com.keyob.payment.gateway.model.Wallet;
 
 import java.util.List;
 
@@ -44,10 +46,8 @@ public class HomeWalletListReCycelerView extends RecyclerView.Adapter<HomeWallet
 
         Wallet wallet = walletList.get(position);
         holder.name_Wllet.setText(wallet.getName());
-        holder.logo.setImageDrawable(wallet.getLogoPath());
-//        byte[] data = wallet.getLogoPath().getBytes();
-//        byte[] decode = Base64.decode(wallet.getLogoPath().getBytes(),0);
-//        Bitmap bmp = BitmapFactory.decodeByteArray(decode, 0, decode.length);
+//        BitmapDrawable image = new BitmapDrawable(BitmapFactory.decodeByteArray(wallet.getLogo(), 0, wallet.getLogo().length));
+//        holder.logo.setImageDrawable(image);
     }
 
     @Override

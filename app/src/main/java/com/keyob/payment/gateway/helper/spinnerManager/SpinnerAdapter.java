@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.keyob.payment.gateway.dal.model.WalletType;
+import com.keyob.payment.gateway.model.WalletType;
 import com.keyob.payment.gateway.R;
 
 import java.util.List;

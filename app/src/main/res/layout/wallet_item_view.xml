@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://schemas.android.com/apk/res/android "
@@ -12,12 +12,11 @@
     android:foreground="?selectableItemBackground"
     android:clickable="true"
     android:focusable="true"
-    android:layout_marginTop="5dp"
-    android:layout_marginEnd="5dp"
-    android:layout_marginStart="5dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginStart="10dp"
     android:layoutDirection="ltr"
-    app:cardElevation="13dp"
-    >
+    app:cardElevation="13dp">
 
     <RelativeLayout
         android:id="@+id/relative_layout"
@@ -52,8 +51,8 @@
                         android:layout_height="wrap_content">
                         <com.mikhaellopez.circularimageview.CircularImageView
                             android:id="@+id/w_m_wallet_logo"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
                             app:civ_border_color="@color/white"
                             app:civ_border_width="1.1dp"
                             app:civ_shadow="true"
@@ -90,40 +89,6 @@
                     android:layout_toStartOf="@id/name_wallet_Label"
                     android:layout_alignBaseline="@id/name_wallet_Label"
                     android:layout_marginEnd="10dp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:orientation="horizontal"
-            >
-            <ImageView
-                android:id="@+id/delete_icon"
-                android:layout_width="@dimen/small_icon"
-                android:layout_height="@dimen/small_icon"
-                android:src="@drawable/ic_delete"
-                android:scaleType="fitXY"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginBottom="10dp" />
-            <ImageView
-                android:id="@+id/edit_icon"
-                android:layout_width="@dimen/small_icon"
-                android:layout_height="@dimen/small_icon"
-                android:src="@drawable/ic_edite"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="10dp"
-                android:clickable="true"
-                android:focusable="true"/>
-        </LinearLayout>
-
-
 
         <TextView
             android:id="@+id/w_m_wallet_balance_label"

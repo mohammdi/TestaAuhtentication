@@ -1,5 +1,5 @@
 package com.keyob.payment.gateway;
-import com.keyob.payment.gateway.dal.model.Wallet;
+import com.keyob.payment.gateway.model.Wallet;
 import com.google.gson.Gson;
 
 import org.junit.Test;
