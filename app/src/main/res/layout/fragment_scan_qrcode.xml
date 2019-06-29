@@ -6,40 +6,51 @@
     android:layout_weight="4"
     tools:context=".fragment.ScanQRCode"
     android:orientation="vertical"
-    android:weightSum="20"
+    android:gravity="center"
+    android:background="@drawable/spinner_border"
+    android:layout_marginBottom="100dp"
     >
 
-    <SurfaceView
-        android:id="@+id/camera-scanner-view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="18"
+    <!--<SurfaceView-->
+        <!--android:id="@+id/camera-scanner-view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="18"-->
+        <!--/>-->
+
+    <Button
+        android:id="@+id/qr_scan_btn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/scanQrCode_persian"
+        android:fontFamily="@font/iransans"
+        android:textColor="@color/white"
+        android:background="@drawable/image_profile_shape"
+        android:layout_marginBottom="50dp"
         />
     <TextView
 
-        android:id="@+id/txt-result"
+        android:id="@+id/qr_scan_txt_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/focus_on_qr_code"
         android:textAlignment="center"
         android:textColor="@color/black_overlay"
         android:textSize="@dimen/normal_textSize"
-        android:layout_margin="8dp"
-        android:layout_weight="0"/>
+        android:layout_margin="8dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="10"
         android:layout_marginTop="10dp"
-        android:layout_weight="0"
         >
         <EditText
-            android:id="@+id/qr_mobile_number"
+            android:id="@+id/qr_scan_phoneNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
             android:background="@color/btn_login_bg"
             android:hint="موبایل نامبر"
             android:padding="10dp"
@@ -52,13 +63,13 @@
             android:textSize="16sp"
             android:layout_weight="8"
             android:layout_gravity="right"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="15dp"/>
 
         <ImageButton
-            android:id="@+id/approve_pay"
+            android:id="@+id/qr_scan_phoneNumber_btn"
             android:layout_width="0dp"
             android:layout_height="52dp"
-            android:background="@color/calm_bg_login"
+            android:background="@drawable/image_btn_shape"
             android:layout_weight="1.5"
             android:layout_marginLeft="5dp"
             android:src="@drawable/ic_confirm_white"

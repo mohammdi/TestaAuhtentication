@@ -6,8 +6,6 @@
     android:shape="ring"
     android:thicknessRatio="1"
     android:useLevel="false">
-    >
-
     <gradient
         android:type="radial"
         android:gradientRadius="10dp"

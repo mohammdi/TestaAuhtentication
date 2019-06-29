@@ -33,6 +33,7 @@ public class QRCodePaymentFragment extends Fragment {
         adapter.addFragment(new QRCode(),"Share QR Code");
         viewPger.setAdapter(adapter);
         tableLayout.setupWithViewPager(viewPger);
+
         return view;
 
     }

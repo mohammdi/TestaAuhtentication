@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ReqShowWalletInfoActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/req_m_show_image"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:src="@drawable/icon"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="0.5dp"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="1"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:id="@+id/req_m_show_label_wallet_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/hint_name_persian"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:background="@color/btn_login_bg"
+            android:textColorHint="@color/input_register_hint"
+            android:textColor="@color/bg_register"
+            android:fontFamily="@font/iransans"
+            android:textSize="16dp"
+            android:layout_below="@+id/req_m_show_image"
+            android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/req_m_show_wallet_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:background="@color/btn_login_bg"
+        android:textColorHint="@color/input_register_hint"
+        android:textColor="@color/bg_register"
+        tools:ignore="Deprecated"
+        android:fontFamily="@font/iransans"
+        android:textSize="16dp"
+        android:layout_toLeftOf="@+id/req_m_show_label_wallet_name"
+        android:layout_below="@+id/req_m_show_image"/>
+
+        <TextView
+            android:id="@+id/req_m_show_label_payerId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="شماره حساب :"
+            android:padding="10dp"
+            android:textColor="@color/bg_register"
+            android:background="@color/btn_login_bg"
+            android:textColorHint="@color/input_register_hint"
+            android:fontFamily="@font/iransans"
+            android:textSize="16dp"
+            android:layout_below="@+id/req_m_show_label_wallet_name"
+            android:layout_alignParentRight="true"
+            />
+
+    <TextView
+        android:id="@+id/req_m_show_payerId"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/btn_login_bg"
+        android:padding="10dp"
+        android:textColor="@color/bg_register"
+        android:textColorHint="@color/input_register_hint"
+        android:fontFamily="@font/iransans"
+        android:textSize="16dp"
+        android:layout_toLeftOf="@+id/req_m_show_label_payerId"
+        android:layout_alignBaseline="@+id/req_m_show_label_payerId"/>
+
+        <TextView
+            android:id="@+id/req_m_show_label_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/btn_login_bg"
+            android:padding="10dp"
+            android:textColor="@color/bg_register"
+            android:text="@string/cost_persian"
+            android:textColorHint="@color/input_register_hint"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="viewEnd"
+            android:textSize="16dp"
+            android:layout_below="@+id/req_m_show_payerId"
+            android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/req_m_show_cost"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/btn_login_bg"
+        android:padding="10dp"
+        android:textColor="@color/bg_register"
+        android:textColorHint="@color/input_register_hint"
+        android:fontFamily="@font/iransans"
+        android:textAlignment="viewEnd"
+        android:textSize="16dp"
+        android:layout_alignBaseline="@+id/req_m_show_label_cost"
+        android:layout_toLeftOf="@+id/req_m_show_label_cost"/>
+
+
+        <TextView
+            android:id="@+id/req_m_show_label_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/btn_login_bg"
+            android:text="@string/description_persian"
+            android:padding="10dp"
+            android:textColor="@color/bg_register"
+            android:textColorHint="@color/input_register_hint"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="viewEnd"
+            android:textSize="16dp"
+            android:layout_below="@+id/req_m_show_label_cost"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/req_m_show_desc"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/btn_login_bg"
+            android:padding="10dp"
+            android:textColor="@color/bg_register"
+            android:textColorHint="@color/input_register_hint"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="viewEnd"
+            android:textSize="16dp"
+            android:layout_alignBaseline="@+id/req_m_show_label_desc"
+            android:layout_toLeftOf="@+id/req_m_show_label_desc"/>
+
+    <!-- Login Button -->
+
+    <Button
+        android:id="@+id/req_m_show_confirm"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="@drawable/image_btn_shape"
+        android:text="@string/confirm_persian"
+        android:fontFamily="@font/iransans"
+        android:textColor="@color/white"
+        android:layout_below="@+id/req_m_show_label_desc"
+        />
+
+    </RelativeLayout>
+</RelativeLayout>

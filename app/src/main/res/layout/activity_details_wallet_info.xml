@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.DetailsWalletInfoActivity"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/details_wallet_image"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:src="@drawable/ic_profile"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="0.5dp"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="1"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="30dp"/>
+        <TextView
+            android:id="@+id/details_wallet_label_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/hint_name_persian"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/bg_Dark_main"
+            android:singleLine="true"
+            android:fontFamily="@font/iransans"
+            android:textSize="16dp"
+            android:layout_below="@+id/details_wallet_image"
+            android:layout_alignParentRight="true"
+            />
+
+        <TextView
+            android:id="@+id/details_wallet_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/bg_register"
+            android:layout_marginTop="10dp"
+            tools:ignore="Deprecated"
+            android:fontFamily="@font/iransans"
+            android:textSize="16dp"
+            android:layout_toLeftOf="@+id/details_wallet_label_name"
+            android:layout_alignBaseline="@+id/details_wallet_label_name"
+            />
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line_list_seperator_shape"
+            android:layout_below="@+id/details_wallet_image"/>
+        <TextView
+            android:id="@+id/details_wallet_label_publicId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="شماره حساب :"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/bg_Dark_main"
+            android:fontFamily="@font/iransans"
+            android:textSize="16dp"
+            android:layout_below="@+id/details_wallet_label_name"
+            android:layout_alignParentRight="true"
+            />
+
+        <TextView
+            android:id="@+id/details_wallet_publicId"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textColor="@color/bg_register"
+            android:textAlignment="viewEnd"
+            android:fontFamily="@font/iransans"
+            android:textSize="16dp"
+            android:layout_toLeftOf="@+id/details_wallet_label_publicId"
+            android:layout_alignBaseline="@+id/details_wallet_label_publicId"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line_list_seperator_shape"
+            android:layout_below="@+id/details_wallet_label_name"/>
+
+        <TextView
+            android:id="@+id/details_wallet_label_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/bg_Dark_main"
+            android:text="@string/walletLink_persian"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="viewEnd"
+            android:textSize="16dp"
+            android:layout_below="@+id/details_wallet_publicId"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/details_wallet_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textColor="@color/bg_register"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="viewEnd"
+            android:textSize="16dp"
+            android:layout_alignBaseline="@+id/details_wallet_label_link"
+            android:layout_toLeftOf="@+id/details_wallet_label_link"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line_list_seperator_shape"
+            android:layout_below="@+id/details_wallet_label_link"/>
+
+        <!--<TextView-->
+            <!--android:id="@+id/details_wallet_label_desc"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:text="@string/description_persian"-->
+            <!--android:padding="10dp"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textColor="@color/bg_Dark_main"-->
+            <!--android:fontFamily="@font/iransans"-->
+            <!--android:textAlignment="viewEnd"-->
+            <!--android:textSize="16dp"-->
+            <!--android:layout_below="@+id/details_wallet_amount"-->
+            <!--android:layout_alignParentRight="true"/>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/details_wallet_desc"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:padding="10dp"-->
+            <!--android:textColor="@color/bg_register"-->
+            <!--android:fontFamily="@font/iransans"-->
+            <!--android:textAlignment="viewEnd"-->
+            <!--android:textSize="16dp"-->
+            <!--android:layout_alignBaseline="@+id/details_wallet_label_desc"-->
+            <!--android:layout_toLeftOf="@+id/details_wallet_label_desc"/>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@drawable/line_list_seperator_shape"-->
+            <!--android:layout_below="@+id/details_wallet_desc"/>-->
+
+        <Button
+            android:id="@+id/details_wallet_confirm"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:background="@drawable/image_btn_shape"
+            android:text="@string/confirm_persian"
+            android:fontFamily="@font/iransans"
+            android:layout_below="@+id/details_wallet_label_link"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+</LinearLayout>

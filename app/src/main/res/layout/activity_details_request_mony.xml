@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.DetailsRequestMoneyActivity"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/r_m_d_QrCode"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:layout_marginTop="40dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@+id/r_m_d_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="keoub/fjkldf45ff"
+            android:textColor="@color/bg_Dark_main"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="10dp"
+            />
+        <ImageView
+            android:id="@+id/r_m_d_share"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_share"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@+id/r_m_d_link"
+            android:layout_marginLeft="40dp"/>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line_list_seperator_shape"
+            android:layout_below="@+id/r_m_d_share"/>
+        <TextView
+            android:id="@+id/r_m_d_label_wallet_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/hint_name_persian"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textStyle="bold"
+            android:textColor="@color/bg_Dark_main"
+            android:fontFamily="@font/iransans"
+            android:textSize="16dp"
+            android:layout_below="@+id/r_m_d_link"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/r_m_d_wallet_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/bg_register"
+            android:layout_marginTop="10dp"
+            tools:ignore="Deprecated"
+            android:fontFamily="@font/iransans"
+            android:textSize="16dp"
+            android:layout_toLeftOf="@+id/r_m_d_label_wallet_name"
+            android:layout_below="@+id/r_m_d_link"/>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line_list_seperator_shape"
+            android:layout_below="@+id/r_m_d_wallet_name"/>
+
+        <TextView
+            android:id="@+id/r_m_d_label_payerId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="شماره حساب :"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/bg_Dark_main"
+            android:fontFamily="@font/iransans"
+            android:textSize="16dp"
+            android:layout_below="@+id/r_m_d_wallet_name"
+            android:layout_alignParentRight="true"
+            />
+
+        <TextView
+            android:id="@+id/r_m_d_accountId"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textColor="@color/bg_register"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="viewEnd"
+            android:textSize="16dp"
+            android:layout_toLeftOf="@+id/r_m_d_label_payerId"
+            android:layout_alignBaseline="@+id/r_m_d_label_payerId"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line_list_seperator_shape"
+            android:layout_below="@+id/r_m_d_accountId"/>
+
+        <TextView
+            android:id="@+id/r_m_d_label_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/bg_Dark_main"
+            android:text="@string/cost_persian"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="viewEnd"
+            android:textSize="16dp"
+            android:layout_below="@+id/r_m_d_label_payerId"
+            android:layout_alignParentRight="true"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line_list_seperator_shape"
+            android:layout_below="@+id/r_m_d_label_cost"/>
+
+        <TextView
+            android:id="@+id/r_m_d_amount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textColor="@color/bg_register"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="viewEnd"
+            android:textSize="16dp"
+            android:layout_alignBaseline="@+id/r_m_d_label_cost"
+            android:layout_toLeftOf="@+id/r_m_d_label_cost"/>
+
+
+        <TextView
+            android:id="@+id/r_m_d_label_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/description_persian"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/bg_Dark_main"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="viewEnd"
+            android:textSize="16dp"
+            android:layout_below="@+id/r_m_d_amount"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/r_m_d_desc"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textColor="@color/bg_register"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="viewEnd"
+            android:textSize="16dp"
+            android:layout_alignBaseline="@+id/r_m_d_label_desc"
+            android:layout_toLeftOf="@+id/r_m_d_label_desc"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line_list_seperator_shape"
+            android:layout_below="@+id/r_m_d_desc"/>
+
+        <TextView
+            android:id="@+id/r_m_d_text_status_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/status_persian"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/bg_Dark_main"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="viewEnd"
+            android:textSize="16dp"
+            android:layout_below="@+id/r_m_d_desc"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/r_m_d_text_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textColor="@color/bg_register"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="textEnd"
+            android:textSize="16dp"
+            android:layout_below="@+id/r_m_d_desc"
+            android:layout_toLeftOf="@+id/r_m_d_text_status_label"
+            android:layout_marginLeft="40dp"/>
+
+    </RelativeLayout>
+</LinearLayout>

@@ -36,12 +36,11 @@
                     app:layout_scrollFlags="scroll|exitUntilCollapsed"
                     app:titleTextAppearance="@style/toolbar_Style">
 
-                    <RelativeLayout
+                <RelativeLayout
                         android:id="@+id/fff"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_collapseMode="parallax">
-
                         <com.mikhaellopez.circularimageview.CircularImageView
                             android:id="@+id/home_wallet_pic"
                             android:layout_width="45dp"
@@ -132,10 +131,9 @@
                 <GridLayout
                     android:id="@+id/home_grid_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="470dp"
+                    android:layout_height="550dp"
                     android:layout_weight="0"
                     android:alignmentMode="alignMargins"
-                    android:background="@drawable/bg_home_test"
                     android:columnCount="2"
                     android:columnOrderPreserved="true"
                     android:padding="14dp"
@@ -144,11 +142,12 @@
 
                     <!-- row  1-->
                     <android.support.v7.widget.CardView
+                        android:id="@+id/home_pass_Book"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_rowWeight=".35"
                         android:layout_columnWeight=".35"
-                        android:layout_margin="20dp"
+                        android:layout_margin="30dp"
                         app:cardCornerRadius="@dimen/cardCornerRadios"
                         app:cardElevation="@dimen/cardElevation">
 
@@ -156,7 +155,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
-                            android:layout_margin="5dp"
+                            android:layout_margin="1dp"
                             android:orientation="vertical">
 
                             <ImageView
@@ -165,7 +164,7 @@
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="1dp"
                                 android:padding="1dp"
-                                android:src="@drawable/icon" />
+                                android:src="@drawable/ic_history_pay" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -173,19 +172,20 @@
                                 android:layout_gravity="center"
                                 android:layout_marginTop="0dp"
                                 android:fontFamily="@font/iransans"
-                                android:text="در خواست پول"
+                                android:text="تاریخچه تراکنش"
                                 android:textColor="@color/black_overlay"
-                                android:textSize="15dp"
+                                android:textSize="13sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
                     <!-- column 1-->
                     <android.support.v7.widget.CardView
+                        android:id="@+id/home_request_money"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_rowWeight="0.35"
-                        android:layout_columnWeight="0.35"
-                        android:layout_margin="20dp"
+                        android:layout_rowWeight="0.5"
+                        android:layout_columnWeight="0.5"
+                        android:layout_margin="30dp"
                         app:cardCornerRadius="@dimen/cardCornerRadios"
                         app:cardElevation="@dimen/cardElevation">
 
@@ -193,23 +193,23 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
-                            android:layout_margin="5dp"
+                            android:layout_margin="1dp"
                             android:orientation="vertical">
 
                             <ImageView
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
                                 android:layout_gravity="center_horizontal"
-                                android:src="@drawable/icon_google" />
+                                android:src="@drawable/ic_request_money" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:fontFamily="@font/iransans"
-                                android:text="پرداخت "
+                                android:text="درخواست پول "
                                 android:textColor="@color/black_overlay"
-                                android:textSize="15dp"
+                                android:textSize="13sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
@@ -219,9 +219,9 @@
                     <android.support.v7.widget.CardView
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_rowWeight="0.35"
-                        android:layout_columnWeight="0.35"
-                        android:layout_margin="20dp"
+                        android:layout_rowWeight="0.5"
+                        android:layout_columnWeight="0.5"
+                        android:layout_margin="30dp"
                         app:cardCornerRadius="@dimen/cardCornerRadios"
                         app:cardElevation="@dimen/cardElevation">
 
@@ -229,7 +229,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
-                            android:layout_margin="5dp"
+                            android:layout_margin="1dp"
                             android:orientation="vertical">
 
                             <ImageView
@@ -244,7 +244,7 @@
                                 android:fontFamily="@font/iransans"
                                 android:text="اضافه کردن پول"
                                 android:textColor="@color/black_overlay"
-                                android:textSize="15dp"
+                                android:textSize="13sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
@@ -252,9 +252,9 @@
                     <android.support.v7.widget.CardView
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_rowWeight="0.35"
-                        android:layout_columnWeight="0.35"
-                        android:layout_margin="20dp"
+                        android:layout_rowWeight="0.5"
+                        android:layout_columnWeight="0.5"
+                        android:layout_margin="30dp"
                         app:cardCornerRadius="@dimen/cardCornerRadios"
                         app:cardElevation="@dimen/cardElevation">
 
@@ -262,7 +262,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
-                            android:layout_margin="5dp"
+                            android:layout_margin="1dp"
                             android:orientation="vertical">
 
                             <ImageView
@@ -278,7 +278,7 @@
                                 android:fontFamily="@font/iransans"
                                 android:text="ایجاد لینک"
                                 android:textColor="@color/black_overlay"
-                                android:textSize="15dp"
+                                android:textSize="13sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
@@ -286,9 +286,9 @@
                     <android.support.v7.widget.CardView
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_rowWeight="0.35"
-                        android:layout_columnWeight="0.35"
-                        android:layout_margin="20dp"
+                        android:layout_rowWeight="0.5"
+                        android:layout_columnWeight="0.5"
+                        android:layout_margin="30dp"
                         app:cardCornerRadius="@dimen/cardCornerRadios"
                         app:cardElevation="@dimen/cardElevation">
 
@@ -296,7 +296,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
-                            android:layout_margin="5dp"
+                            android:layout_margin="1dp"
                             android:orientation="vertical">
 
                             <ImageView
@@ -311,7 +311,7 @@
                                 android:fontFamily="@font/iransans"
                                 android:text="اضافه کردن پول"
                                 android:textColor="@color/black_overlay"
-                                android:textSize="15dp"
+                                android:textSize="13sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
@@ -319,9 +319,9 @@
                     <android.support.v7.widget.CardView
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_rowWeight="0.35"
-                        android:layout_columnWeight="0.35"
-                        android:layout_margin="20dp"
+                        android:layout_rowWeight="0.5"
+                        android:layout_columnWeight="0.5"
+                        android:layout_margin="30dp"
                         app:cardCornerRadius="@dimen/cardCornerRadios"
                         app:cardElevation="@dimen/cardElevation">
 
@@ -329,7 +329,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
-                            android:layout_margin="5dp"
+                            android:layout_margin="1dp"
                             android:orientation="vertical">
 
                             <ImageView
@@ -345,7 +345,7 @@
                                 android:fontFamily="@font/iransans"
                                 android:text="ایجاد لینک"
                                 android:textColor="@color/black_overlay"
-                                android:textSize="15dp"
+                                android:textSize="13sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </android.support.v7.widget.CardView>

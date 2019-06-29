@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.SelectDatePassBookActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/spinner_border"
+        android:layout_margin="20dp"
+        android:padding="20dp"
+        >
+
+        <TextView
+            android:id="@+id/passbook_from_date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:textSize="20sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:text="از تاریخ :"
+            android:fontFamily="@font/iransans"
+            android:textColor="@color/bg_register"
+            android:layout_marginBottom="30dp"/>
+        <EditText
+            android:id="@+id/passbook_from_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/passbook_from_date_label"
+            android:layout_toLeftOf="@+id/passbook_from_date_label"
+            android:textSize="20sp"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:editable="false"
+            android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:id="@+id/passbook_to_date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_below="@+id/passbook_from_date"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:text="تا تاریخ :"
+            android:fontFamily="@font/iransans"
+            android:textColor="@color/bg_register"
+            android:layout_marginBottom="30dp"/>
+        <EditText
+            android:id="@+id/passbook_to_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/passbook_to_date_label"
+            android:layout_toLeftOf="@+id/passbook_to_date_label"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:editable="false"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="30dp"
+            />
+
+        <Button
+            android:id="@+id/passbook_confirm_date"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/image_btn_shape"
+            android:text="@string/confirm_persian"
+            android:textColor="@color/white"
+            android:fontFamily="@font/iransans"
+            android:layout_below="@+id/passbook_to_date_label"
+            android:layout_centerInParent="true"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.WalletInfoActivity"
+    android:gravity="center"
+    android:id="@+id/wallet_info_root_view">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/spinner_border"
+        android:padding="20dp">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/wallet_info_image"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:src="@drawable/ic_profile"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="0.5dp"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="1"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="30dp"/>
+        <TextView
+            android:id="@+id/wallet_info_name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/hint_name_persian"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/bg_Dark_main"
+            android:singleLine="true"
+            android:fontFamily="@font/iransans"
+            android:textSize="16dp"
+            android:layout_below="@+id/wallet_info_image"
+            android:layout_alignParentRight="true"
+            />
+
+        <TextView
+            android:id="@+id/wallet_info_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/bg_register"
+            android:layout_marginTop="10dp"
+            tools:ignore="Deprecated"
+            android:fontFamily="@font/iransans"
+            android:textSize="16dp"
+            android:layout_toLeftOf="@+id/wallet_info_name_label"
+            android:layout_alignBaseline="@+id/wallet_info_name_label"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line_list_seperator_shape"
+            android:layout_below="@+id/wallet_info_name_label"/>
+        <TextView
+            android:id="@+id/wallet_info_publicId_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="شماره حساب :"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/bg_Dark_main"
+            android:fontFamily="@font/iransans"
+            android:textSize="16dp"
+            android:layout_below="@+id/wallet_info_name"
+            android:layout_alignParentRight="true"
+            />
+
+        <TextView
+            android:id="@+id/wallet_info_publicId"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textColor="@color/bg_register"
+            android:textAlignment="viewEnd"
+            android:fontFamily="@font/iransans"
+            android:textSize="16dp"
+            android:layout_toLeftOf="@+id/wallet_info_publicId_label"
+            android:layout_alignBaseline="@+id/wallet_info_publicId_label"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line_list_seperator_shape"
+            android:layout_below="@+id/wallet_info_publicId_label" />
+
+        <EditText
+            android:id="@+id/wallet_info_amount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/btn_login_bg"
+            android:hint="@string/insert_cost_persian"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:inputType="textCapWords"
+            android:textColor="@color/bg_register"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@color/input_register_hint"
+            android:layout_below="@+id/wallet_info_publicId_label"
+            tools:ignore="Deprecated"
+            android:fontFamily="@font/iransans"
+            android:textSize="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line_list_seperator_shape"
+            android:layout_below="@+id/wallet_info_amount"
+            />
+
+
+        <EditText
+            android:id="@+id/wallet_info_passPayment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/btn_login_bg"
+            android:hint="@string/pass_enter_persian"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:inputType="textCapWords"
+            android:textColor="@color/bg_register"
+            android:layout_below="@+id/wallet_info_amount"
+            android:textColorHint="@color/input_register_hint"
+            tools:ignore="Deprecated"
+            android:fontFamily="@font/iransans"
+            android:textSize="16dp"/>
+
+
+        <Button
+            android:id="@+id/wallet_info_pay_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@drawable/image_btn_shape"
+            android:text="@string/payment_persian"
+            android:fontFamily="@font/iransans"
+            android:layout_below="@+id/wallet_info_passPayment"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+</LinearLayout>

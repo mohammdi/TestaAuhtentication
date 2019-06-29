@@ -5,17 +5,16 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-feature android:name="android.hardware.wifi" />
 
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-feature android:name="android.hardware.wifi" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-      <application
+    <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
@@ -23,37 +22,52 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <!-- <activity android:name=".activities.MainActivity"> -->
+        <activity android:name=".activities.WalletInfoActivity"></activity>
+        <activity android:name=".activities.hiddenActivity.PayProxyActivity" />
+        <activity android:name=".activities.DetailsWalletInfoActivity" />
+        <activity android:name=".activities.PassBookListActivity" />
+        <activity android:name=".activities.SelectDatePassBookActivity" />
+        <activity android:name=".activities.ReportRequestPaymentActivity" />
+        <activity android:name=".activities.ConfirmRequestPaymentActivity" />
+        <activity android:name=".fragment.DetailsReceiveMoneyActivity" />
+        <activity android:name=".activities.DetailsRequestMoneyActivity" />
+        <activity android:name=".activities.ReqShowWalletInfoActivity" />
+        <activity android:name=".activities.RequestMoneyContainerActivity" />
+        <activity android:name=".activities.RequestMoneyActivity" /> <!-- <activity android:name=".activities.MainActivity"> -->
         <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->
         <!-- </activity> -->
-        <activity android:name="com.keyob.payment.gateway.activities.GetPhoneNumberActivity" />
-        <activity android:name="com.keyob.payment.gateway.activities.ConfirmCodeActivity" />
-        <activity android:name="com.keyob.payment.gateway.activities.GetDetaileActivity" />
-        <activity android:name="com.keyob.payment.gateway.activities.HomeActivity" />
+        <activity android:name=".activities.GetPhoneNumberActivity" />
+        <activity android:name=".activities.ConfirmCodeActivity" />
+        <activity android:name=".activities.GetDetaileActivity" />
+        <activity android:name=".activities.HomeActivity" />
         <activity
-            android:name="com.keyob.payment.gateway.activities.SplashScreenActivity"
+            android:name=".activities.SplashScreenActivity"
             android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.keyob.payment.gateway.activities.LoginActivity"
+            android:name=".activities.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name="com.keyob.payment.gateway.activities.CreateWalletActivity" />
-        <activity android:name="com.keyob.payment.gateway.activities.WalletDetail" />
-        <activity android:name="com.keyob.payment.gateway.activities.EditeWalletActivity"></activity>
+        <activity android:name=".activities.CreateWalletActivity" />
+        <activity android:name=".activities.WalletDetail" />
+        <activity android:name=".activities.EditeWalletActivity" />
+        <activity
+            android:name=".activities.hiddenActivity.CaptureActivityAnyOrientation"
+            android:screenOrientation="fullSensor"
+            android:stateNotNeeded="true"
+            android:theme="@style/zxing_CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
-        <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES"  android:value="barcode"/>
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode" />
     </application>
-
-
 
 </manifest>

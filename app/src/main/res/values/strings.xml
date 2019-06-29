@@ -4,13 +4,13 @@
     <string name="hint_email_english">Email</string>
     <string name="hint_email_persian">ایمیل</string>
     <string name="hint_password_english">Password</string>
-    <string name="hint_password_persian">رمزعبور</string>
+    <string name="hint_password_persian"> : رمز عبور </string>
     <string name="hint_name_english">name</string>
     <string name="hint_name_persian">نام :</string>
-    <string name="hint_user_name_english">user name</string>
-    <string name="hint_user_name_persian">نام کاربری</string>
-    <string name="hint_family_english">family</string>
-    <string name="hint_family_persian">نام خانوادگی</string>
+    <string name="hint_user_name_english">user name :</string>
+    <string name="hint_user_name_persian"> نام کاربری :</string>
+    <string name="hint_family_english">family :</string>
+    <string name="hint_family_persian">نام خانوادگی :</string>
     <string name="btn_register_english">REGISTER</string>
     <string name="btn_register_persian">ثبت نام</string>
     <string name="btn_login_by_google_english">login google account</string>
@@ -21,8 +21,8 @@
     <string name="btn_logout">LOGOUT</string>
     <string name="btn_login_english">LOGIN</string>
     <string name="btn_login_persian">ورود</string>
-    <string name="name_english">FullName</string>
-    <string name="name_persian">فامیلی</string>
+    <string name="Full_name_english">FullName</string>
+    <string name="full_name_persian">فامیلی</string>
     <string name="phone_english">Enter your phone number:</string>
     <string name="phone_persian">شماره موبایل:</string>
     <string name="inter_confirm_code_english">enter ConfirmCode</string>
@@ -33,6 +33,8 @@
     <string name="hint_confirm_code_persian">کد تایید</string>
     <string name="confirm_english">Confirm</string>
     <string name="confirm_persian">تایید</string>
+    <string name="status_english">status</string>
+    <string name="status_persian">وضعیت :</string>
     <string name="email_english">Email</string>
     <string name="email_persian">ایمیل</string>
     <string name="register_english">register</string>
@@ -40,10 +42,32 @@
     <string name="password_english">password</string>
     <string name="password_persian">رمز عبور</string>
     <string name="emailTittle">enter your email</string>
-    <string name="publicId_english">کد عمومی :</string>
-    <string name="publicId_persian">: public Id</string>
+    <string name="publicId_persian"> کد عمومی :</string>
+    <string name="publicId_english"> public Id</string>
+    <string name="sendTo_english">send To :</string>
+    <string name="SendTo_persian">ارسال به :</string>
+    <string name="receive_from_english">receive From :</string>
+    <string name="receive_from_persian">دریافت از :</string>
+    <string name="publicId_phoneNumber_english"> public Id /phone Number_ payer</string>
+    <string name="publicId_phoneNumber_persian"> کدعمومی / موبایل نامبر _ پرداخت کننده</string>
     <string name="wallet_balance_english">balance</string>
     <string name="wallet_balance_persian">موجودی</string>
+    <string name="cost_english">cost</string>
+    <string name="cost_persian">مبلغ :</string>
+    <string name="insert_cost_english">insert cost</string>
+    <string name="insert_cost_persian">مبلغ را وارد کنید</string>
+    <string name="description_english">description</string>
+    <string name="description_persian">توضیحات :</string>
+    <string name="createDate_english">date :</string>
+    <string name="createDate_persian">تاریخ :</string>
+    <string name="not_paid_english">not paid</string>
+    <string name="not_paid_persian">پرداخت نشده</string>
+    <string name="Paid_english">Paid</string>
+    <string name="Paid_persian">پرداخت شده</string>
+    <string name="not_Paid_english">not Paid</string>
+    <string name="not_Paid_persian">پرداخت نشده</string>
+    <string name="pass_enter_english">enter password</string>
+    <string name="pass_enter_persian">پسورد خود را وارد کنید</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
@@ -78,11 +102,21 @@
     <string name="walletManagement_english">wallet Manegment</string>
     <string name="walletManagement_persian">مدیریت کیف پول</string>
     <string name="linkManagement_english">link Managment</string>
-    <string name="linkManagement_persina">مدیریت لینک ها</string>
+    <string name="linkManagement_persian">مدیریت لینک ها</string>
+    <string name="walletLink_english"> wallets Link :</string>
+    <string name="walletLink_persian">لینک بگسک :</string>
     <string name="home_english">home</string>
     <string name="home_persian">خانه</string>
     <string name="walletList_english">wallet list</string>
     <string name="walletList_persian">کیف پول</string>
+    <string name="payment_english">pay</string>
+    <string name="payment_persian">پرداخت</string>
+    <string name="continue_english">continue</string>
+    <string name="continue_persian">ادامه</string>
+    <string name="successful_english">success</string>
+    <string name="successful_persian">موفق</string>
+    <string name="unSuccessful_english">unSuccessful</string>
+    <string name="unSuccessful_persian">ناموفق</string>
 
 
     <!--menu drawer-->
@@ -125,6 +159,8 @@
 
     <!--scannerFragment-->
     <string name="focus_on_qr_code">pleas focus on qr code</string>
+    <string name="scanQRCode_english">scanQrCode</string>
+    <string name="scanQrCode_persian">اسکن Qr code</string>
 
     <!-- internet status-->
     <string name="internet_is_off_english">internet  unavailable !!!</string>

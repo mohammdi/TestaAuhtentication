@@ -4,16 +4,13 @@ package com.keyob.payment.gateway.fragment;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,24 +19,17 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.keyob.payment.gateway.R;
 import com.keyob.payment.gateway.activities.CreateWalletActivity;
-import com.keyob.payment.gateway.activities.WalletDetail;
 import com.keyob.payment.gateway.helper.PicassoImageDownloader;
-import com.keyob.payment.gateway.model.HomeDto;
-import com.keyob.payment.gateway.model.Wallet;
+import com.keyob.payment.gateway.helper.SingletonWalletInfo;
 import com.keyob.payment.gateway.helper.reCycelerViewHandler.WalletListRecyclerViewAdapter;
-import com.keyob.payment.gateway.model.WalletDto;
+import com.keyob.payment.gateway.model.HomeDto;
 import com.keyob.payment.gateway.network.AlertFactory;
-import com.keyob.payment.gateway.network.MyURLRepository;
 import com.keyob.payment.gateway.viewModel.WalletViewModelNetWork;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class WalletManagementFragment extends Fragment implements WalletListRecyclerViewAdapter.OnItemClickListener {
@@ -59,9 +49,9 @@ public class WalletManagementFragment extends Fragment implements WalletListRecy
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_wallet_managment, container, false);
         // view Binding
-        walletImage= view.findViewById(R.id.w_m_wallet_logo);
-        walletName = view.findViewById(R.id.w_m_wallet_name);
-        publicId = view.findViewById(R.id.w_m_publicId_id);
+        walletImage= view.findViewById(R.id.w_m_logo);
+        walletName = view.findViewById(R.id.w_m__name);
+        publicId = view.findViewById(R.id.w_m_publicId);
         progressBar = view.findViewById(R.id.w_m_progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
@@ -75,7 +65,7 @@ public class WalletManagementFragment extends Fragment implements WalletListRecy
                         dataList =new ArrayList<>();
                         dataList.addAll(wallets);
                         for (HomeDto dto :dataList){
-                            PicassoImageDownloader.imageDownload(getContext(),dto.getId(),dto.getPublicId());
+                            PicassoImageDownloader.imageDownload(getContext(),dto.getId(),dto.getName());
                         }
                         setUpRecyclerView(dataList);
                     }
@@ -97,6 +87,7 @@ public class WalletManagementFragment extends Fragment implements WalletListRecy
             WalletListRecyclerViewAdapter recyclerAdapter = new WalletListRecyclerViewAdapter(getActivity(), walletList);
             RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
             recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
+            recyclerAdapter.setOnItemClickListener(WalletManagementFragment.this);
             recyclerView.setAdapter(recyclerAdapter);
             progressBar.setVisibility(View.GONE);
         } else {
@@ -120,16 +111,28 @@ public class WalletManagementFragment extends Fragment implements WalletListRecy
     @Override
     public void onclick(int position) {
 
-        Intent intent = new Intent(this.getContext(), WalletDetail.class);
+        HomeFragment homeFragment = new HomeFragment();
+        Bundle data =new Bundle();
         HomeDto w = dataList.get(position);
+        w.setSelected(true);
 
-//        intent.putExtra(PutExtraKey.EDIT, true);
-//        intent.putExtra(PutExtraKey.WALLET_NAME, w.getName());
-//        intent.putExtra(PutExtraKey.PUBLIC_ID, w.getPublicId());
-//        intent.putExtra(PutExtraKey.WALLET_ID, w.getId());
-//        intent.putExtra(PutExtraKey.WALLET_TYPE ,w.getType());
-//        intent.putExtra(PutExtraKey.WALLET_PASS, w.getPassPayment());
-        startActivity(intent);
+        Gson gson = new Gson();
+        String json = gson.toJson(w);
+        data.putString("wallet",json);
+        homeFragment.setArguments(data);
+
+        SingletonWalletInfo instance = SingletonWalletInfo.getInstance();
+        instance.setBaseLink(w.getBaseLink());
+        instance.setBalance(w.getBalance());
+        instance.setWalletName(w.getName());
+        instance.setId(w.getId());
+        instance.setWalletToken(w.getWalletToken());
+        instance.setPublicId(w.getPublicId());
+        instance.setPassPayment(w.getPassPayment());
+
+        FragmentTransaction fr = getFragmentManager().beginTransaction();
+        fr.replace(R.id.content, homeFragment, "homefragment");
+        fr.commit();
     }
 
 

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.RequestMoneyActivity"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/req_money_pId_phNumber"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/btn_login_bg"
+            android:hint="@string/publicId_phoneNumber_persian"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:inputType="text"
+            android:textColor="@color/bg_register"
+            android:textColorHint="@color/input_register_hint"
+            tools:ignore="Deprecated"
+            android:fontFamily="@font/iransans"
+            android:textSize="16dp"/>
+
+        <EditText
+            android:id="@+id/req_money_cost"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/btn_login_bg"
+            android:hint="@string/cost_persian"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:inputType="number"
+            android:textColor="@color/bg_register"
+            android:textColorHint="@color/input_register_hint"
+            tools:ignore="Deprecated"
+            android:fontFamily="@font/iransans"
+            android:textSize="16dp"/>
+
+        <EditText
+            android:id="@+id/req_money_description"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/btn_login_bg"
+            android:hint="@string/description_persian"
+            android:inputType="textLongMessage"
+            android:padding="10dp"
+            android:textColor="@color/bg_register"
+            android:textColorHint="@color/input_register_hint"
+            android:maxLines="1"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="viewEnd"
+            android:textSize="16dp"/>
+
+        <!-- Login Button -->
+
+        <Button
+            android:id="@+id/req_money_confirm"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@drawable/image_btn_shape"
+            android:text="@string/confirm_persian"
+            android:fontFamily="@font/iransans"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</RelativeLayout>

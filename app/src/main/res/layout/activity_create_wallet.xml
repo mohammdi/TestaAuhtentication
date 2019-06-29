@@ -34,7 +34,7 @@
         <!--android:id="@+id/spinner_wallet_type"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="40dp"-->
-        <!--android:background="@drawable/spinner_boder"-->
+        <!--android:background="@drawable/spinner_border"-->
         <!--android:spinnerMode="dialog"-->
         <!--android:entries="@string/spinner_selectable_english"-->
         <!--tools:listitem="@layout/spinner_items_layout"-->

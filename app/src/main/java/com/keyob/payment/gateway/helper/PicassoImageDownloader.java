@@ -3,6 +3,7 @@ package com.keyob.payment.gateway.helper;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.net.wifi.aware.AttachCallback;
 import android.util.Log;
 
 import com.keyob.payment.gateway.network.MyURLRepository;
@@ -20,9 +21,14 @@ public class PicassoImageDownloader {
 
     public static String  getImageUrl(Long walletId){
         StringBuilder url = new StringBuilder();
-        url.append(MyURLRepository.GET_WALLET_LOGO);
+        url.append(MyURLRepository.GET_LOGO_BY_WALLET_ID);
         url.append(walletId);
         return url.toString();
+    }
+
+
+    public static String  getQrCodeImageUrl(Long walletId){
+        return URLAttacher.doAttach(MyURLRepository.GET_LOGO_BY_WALLET_ID, String.valueOf(walletId), null);
     }
 
     public static void imageDownload(Context ctx,Long walletId,String imageName) {

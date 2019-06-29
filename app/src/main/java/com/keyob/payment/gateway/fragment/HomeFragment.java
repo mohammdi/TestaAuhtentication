@@ -2,6 +2,7 @@ package com.keyob.payment.gateway.fragment;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,10 +15,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,12 +27,14 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.keyob.payment.gateway.R;
+import com.keyob.payment.gateway.activities.RequestMoneyContainerActivity;
+import com.keyob.payment.gateway.activities.SelectDatePassBookActivity;
+import com.keyob.payment.gateway.helper.SingletonWalletInfo;
 import com.keyob.payment.gateway.helper.dataBase.DataSharedPrefrence;
-import com.keyob.payment.gateway.helper.reCycelerViewHandler.HomeWalletListReCycelerView;
 import com.keyob.payment.gateway.helper.transform.PrettyShow;
 import com.keyob.payment.gateway.model.HomeDto;
-import com.keyob.payment.gateway.model.Wallet;
 import com.keyob.payment.gateway.network.AlertFactory;
 import com.keyob.payment.gateway.network.InternetStatus;
 import com.keyob.payment.gateway.network.MyURLRepository;
@@ -38,8 +42,6 @@ import com.keyob.payment.gateway.viewModel.WalletViewModelNetWork;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONException;
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -55,6 +57,8 @@ public class HomeFragment extends Fragment {
     private TextView balanceHome;
     private TextView walletNameHome;
     private RecyclerView recyclerView;
+    private DataSharedPrefrence dataSharedPrefrence;
+    private SingletonWalletInfo instance;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -68,22 +72,75 @@ public class HomeFragment extends Fragment {
 
         setSingleEvent(gridLayout);
         setUpToolBar();
-
+        dataSharedPrefrence = new DataSharedPrefrence(getContext());
         // check internet status
         InternetStatus internetStatus = new InternetStatus(getContext());
         Boolean hasInternet = internetStatus.statusNetWOrk();
 
+        instance = SingletonWalletInfo.getInstance();
 
-        if (!hasInternet) {
-            AlertFactory alertFactory = new AlertFactory(getContext());
-            alertFactory.alertFactory("هشدار", "عدم دسترسی به شبکه!");
-        } else {
-            requestHomeWalletDetail(walletViewModelNetwork);
-        }
+                if (!hasInternet) {
+                    AlertFactory alertFactory = new AlertFactory(getContext());
+                    alertFactory.alertFactory("هشدار", "عدم دسترسی به شبکه!");
+                } else
+                    if (instance.getId()!= null) {
+                    requestWalletByWalletId(walletViewModelNetwork,instance.getId());
+                    }else {
+                    requestGetWalletByUserId(walletViewModelNetwork);
+                }
+
+
+//            }
         return view;
     }
 
-    private void requestWalletImage(String url ,Long walletId) {
+    private void requestWalletByWalletId(WalletViewModelNetWork viewModel,Long walletId) {
+
+        viewModel = ViewModelProviders.of(this).get(WalletViewModelNetWork.class);
+        viewModel.getWalletById(walletId).observe(this, new Observer<HomeDto>() {
+            @Override
+            public void onChanged(@Nullable HomeDto homeDto) {
+                if (homeDto!=null){
+                    prepareActionBarInformation(homeDto);
+                    instance.setId(homeDto.getId());
+                    instance.setWalletToken(homeDto.getWalletToken());
+                    instance.setWalletName(homeDto.getName());
+                    instance.setBalance(homeDto.getBalance());
+                    instance.setBaseLink(homeDto.getBaseLink());
+                    instance.setPublicId(homeDto.getPublicId());
+                    instance.setPassPayment(homeDto.getPassPayment());
+
+                }
+            }
+        });
+
+
+    }
+
+    private Boolean getterArguments() {
+        boolean hasResult = false;
+        Bundle arguments = this.getArguments();
+        if (arguments != null) {
+            String wallet = arguments.getString("wallet");
+
+            if (wallet != null) {
+                Gson gson = new Gson();
+                HomeDto homeDto = gson.fromJson(wallet, HomeDto.class);
+                instance.setId(homeDto.getId());
+                instance.setWalletToken(homeDto.getWalletToken());
+                instance.setWalletName(homeDto.getName());
+                instance.setBalance(homeDto.getBalance());
+                instance.setBaseLink(homeDto.getBaseLink());
+                instance.setPublicId(homeDto.getPublicId());
+                instance.setPassPayment(homeDto.getPassPayment());
+                prepareActionBarInformation(homeDto);
+                hasResult =true;
+            }
+        }
+        return hasResult;
+    }
+
+    private void requestWalletImage(String url, Long walletId) {
         StringBuilder sb = new StringBuilder();
         sb.append(url);
         sb.append(walletId);
@@ -95,7 +152,7 @@ public class HomeFragment extends Fragment {
     }
 
 
-    private void requestHomeWalletDetail(WalletViewModelNetWork viewModel) {
+    private void requestGetWalletByUserId(WalletViewModelNetWork viewModel) {
         viewModel = ViewModelProviders.of(this).get(WalletViewModelNetWork.class);
         viewModel.getWalletByUserId(1L).observe(this, new Observer<List<HomeDto>>() {
             @Override
@@ -105,33 +162,18 @@ public class HomeFragment extends Fragment {
                     for (HomeDto w : walletList) {
                         if (w.getDefault() != null && w.getDefault()) {
                             prepareActionBarInformation(w);
-                            DataSharedPrefrence dataSharedPrefrence = new DataSharedPrefrence(getContext());
-                            HashMap<String, String> hashMap = DataSharedPrefrence.HomeDtoConvertToHashmap(w);
-                            try {
-                                dataSharedPrefrence.saveToSharedPref(hashMap);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
+                            instance.setId(w.getId());
+                            instance.setWalletToken(w.getWalletToken());
+                            instance.setWalletName(w.getName());
+                            instance.setBalance(w.getBalance());
+                            instance.setBaseLink(w.getBaseLink());
+                            instance.setPublicId(w.getPublicId());
+                            instance.setPassPayment(w.getPassPayment());
                         }
                     }
                 }
             }
         });
-    }
-
-
-    public void setUpRecyclerView(List<Wallet> walletList) {
-
-        if (walletList.size() > 0) {
-
-            HomeWalletListReCycelerView recyclerAdapter = new HomeWalletListReCycelerView(view.getContext(), walletList);
-            RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false);
-            recyclerView.setLayoutManager(linearLayoutManager);
-            recyclerView.setAdapter(recyclerAdapter);
-        } else {
-            Toast.makeText(this.getContext(), "nothing wallet in your account", Toast.LENGTH_SHORT).show();
-        }
-
     }
 
     private void setUpToolBar() {
@@ -140,7 +182,7 @@ public class HomeFragment extends Fragment {
 
         final DrawerLayout drawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout);
 
-        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        ActionBar actionBar =((AppCompatActivity) getActivity()).getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBarToggle = new ActionBarDrawerToggle(getActivity(),drawerLayout, toolbar, 0, 0);
         CollapsingToolbarLayout collapsingToolbar = view.findViewById(R.id.collapsing_toolbar);
@@ -186,14 +228,29 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    public void setSingleEvent(GridLayout singleEvent) {
+    public void setSingleEvent(final GridLayout singleEvent) {
         for (int i = 0; i < singleEvent.getChildCount(); i++) {
-            CardView cardView = (CardView) singleEvent.getChildAt(i);
+            final CardView cardView = (CardView) singleEvent.getChildAt(i);
             final int finalI = i;
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getContext(), "click on index" + finalI, Toast.LENGTH_SHORT).show();
+                    Intent intent;
+                    switch (cardView.getId()) {
+                        case R.id.home_request_money:
+                            intent = new Intent(getActivity(), RequestMoneyContainerActivity.class);
+                            startActivity(intent);
+                            break;
+                        case R.id.home_pass_Book:
+                            intent = new Intent(getActivity(), SelectDatePassBookActivity.class);
+                            startActivity(intent);
+                            break;
+                        default:
+                            Toast.makeText(getContext(), "click on index" + finalI, Toast.LENGTH_SHORT).show();
+                            break;
+
+                    }
+
                 }
             });
         }
@@ -205,11 +262,16 @@ public class HomeFragment extends Fragment {
         sb.append(wallet.getBaseLink());
         sb.append(wallet.getWalletToken());
         tagLink.setText(sb.toString());
-        String prettyBalance = PrettyShow.seperateZero(wallet.getBalance());
-        balanceHome.setText(prettyBalance );
+        String prettyBalance = PrettyShow.separatedZero(wallet.getBalance());
+        balanceHome.setText(prettyBalance);
         walletNameHome.setText(wallet.getName());
-        requestWalletImage(MyURLRepository.GET_WALLET_LOGO,wallet.getId());
+        requestWalletImage(MyURLRepository.GET_LOGO_BY_WALLET_ID, wallet.getId());
 
     }
+    // daclare user information in drawer navigation
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
 
+    }
 }

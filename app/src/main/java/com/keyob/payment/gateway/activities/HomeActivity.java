@@ -1,5 +1,7 @@
 package com.keyob.payment.gateway.activities;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,6 +10,7 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -29,7 +32,7 @@ import org.json.JSONException;
 import java.util.HashMap;
 
 public class HomeActivity extends AppCompatActivity {
-
+     private final Context context = this;
     HashMap<String, String> selectedWalletAtrr = new HashMap<>();
 
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener
@@ -92,5 +95,13 @@ public class HomeActivity extends AppCompatActivity {
         frag_home_transaction.commit();
     }
 
+
+    public static void goToHomeFragment(HomeActivity a){
+
+        HomeFragment homeFragment = new HomeFragment();
+        FragmentTransaction frag_home_transaction = a.getSupportFragmentManager().beginTransaction();
+        frag_home_transaction.replace(R.id.content, homeFragment, "homefragment");
+        frag_home_transaction.commit();
+    }
 
 }

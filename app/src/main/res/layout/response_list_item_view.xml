@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    android:id="@+id/wallet_layout_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
+    android:clickable="true"
+    android:contentDescription="@string/privacy_polilcy_english"
+    android:focusable="true"
+    android:foreground="?selectableItemBackground"
+    android:layoutDirection="ltr"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="13dp"
+    xsi:schemaLocation="http://schemas.android.com/apk/res/android ">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/line_list_seperator_shape"></LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/response_label_sendTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:fontFamily="@font/iransans"
+            android:text="@string/receive_from_persian"
+            android:textColor="@color/bg_register"
+            android:textSize="@dimen/small_textSize"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/response_name_receive_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/response_label_sendTo"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@id/response_label_sendTo"
+            android:fontFamily="@font/iransans"
+            android:text="محمود محمدی"
+            android:textColor="@color/bg_register"
+            android:textSize="@dimen/small_textSize" />
+
+        <TextView
+            android:id="@+id/response_sender_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/response_name_receive_from"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@id/response_name_receive_from"
+            android:text="K.z146486946546"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="10dp"
+            android:textColor="@color/bg_register"
+            android:textSize="@dimen/small_textSize" />
+
+
+        <TextView
+            android:id="@+id/response_label_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/response_name_receive_from"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
+            android:text="@string/cost_persian"
+            android:fontFamily="@font/iransans"
+            android:textColor="@color/bg_register"
+            android:textSize="@dimen/small_textSize"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/response_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/response_label_amount"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@id/response_label_amount"
+            android:text="500000"
+            android:textColor="@color/bg_register"
+            android:textSize="@dimen/small_textSize"
+            android:textStyle="bold"
+        />
+
+        <TextView
+            android:id="@+id/response_label_createDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/response_label_amount"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:layout_marginTop="10dp"
+            android:fontFamily="font/iransans"
+            android:text="@string/createDate_persian"
+            android:textColor="@color/bg_register"
+            android:textSize="@dimen/small_textSize"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/response_createDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/response_label_createDate"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@id/response_label_createDate"
+            android:text="25/2/1398"
+            android:textColor="@color/bg_register"
+            android:textSize="@dimen/small_textSize" />
+
+        <TextView
+            android:id="@+id/response_text_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/response_image_status"
+            android:layout_alignBaseline="@+id/response_createDate"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/iransans"
+            android:layout_alignParentBottom="true"
+            android:text="ارسال شده"
+            android:textColor="@color/bg_register"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/response_image_status"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="15dp"
+            />
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>

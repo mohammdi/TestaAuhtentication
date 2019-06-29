@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ReportRequestPaymentActivity"
+    android:background="@color/input_register_bg"
+    android:gravity="center"
+    >
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/favorate_boder">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/w_m_progressBar"
+            android:progressDrawable="@drawable/circular_progress_bar"
+            android:layout_below="@+id/button"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/conf_req_pay_statusBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp">
+            <TextView
+                android:id="@+id/conf_req_pay_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/iransans"
+                android:textAlignment="center"
+                android:textSize="20sp"
+
+                />
+
+        </LinearLayout>
+
+    <TextView
+        android:id="@+id/conf_req_pay_source_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:text="حساب مبدا:"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:fontFamily="@font/iransans"
+        android:layout_below="@+id/conf_req_pay_statusBar"
+        android:textSize="16dp"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:id="@+id/conf_req_pay_source"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textDirection="firstStrongLtr"
+        android:layout_marginTop="10dp"
+        tools:ignore="Deprecated"
+        android:fontFamily="@font/iransans"
+        android:textSize="16dp"
+        android:layout_toLeftOf="@+id/conf_req_pay_source_label"
+        android:layout_alignBaseline="@+id/conf_req_pay_source_label"
+    />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line_list_seperator_shape"
+            android:layout_below="@+id/conf_req_pay_source_label"/>
+
+    <TextView
+        android:id="@+id/conf_req_pay_destination_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text=" حساب مقصد:"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/iransans"
+        android:textSize="16dp"
+        android:layout_below="@+id/conf_req_pay_source"
+        android:layout_alignParentRight="true"
+        />
+
+    <TextView
+        android:id="@+id/conf_req_pay_destination"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textDirection="firstStrongLtr"
+        android:fontFamily="@font/iransans"
+        android:textSize="16dp"
+        android:layout_toLeftOf="@+id/conf_req_pay_destination_label"
+        android:layout_alignBaseline="@+id/conf_req_pay_destination_label"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/line_list_seperator_shape"
+        android:layout_below="@+id/conf_req_pay_destination"/>
+
+    <TextView
+        android:id="@+id/conf_req_pay_amount_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:text="@string/cost_persian"
+        android:fontFamily="@font/iransans"
+        android:textAlignment="viewEnd"
+        android:textSize="16dp"
+        android:layout_below="@+id/conf_req_pay_destination"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/conf_req_pay_amount"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/iransans"
+        android:textAlignment="textStart"
+        android:textSize="16dp"
+        android:layout_alignBaseline="@+id/conf_req_pay_amount_label"
+        android:layout_toLeftOf="@+id/conf_req_pay_amount_label"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line_list_seperator_shape"
+            android:layout_below="@+id/conf_req_pay_amount"/>
+
+    <TextView
+        android:id="@+id/conf_req_pay_date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:text="@string/createDate_persian"
+        android:fontFamily="@font/iransans"
+        android:textAlignment="viewEnd"
+        android:textSize="16dp"
+        android:layout_below="@+id/conf_req_pay_amount"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/conf_req_pay_date"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/iransans"
+        android:textAlignment="textStart"
+        android:textSize="16dp"
+        android:layout_alignBaseline="@+id/conf_req_pay_date_label"
+        android:layout_toLeftOf="@+id/conf_req_pay_date_label"/>
+
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/line_list_seperator_shape"
+        android:layout_below="@+id/conf_req_pay_date"/>
+
+
+        <TextView
+            android:id="@+id/conf_req_pay_correlationId_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:text="شماره ی پیگیری:"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="viewEnd"
+            android:textSize="16dp"
+            android:layout_below="@+id/conf_req_pay_date"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/conf_req_pay_correlationId"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="textStart"
+            android:textSize="16dp"
+            android:layout_alignBaseline="@+id/conf_req_pay_correlationId_label"
+            android:layout_toLeftOf="@+id/conf_req_pay_correlationId_label"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line_list_seperator_shape"
+            android:layout_below="@+id/conf_req_pay_date"/>
+
+    <Button
+        android:id="@+id/conf_req_pay_confirm_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="@drawable/image_btn_shape"
+        android:text="@string/confirm_persian"
+        android:fontFamily="@font/iransans"
+        android:layout_below="@+id/conf_req_pay_correlationId_label"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="15dp"
+        android:layout_centerHorizontal="true"
+
+        />
+
+    </RelativeLayout>
+
+</RelativeLayout>

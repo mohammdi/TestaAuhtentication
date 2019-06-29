@@ -28,6 +28,8 @@ public class HomeDto implements Serializable {
 
     private String BaseLink;
 
+    private Boolean Selected;
+
     public Long getId() {
         return Id;
     }
@@ -122,5 +124,13 @@ public class HomeDto implements Serializable {
 
     public void setBaseLink(String baseLink) {
         BaseLink = baseLink;
+    }
+
+    public Boolean getSelected() {
+        return Selected;
+    }
+
+    public void setSelected(Boolean selected) {
+        Selected = selected;
     }
 }

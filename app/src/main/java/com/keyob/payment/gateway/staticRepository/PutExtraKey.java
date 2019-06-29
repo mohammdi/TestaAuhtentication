@@ -9,6 +9,7 @@ public class PutExtraKey {
     public static final String WALLET_NAME = "walletName";
     public static final String PUBLIC_ID = "publicId";
     public static final String WALLET_ID = "walletId";
+    public static final String PAYER_WALLET_ID = "walletId";
     public static final String WALLET_PASS = "walletPass";
     public static final String BANNER = "banner";
     public static final String WALLET_ADDRESS = "WalletAddress";
@@ -17,10 +18,18 @@ public class PutExtraKey {
     public static final String WALLET_LOGO = "walletLogo";
     public static final String WALLET_Default= "walletDefault";
     public static final String WALLET_SELECTED= "walletSelected";
-    public static final String WALLET_= "walletDefault";
+    public static final String WALLET = "wallet";
     public static final String WALLET_LIST= "walletList";
     public static final String WALLET_TAG= "walletTag";
     public static final String BALANCE= "balance";
+    public static final String AMOUNT= "amount";
+    public static final String DESCRIPTION= "description";
+    public static final String REQUEST_MONEY= "requestMoney";
+    public static final String REQUEST_ID= "requestId";
+    public static final String FROM_SENDER= "fromSender";
+    public static final String FROM_PAYER= "fromPayer";
+    public static final String PAYMENT_UUID= "paymentUUId";
+    public static final String DATE_MODEL= "dateModel";
 
 
     //    Users
@@ -30,6 +39,9 @@ public class PutExtraKey {
 
     // general
     public static final String Message = "message";
+    public static final String ERROR = "error";
+    public static final String RESULT = "result";
+
 
 
 }

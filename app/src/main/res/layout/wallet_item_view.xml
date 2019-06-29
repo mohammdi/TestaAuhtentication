@@ -23,20 +23,21 @@
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:layout_gravity="center_vertical"
-        android:background="@color/bg_main">
+        android:background="@drawable/wallet_item_gradient_selector">
                 <TextView
                     android:id="@+id/w_m_publicId_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/publicId_english"
+                    android:text="@string/publicId_persian"
                     android:layout_marginEnd="@dimen/normal_margin"
                     android:layout_marginTop="@dimen/normal_margin"
+                    android:fontFamily="@font/iransans"
                     android:textColor="@color/white"
                     android:layout_alignParentEnd="true"
-                    android:textSize="@dimen/small_textSize" />
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/w_m_publicId_id"
+                    android:id="@+id/w_m_publicId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="K.z146486946546"
@@ -50,7 +51,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <com.mikhaellopez.circularimageview.CircularImageView
-                            android:id="@+id/w_m_wallet_logo"
+                            android:id="@+id/w_m_logo"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             app:civ_border_color="@color/white"
@@ -66,40 +67,43 @@
                     </LinearLayout>
 
                 <TextView
-                    android:id="@+id/name_wallet_Label"
+                    android:id="@+id/w_m_label_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/w_m_publicId_id"
+                    android:layout_below="@+id/w_m_publicId_label"
                     android:text="@string/hint_name_persian"
                     android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/iransans"
                     android:layout_marginEnd="@dimen/normal_margin"
                     android:layout_marginTop="@dimen/normal_margin"
                     android:textColor="@color/white"
                     android:layout_marginBottom="@dimen/normal_margin"
-                    android:textSize="@dimen/small_textSize" />
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/w_m_wallet_name"
+                    android:id="@+id/w_m__name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="schools"
                     android:textColor="@color/white"
                     android:textSize="@dimen/small_textSize"
+                    android:fontFamily="@font/iransans"
                     android:layout_marginTop="5dp"
-                    android:layout_toStartOf="@id/name_wallet_Label"
-                    android:layout_alignBaseline="@id/name_wallet_Label"
+                    android:layout_toStartOf="@id/w_m_label_name"
+                    android:layout_alignBaseline="@id/w_m_label_name"
                     android:layout_marginEnd="10dp" />
 
         <TextView
-            android:id="@+id/w_m_wallet_balance_label"
+            android:id="@+id/w_m_label_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:text="@string/wallet_balance_persian"
-            android:textSize="@dimen/small_textSize"
+            android:textSize="13sp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="@dimen/normal_margin"
+            android:fontFamily="@font/iransans"
             android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginEnd="@dimen/normal_margin"
             android:layout_marginBottom="@dimen/normal_margin"
@@ -113,8 +117,8 @@
             android:text="1,546,465"
             android:textSize="@dimen/small_textSize"
             android:layout_alignParentBottom="true"
-            android:layout_alignBaseline="@+id/w_m_wallet_balance_label"
-            android:layout_toStartOf="@id/w_m_wallet_balance_label"
+            android:layout_alignBaseline="@+id/w_m_label_balance"
+            android:layout_toStartOf="@id/w_m_label_balance"
             android:layout_marginStart="10dp" />
 
     </RelativeLayout>

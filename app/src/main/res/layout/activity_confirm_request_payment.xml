@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ConfirmRequestPaymentActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="10dp"
+    android:background="@drawable/spinner_border">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+    <EditText
+            android:id="@+id/req_perPayment_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/btn_login_bg"
+            android:hint="@string/pass_enter_persian"
+            android:padding="10dp"
+            android:inputType="textPassword"
+            android:textColor="@color/bg_register"
+            android:textColorHint="@color/input_register"
+            android:fontFamily="@font/iransans"
+            android:layout_marginTop="10dp"
+            android:textAlignment="viewEnd"
+            android:textSize="16dp"/>
+
+
+    <Button
+        android:id="@+id/req_perPayment_btn_payment"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="@drawable/image_btn_shape"
+        android:text="@string/continue_persian"
+        android:fontFamily="@font/iransans"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/req_perPayment_pass"
+        android:textSize="17sp"
+        android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+</LinearLayout>

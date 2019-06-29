@@ -14,6 +14,13 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.BALANCE;
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.WALLET_Default;
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.WALLET_ID;
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.WALLET_NAME;
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.WALLET_TAG;
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.WALLET_TYPE;
+
 /**
  * Created by Mahmood_mohammadi on 3/27/2018.
  */
@@ -23,7 +30,6 @@ public class DataSharedPrefrence {
     public static final String TAG_SAVE_PREFERENCE = "save_preference";
     private SharedPreferences sharedPreferences;
     private Context context;
-
 
     public DataSharedPrefrence(Context context){
 
@@ -68,7 +74,7 @@ public class DataSharedPrefrence {
 
     public static HashMap<String,String> convertToHashmap(Wallet wallet){
         HashMap<String,String> map = new HashMap<>();
-        map.put(PutExtraKey.WALLET_ID,String.valueOf(wallet.getId()));
+        map.put(WALLET_ID,String.valueOf(wallet.getId()));
         map.put(PutExtraKey.WALLET_NAME,wallet.getName());
 //        map.put(PutExtraKey.WALLET_TYPE,String.valueOf(wallet.getWalletType()));
 //        map.put(PutExtraKey.USER_ID,String.valueOf(wallet.getUserId()));
@@ -80,21 +86,34 @@ public class DataSharedPrefrence {
         return map;
     }
 
-    public static HashMap<String,String> HomeDtoConvertToHashmap(HomeDto wallet){
+    public static HashMap<String,String> homeDtoConvertToHashmap(HomeDto wallet){
         StringBuilder sb = new StringBuilder();
         sb.append(wallet.getBaseLink());
         sb.append(wallet.getWalletToken());
         HashMap<String,String> map = new HashMap<>();
-        map.put(PutExtraKey.WALLET_ID,String.valueOf(wallet.getId()));
+        map.put(WALLET_ID,String.valueOf(wallet.getId()));
         map.put(PutExtraKey.WALLET_NAME,wallet.getName());
-        map.put(PutExtraKey.WALLET_TYPE,String.valueOf(wallet.getType()));
+        map.put(WALLET_TYPE,String.valueOf(wallet.getType()));
         map.put(PutExtraKey.USER_ID,String.valueOf(wallet.getUserId()));
         map.put(PutExtraKey.WALLET_CREATE_DATE,String.valueOf(wallet.getCreateDate()));
         map.put(PutExtraKey.WALLET_ADDRESS,wallet.getAddress());
         map.put(PutExtraKey.WALLET_PASS,wallet.getPassPayment());
         map.put(PutExtraKey.WALLET_Default,String.valueOf(wallet.getDefault()));
         map.put(PutExtraKey.WALLET_TAG,sb.toString());
-        map.put(PutExtraKey.BALANCE,String.valueOf(wallet.getBalance()));
+        map.put(BALANCE,String.valueOf(wallet.getBalance()));
         return map;
     }
+
+
+    public static HomeDto hashMapConvertToHomeDto(HashMap hashMap){
+        HomeDto homeDto = new HomeDto();
+        homeDto.setId((Long) hashMap.get(WALLET_ID));
+        homeDto.setType((String) hashMap.get(WALLET_TYPE));
+        homeDto.setBalance((Integer)hashMap.get(BALANCE));
+        homeDto.setBaseLink((String)hashMap.get(WALLET_TAG));
+        homeDto.setName((String)hashMap.get(WALLET_NAME));
+        homeDto.setDefault((Boolean)hashMap.get(WALLET_Default));
+        return homeDto;
+    }
+
 }

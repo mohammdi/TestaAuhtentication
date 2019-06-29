@@ -1,8 +1,11 @@
 package com.keyob.payment.gateway;
-import com.keyob.payment.gateway.model.Wallet;
-import com.google.gson.Gson;
+import com.keyob.payment.gateway.helper.CustomPersianCalendar;
 
 import org.junit.Test;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,9 +20,20 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
-        Gson gson= new Gson();
-        String s = "{\"id\":1,\"name\":\"محمود\",\"createDate\":\"Tue Apr 02 20:59:34 IRDT 2019\",\"publicId\":\"k.s_1null313546\",\"passPayment\":\"31354\",\"walletAddress\":\"wallet/mah/def\",\"userId\":1,\"logoPath\":null,\"bannerPath\":null,\"address\":\"کایبل\",\"default\":null,\"typeId\":1}";
-        Wallet wallet = gson.fromJson(s, Wallet.class);
+        String dtStart = "Sat Jun 22 13:25:34 GMT+04:30 2019";
+        Date date = new Date();
+        System.out.println(date);
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        Locale locale = new Locale("USA");
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-DD HH:MM:SS",locale);
+//        Date date = null;
+//        date = new date.(dtStart);
+        String persianDate = CustomPersianCalendar.getPersianDate(date);
+        int persianMonth = CustomPersianCalendar.getPersianMonth(date);
+        String persianDate1 = CustomPersianCalendar.getPersianDate(date);
+        System.out.println("persianDate "+persianDate);
+        System.out.println("persian_Month "+persianMonth);
+        System.out.println("persianDate1 "+persianDate1);
     }
 
 }
