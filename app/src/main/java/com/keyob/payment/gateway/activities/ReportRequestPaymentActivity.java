@@ -81,8 +81,8 @@ public class ReportRequestPaymentActivity extends AppCompatActivity {
                         status.setText(getApplicationContext().getResources().getString(R.string.unSuccessful_persian));
                     }
 
-                    destinationWallet.setText(responseCorrelationDto.getReceiverId());
-                    sourceWallet.setText(responseCorrelationDto.getSenderId());
+                    destinationWallet.setText(PrettyShow.separatedPublicId(responseCorrelationDto.getReceiverId()));
+                    sourceWallet.setText(PrettyShow.separatedPublicId(responseCorrelationDto.getSenderId()));
                     amount.setText(PrettyShow.separatedZero(responseCorrelationDto.getAmount()));
                     String persianDate = PersianDateCoordinatore.ConvertGregorianToPersian(responseCorrelationDto.getTransactionDate());
                     date.setText(persianDate);

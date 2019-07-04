@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                 if (online && extra_message_internet_statuse != null) {
-                    intent.putExtra(PutExtraKey.Message, extra_message_internet_statuse);
+                    intent.putExtra(PutExtraKey.MESSAGE, extra_message_internet_statuse);
                 } else {
                     intent.putExtra(PutExtraKey.USERS, myuser);
                 }

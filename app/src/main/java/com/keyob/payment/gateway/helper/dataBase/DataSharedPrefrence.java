@@ -86,34 +86,33 @@ public class DataSharedPrefrence {
         return map;
     }
 
-    public static HashMap<String,String> homeDtoConvertToHashmap(HomeDto wallet){
-        StringBuilder sb = new StringBuilder();
-        sb.append(wallet.getBaseLink());
-        sb.append(wallet.getWalletToken());
-        HashMap<String,String> map = new HashMap<>();
-        map.put(WALLET_ID,String.valueOf(wallet.getId()));
-        map.put(PutExtraKey.WALLET_NAME,wallet.getName());
-        map.put(WALLET_TYPE,String.valueOf(wallet.getType()));
-        map.put(PutExtraKey.USER_ID,String.valueOf(wallet.getUserId()));
-        map.put(PutExtraKey.WALLET_CREATE_DATE,String.valueOf(wallet.getCreateDate()));
-        map.put(PutExtraKey.WALLET_ADDRESS,wallet.getAddress());
-        map.put(PutExtraKey.WALLET_PASS,wallet.getPassPayment());
-        map.put(PutExtraKey.WALLET_Default,String.valueOf(wallet.getDefault()));
-        map.put(PutExtraKey.WALLET_TAG,sb.toString());
-        map.put(BALANCE,String.valueOf(wallet.getBalance()));
-        return map;
-    }
+//    public static HashMap<String,String> homeDtoConvertToHashmap(HomeDto wallet){
+//        StringBuilder sb = new StringBuilder();
+//        sb.append(wallet.getBaseLink());
+//        sb.append(wallet.getWalletToken());
+//        HashMap<String,String> map = new HashMap<>();
+//        map.put(WALLET_ID,String.valueOf(wallet.getId()));
+//        map.put(PutExtraKey.WALLET_NAME,wallet.getName());
+//        map.put(PutExtraKey.USER_ID,String.valueOf(wallet.getUserId()));
+//        map.put(PutExtraKey.WALLET_CREATE_DATE,String.valueOf(wallet.getCreateDate()));
+//        map.put(PutExtraKey.WALLET_ADDRESS,wallet.getAddress());
+//        map.put(PutExtraKey.WALLET_PASS,wallet.getPassPayment());
+//        map.put(PutExtraKey.WALLET_Default,String.valueOf(wallet.getDefault()));
+//        map.put(PutExtraKey.WALLET_TAG,sb.toString());
+//        map.put(BALANCE,String.valueOf(wallet.getBalance()));
+//        return map;
+//    }
 
 
-    public static HomeDto hashMapConvertToHomeDto(HashMap hashMap){
-        HomeDto homeDto = new HomeDto();
-        homeDto.setId((Long) hashMap.get(WALLET_ID));
-        homeDto.setType((String) hashMap.get(WALLET_TYPE));
-        homeDto.setBalance((Integer)hashMap.get(BALANCE));
-        homeDto.setBaseLink((String)hashMap.get(WALLET_TAG));
-        homeDto.setName((String)hashMap.get(WALLET_NAME));
-        homeDto.setDefault((Boolean)hashMap.get(WALLET_Default));
-        return homeDto;
-    }
+//    public static HomeDto hashMapConvertToHomeDto(HashMap hashMap){
+//        HomeDto homeDto = new HomeDto();
+//        homeDto.setId((Long) hashMap.get(WALLET_ID));
+//        homeDto.setType((String) hashMap.get(WALLET_TYPE));
+//        homeDto.setBalance((Integer)hashMap.get(BALANCE));
+//        homeDto.setBaseLink((String)hashMap.get(WALLET_TAG));
+//        homeDto.setName((String)hashMap.get(WALLET_NAME));
+//        homeDto.setDefault((Boolean)hashMap.get(WALLET_Default));
+//        return homeDto;
+//    }
 
 }

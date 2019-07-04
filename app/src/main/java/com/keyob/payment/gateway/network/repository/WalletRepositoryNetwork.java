@@ -3,10 +3,10 @@ package com.keyob.payment.gateway.network.repository;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 
-import com.keyob.payment.gateway.helper.SingletonWalletInfo;
 import com.keyob.payment.gateway.model.CreateRequestMoneyDto;
 import com.keyob.payment.gateway.model.HomeDto;
-import com.keyob.payment.gateway.model.PerPaymentCorrelationDto;
+import com.keyob.payment.gateway.model.PassBookRequestDto;
+import com.keyob.payment.gateway.model.PassBookResponseDto;
 import com.keyob.payment.gateway.model.QrCodeScanResponseDto;
 import com.keyob.payment.gateway.model.RequestMoneyDto;
 import com.keyob.payment.gateway.model.ResponseCorrelationDto;
@@ -36,6 +36,7 @@ public class WalletRepositoryNetwork {
     private MutableLiveData<QrCodeScanResponseDto> qrScanRespponseMutable;
     private MutableLiveData<ResponseBody> responseBody;
     private MutableLiveData<RequestMoneyDto> requestMoneyMutable;
+    private MutableLiveData<List<PassBookResponseDto>> passBookResponseLiveData;
     private MutableLiveData<ResponseCorrelationDto> responseCorrelationMutable;
     private MutableLiveData<List<RequestMoneyDto>> requestMoneyMutableList;
     private MutableLiveData<List<RequestMoneyDto>> receiveMoneyRequestMutableList;
@@ -115,6 +116,33 @@ public class WalletRepositoryNetwork {
             public void onResponse(Call<HomeDto> call, Response<HomeDto> response) {
                 if (response.isSuccessful()) {
                     oneWalletMutable.setValue(response.body());
+                }else {
+                    response.errorBody();
+                    oneWalletMutable.setValue(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<HomeDto> call, Throwable t) {
+                call.cancel();
+            }
+        });
+
+        return oneWalletMutable;
+    }
+
+    public MutableLiveData<HomeDto> createWallet(HomeDto wallet) {
+        oneWalletMutable = new MutableLiveData<>();
+        apiService.createWallet(wallet.getName(),wallet.getPassPayment(),
+                                wallet.getType(),wallet.getUserId(),
+                                wallet.getAddress()).enqueue(new Callback<HomeDto>() {
+            @Override
+            public void onResponse(Call<HomeDto> call, Response<HomeDto> response) {
+                if (response.isSuccessful()) {
+                    oneWalletMutable.setValue(response.body());
+                }else {
+                    response.errorBody();
+                    oneWalletMutable.setValue(null);
                 }
             }
 
@@ -151,39 +179,39 @@ public class WalletRepositoryNetwork {
         return requestMoneyMutable;
     }
 
-    public MutableLiveData<String> payTheRequest(final RequestMoneyDto request , final long SenderWalletId) {
+    public MutableLiveData<String> payTheRequest(final RequestMoneyDto request, final long SenderWalletId) {
         perPaymentResponseMutable = new MutableLiveData<>();
-        apiService.payTheRequest(SenderWalletId,request.getWalletId(),request.getAmount(), request.getId())
-            .enqueue(new Callback<String>() {
-                @Override
-                public void onResponse(Call<String> call, Response<String> response) {
-                    if (response.isSuccessful()) {
-                        perPaymentResponseMutable.setValue(response.body());
-                    } else {
+        apiService.payTheRequest(SenderWalletId, request.getWalletId(), request.getAmount(), request.getId())
+                .enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        if (response.isSuccessful()) {
+                            perPaymentResponseMutable.setValue(response.body());
+                        } else {
 
-                        response.errorBody();
+                            response.errorBody();
+                        }
+
                     }
 
-                }
-
-                @Override
-                public void onFailure(Call<String> call, Throwable t) {
-                     call.cancel();
-                }
-            });
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        call.cancel();
+                    }
+                });
 
         return perPaymentResponseMutable;
     }
 
-    public MutableLiveData<String> pTOpPayment(Long senderId, Long ReceiverId ,Integer amount) {
+    public MutableLiveData<String> pTOpPayment(Long senderId, Long ReceiverId, Integer amount) {
         perPaymentResponseMutable = new MutableLiveData<>();
         apiService.pTOpPayment(senderId, ReceiverId, amount).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     perPaymentResponseMutable.setValue(response.body());
-                }else {
-                     response.errorBody();
+                } else {
+                    response.errorBody();
                 }
             }
 
@@ -203,10 +231,10 @@ public class WalletRepositoryNetwork {
         apiService.getQToken(token).enqueue(new Callback<QrCodeScanResponseDto>() {
             @Override
             public void onResponse(Call<QrCodeScanResponseDto> call, Response<QrCodeScanResponseDto> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     response.code();
                     qrScanRespponseMutable.setValue(response.body());
-                }else {
+                } else {
                     response.errorBody();
                 }
             }
@@ -219,14 +247,14 @@ public class WalletRepositoryNetwork {
         return qrScanRespponseMutable;
     }
 
-    public MutableLiveData<ResponseCorrelationDto> reportRequsetPayment(String correlation){
+    public MutableLiveData<ResponseCorrelationDto> reportRequsetPayment(String correlation) {
         responseCorrelationMutable = new MutableLiveData<>();
         apiService.getReportRequestPayment(correlation).enqueue(new Callback<ResponseCorrelationDto>() {
             @Override
             public void onResponse(Call<ResponseCorrelationDto> call, Response<ResponseCorrelationDto> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     responseCorrelationMutable.setValue(response.body());
-                }else {
+                } else {
                     response.errorBody();
                 }
 
@@ -239,8 +267,6 @@ public class WalletRepositoryNetwork {
         });
         return responseCorrelationMutable;
     }
-
-
 
     public MutableLiveData<HomeDto> getWalletById(Long walletId) {
         oneWalletMutable = new MutableLiveData<>();
@@ -262,16 +288,15 @@ public class WalletRepositoryNetwork {
         return oneWalletMutable;
     }
 
-
     public MutableLiveData<RequestMoneyDto> getRequestById(UUID requestId) {
         requestMoneyMutable = new MutableLiveData<>();
         apiService.getRequestById(requestId).enqueue(new Callback<RequestMoneyDto>() {
             @Override
             public void onResponse(Call<RequestMoneyDto> call, Response<RequestMoneyDto> response) {
 
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     requestMoneyMutable.setValue(response.body());
-                }else {
+                } else {
                     response.errorBody();
                 }
 
@@ -286,8 +311,7 @@ public class WalletRepositoryNetwork {
         return requestMoneyMutable;
     }
 
-
-        public synchronized MutableLiveData<List<RequestMoneyDto>> RequestMoneyGetByWalletId(Long walletId) {
+    public synchronized MutableLiveData<List<RequestMoneyDto>> RequestMoneyGetByWalletId(Long walletId) {
         receiveMoneyRequestMutableList = new MutableLiveData<>();
         apiService.requestMoneyListByWalletId(walletId).enqueue(new Callback<List<RequestMoneyDto>>() {
             @Override
@@ -308,7 +332,6 @@ public class WalletRepositoryNetwork {
         return receiveMoneyRequestMutableList;
     }
 
-
     public synchronized MutableLiveData<List<RequestMoneyDto>> requestMoneyListByPeyerWalletId(Long walletId) {
         requestMoneyMutableList = new MutableLiveData<>();
         apiService.requestMoneyListByPeyerWalletId(walletId).enqueue(new Callback<List<RequestMoneyDto>>() {
@@ -326,6 +349,52 @@ public class WalletRepositoryNetwork {
         });
 
         return requestMoneyMutableList;
+    }
+
+    public MutableLiveData<List<PassBookResponseDto>> getPassBookList(PassBookRequestDto passBook) {
+        passBookResponseLiveData = new MutableLiveData<>();
+        apiService.getPassBook(passBook.getPage(),passBook.getWalletId(), passBook.getStartDate(),passBook.getEndDate(),
+                                                passBook.getSearchType()).enqueue(new Callback<List<PassBookResponseDto>>() {
+            @Override
+            public void onResponse(Call<List<PassBookResponseDto>> call, Response<List<PassBookResponseDto>> response) {
+                if (response.isSuccessful()){
+                    response.code();
+                    passBookResponseLiveData.setValue(response.body());
+                }else {
+                    response.errorBody();
+                    passBookResponseLiveData.setValue(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<PassBookResponseDto>> call, Throwable t) {
+                call.cancel();
+                 passBookResponseLiveData.setValue(null);
+            }
+        });
+        return passBookResponseLiveData;
+    }
+    public MutableLiveData<List<PassBookResponseDto>> getRecentPassBook(Long walletId) {
+        passBookResponseLiveData = new MutableLiveData<>();
+        apiService.getRecentPassBook(walletId).enqueue(new Callback<List<PassBookResponseDto>>() {
+            @Override
+            public void onResponse(Call<List<PassBookResponseDto>> call, Response<List<PassBookResponseDto>> response) {
+                if (response.isSuccessful()){
+                    response.code();
+                    passBookResponseLiveData.setValue(response.body());
+                }else {
+                    response.errorBody();
+                    passBookResponseLiveData.setValue(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<PassBookResponseDto>> call, Throwable t) {
+                call.cancel();
+                 passBookResponseLiveData.setValue(null);
+            }
+        });
+        return passBookResponseLiveData;
     }
 
 

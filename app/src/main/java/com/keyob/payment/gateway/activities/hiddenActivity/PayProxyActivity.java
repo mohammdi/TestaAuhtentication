@@ -10,7 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.keyob.payment.gateway.Constans;
+import com.keyob.payment.gateway.Constants;
 import com.keyob.payment.gateway.R;
 import com.keyob.payment.gateway.activities.WalletInfoActivity;
 import com.keyob.payment.gateway.fragment.DetailsReceiveMoneyActivity;
@@ -45,7 +45,7 @@ public class PayProxyActivity extends AppCompatActivity {
         QrCodeScanResponseDto qrType = (QrCodeScanResponseDto) intent.getSerializableExtra("QrType");
         if (qrType != null) {
             apiService = ApiClient.getInstance().create(RetrofitApiService.class);
-            if (qrType.getType().equals(Constans.QRCODE_REQUEST_TYPE)){
+            if (qrType.getType().equals(Constants.QRCODE_REQUEST_TYPE)){
 
                 final UUID requestId = UUID.fromString(qrType.getTargetId());
 
@@ -82,7 +82,7 @@ public class PayProxyActivity extends AppCompatActivity {
 
 
             }
-            else if(qrType.getType().equals(Constans.QRCODE_WALLET_TYPE)){
+            else if(qrType.getType().equals(Constants.QRCODE_WALLET_TYPE)){
 
                 viewModel= ViewModelProviders.of(this).get(WalletViewModelNetWork.class);
                 viewModel.getWalletById(Long.valueOf(qrType.getTargetId())).observe(this, new Observer<HomeDto>() {
@@ -97,7 +97,7 @@ public class PayProxyActivity extends AppCompatActivity {
                     }
                 });
 
-            }else if (qrType.getType().equals(Constans.QRCODE_TAG_TYPE)){
+            }else if (qrType.getType().equals(Constants.QRCODE_TAG_TYPE)){
                 //todo
                 progressBar.setVisibility(View.GONE);
             }

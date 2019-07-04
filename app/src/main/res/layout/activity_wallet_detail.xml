@@ -1,96 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.WalletDetail"
-    android:orientation="vertical">
+    tools:context=".activities.WalletDetailActivity"
+    android:id="@+id/w_d_rootView">
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/w_d_actionBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:layout_marginBottom="20dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/createWalletActiv_toolbar"
+
+        <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            style="@style/HeaderBar"
-            android:background="@color/bg_main"
+            android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:titleTextAppearance="@style/toolbar_Style"
-            android:weightSum="1"
+            android:fitsSystemWindows="true"
+            android:padding="5dp"
             >
 
-        </android.support.v7.widget.Toolbar>
+                <android.support.v7.widget.CardView
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   app:cardCornerRadius="10dp"
+                                   app:cardElevation="20dp">
+
+                                   <RelativeLayout
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content">
+
+                                       <com.mikhaellopez.circularimageview.CircularImageView
+                                           android:id="@+id/w_d_logo"
+                                           android:layout_width="70dp"
+                                           android:layout_height="70dp"
+                                           android:src="@drawable/icon"
+                                           app:civ_border_color="@color/colorPrimary"
+                                           app:civ_border_width="2dp"
+                                           app:civ_shadow="false"
+                                           app:civ_shadow_radius="5"
+                                           android:layout_centerHorizontal="true"
+                                           android:layout_marginTop="30dp"
+                                           />
+                                       <TextView
+                                           android:id="@+id/w_d_delete"
+                                           android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:textSize="14sp"
+                                           android:text="حذف"
+                                           android:textColor="@color/bg_register"
+                                           android:fontFamily="@font/iransans"
+                                           android:layout_alignBaseline="@+id/w_d_logo"
+                                           android:layout_marginTop="30dp"
+                                           android:layout_marginStart="20dp"
+                                           android:layout_alignParentStart="true"
+                                           />
+                                       <TextView
+                                           android:id="@+id/w_d_edit"
+                                           android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:textSize="14sp"
+                                           android:text="ویرایش"
+                                           android:textColor="@color/bg_register"
+                                           android:fontFamily="@font/iransans"
+                                           android:layout_alignBaseline="@+id/w_d_logo"
+                                           android:layout_alignParentEnd="true"
+                                           android:layout_marginTop="30dp"
+                                           android:layout_marginEnd="20dp"
+                                       />
+
+                                       <TextView
+                                           android:id="@+id/w_d_name"
+                                           android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:textSize="15sp"
+                                           android:textStyle="bold"
+                                           android:textColor="@color/bg_register"
+                                           android:fontFamily="@font/iransans"
+                                           android:layout_below="@+id/w_d_logo"
+                                           android:layout_centerHorizontal="true"
+                                           />
+
+                                       <LinearLayout
+                                           android:id="@+id/layout_1"
+                                           android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:layout_centerHorizontal="true"
+                                           android:layout_below="@+id/w_d_name"
+                                           android:orientation="horizontal">
+                                           <TextView
+                                               android:id="@+id/w_d_type"
+                                               android:layout_width="wrap_content"
+                                               android:layout_height="wrap_content"
+                                               android:textSize="15sp"
+                                               android:textStyle="bold"
+                                               android:textColor="@color/bg_register"
+                                               android:fontFamily="@font/iransans"
+                                               android:layout_marginRight="5dp"
+                                               />
+                                           <TextView
+                                               android:id="@+id/w_d_type_label"
+                                               android:layout_width="wrap_content"
+                                               android:layout_height="wrap_content"
+                                               android:textSize="15sp"
+                                               android:text="نوع بگسک :"
+                                               android:textColor="@color/bg_register"
+                                               android:fontFamily="@font/iransans"
+                                               />
+                                       </LinearLayout>
+
+                                       <LinearLayout
+                                           android:id="@+id/layout_2"
+                                           android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:layout_centerHorizontal="true"
+                                           android:layout_below="@+id/layout_1"
+                                           android:orientation="horizontal">
+                                           <TextView
+                                               android:id="@+id/w_d_balance_unit"
+                                               android:layout_width="wrap_content"
+                                               android:layout_height="wrap_content"
+                                               android:textSize="10sp"
+                                               android:text="افغانی"
+                                               android:textColor="@color/bg_register"
+                                               android:fontFamily="@font/iransans"
+                                               />
+                                           <TextView
+                                               android:id="@+id/w_d_balance"
+                                               android:layout_width="wrap_content"
+                                               android:layout_height="wrap_content"
+                                               android:textSize="15sp"
+                                               android:textStyle="bold"
+                                               android:textColor="@color/bg_register"
+                                               android:fontFamily="@font/iransans"
+                                               android:layout_marginRight="10dp"
+                                               android:layout_marginLeft="3dp"
+                                               />
+                                           <TextView
+                                               android:id="@+id/w_d_balance_label"
+                                               android:layout_width="wrap_content"
+                                               android:layout_height="wrap_content"
+                                               android:textSize="15sp"
+                                               android:text="موجودی :"
+                                               android:textColor="@color/bg_register"
+                                               android:fontFamily="@font/iransans"
+                                               />
+                                       </LinearLayout>
+
+                                       <TextView
+                                           android:id="@+id/w_d_publicId"
+                                           android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:textSize="15sp"
+                                           android:textColor="@color/bg_register"
+                                           android:fontFamily="@font/iransans"
+                                           android:layout_below="@+id/layout_2"
+                                           android:layout_centerHorizontal="true"
+                                           />
+                                       <TextView
+                                           android:id="@+id/w_d_link"
+                                           android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:textSize="15sp"
+                                           android:textColor="@color/bg_register"
+                                           android:fontFamily="@font/iransans"
+                                           android:layout_below="@+id/w_d_publicId"
+                                           android:layout_centerHorizontal="true"
+                                           />
+                                   </RelativeLayout>
+
+                               </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/w_d_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="@string/app_name">
+
+            </android.support.v7.widget.Toolbar>
+
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
     </android.support.design.widget.AppBarLayout>
-
-    <TextView
-        android:id="@+id/wlt_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="school"
-        android:textSize="@dimen/larg_size"
-        android:layout_gravity="left"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        />
-    <TextView
-        android:id="@+id/wlt_pb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="kz.125479566"
-        android:textSize="@dimen/normal_textSize"
-        android:layout_gravity="left"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        />
-
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:gravity="right"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="10 گرارش اخر :"
+            android:textStyle="bold"
+            android:fontFamily="@font/iransans"
+            android:layout_marginRight="10dp"
+            android:textSize="20dp"/>
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp">
 
-        <ImageButton
-            android:id="@+id/wallet_delete_icon"
-            android:layout_width="@dimen/icon_normal_size"
-            android:layout_height="@dimen/icon_normal_size"
-            android:src="@drawable/ic_delete"
-            android:background="@drawable/sprinner_item_shape"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:clickable="true"
-            />
-        <ImageButton
-            android:id="@+id/wallet_edit_icon"
-            android:layout_width="@dimen/icon_normal_size"
-            android:layout_height="@dimen/icon_normal_size"
-            android:src="@drawable/ic_edite"
-            android:background="@drawable/sprinner_item_shape"
-            android:clickable="true"
-            />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/w_d_passbook"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
+            </android.support.v7.widget.RecyclerView>
+        </android.support.v4.widget.NestedScrollView>
     </LinearLayout>
 
-    <android.support.design.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/history_Recycle_View"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layoutDirection="ltr"
-            android:minHeight="20dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-           android:layout_margin="@dimen/normal2_margin">
+</android.support.design.widget.CoordinatorLayout>
 
-        </android.support.v7.widget.RecyclerView>
-
-    </android.support.design.widget.CoordinatorLayout>
-
-</LinearLayout>

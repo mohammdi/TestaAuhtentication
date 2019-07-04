@@ -31,6 +31,8 @@ import org.json.JSONException;
 
 import java.util.HashMap;
 
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.MESSAGE;
+
 public class HomeActivity extends AppCompatActivity {
      private final Context context = this;
     HashMap<String, String> selectedWalletAtrr = new HashMap<>();
@@ -56,9 +58,9 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
 
                 case R.id.navigation_contact:
-                    ContactFragment contactFrament = new ContactFragment();
+                    ContactFragment contactFragment = new ContactFragment();
                     FragmentTransaction frag_contact_transaction = getSupportFragmentManager().beginTransaction();
-                    frag_contact_transaction.replace(R.id.content, contactFrament, "contacts");
+                    frag_contact_transaction.replace(R.id.content, contactFragment, "contacts");
                     frag_contact_transaction.commit();
                     return true;
 
@@ -96,12 +98,14 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-    public static void goToHomeFragment(HomeActivity a){
-
-        HomeFragment homeFragment = new HomeFragment();
-        FragmentTransaction frag_home_transaction = a.getSupportFragmentManager().beginTransaction();
-        frag_home_transaction.replace(R.id.content, homeFragment, "homefragment");
-        frag_home_transaction.commit();
+    public void goToWalletFragment(String message){
+        Bundle data = new Bundle();
+        data.putString(MESSAGE, message);
+        WalletManagementFragment walletManagementFragment = new WalletManagementFragment();
+        walletManagementFragment.setArguments(data);
+        FragmentTransaction frag_wallet_Transaction = getSupportFragmentManager().beginTransaction();
+        frag_wallet_Transaction.replace(R.id.content, walletManagementFragment, "wallet List");
+        frag_wallet_Transaction.commit();
     }
 
 }

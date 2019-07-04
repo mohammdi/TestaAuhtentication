@@ -37,6 +37,10 @@ public class WalletViewModelNetWork extends AndroidViewModel {
         return  repositoryNetWork.findWalletByPhoneNumber(phoneNumber);
     }
 
+    public LiveData<HomeDto> createWallet(HomeDto wallet){
+        return  repositoryNetWork.createWallet(wallet);
+    }
+
     public LiveData<RequestMoneyDto> requestMoney(CreateRequestMoneyDto requestMoney){
         return  repositoryNetWork.requestMoney(requestMoney);
     }
@@ -68,6 +72,13 @@ public class WalletViewModelNetWork extends AndroidViewModel {
 
     public LiveData<QrCodeScanResponseDto> getQToken(String  token){
          return  repositoryNetWork.getQToken(token);
+    }
+    public LiveData<List<PassBookResponseDto>> getPassBookList(PassBookRequestDto passBookRequest){
+         return  repositoryNetWork.getPassBookList(passBookRequest);
+    }
+
+    public LiveData<List<PassBookResponseDto>> getRecentPassBook(Long walletId){
+         return  repositoryNetWork.getRecentPassBook(walletId);
     }
 
 }

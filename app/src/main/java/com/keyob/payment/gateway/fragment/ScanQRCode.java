@@ -1,5 +1,7 @@
 package com.keyob.payment.gateway.fragment;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,15 +18,27 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.keyob.payment.gateway.R;
+import com.keyob.payment.gateway.activities.ReqShowWalletInfoActivity;
+import com.keyob.payment.gateway.activities.RequestMoneyActivity;
+import com.keyob.payment.gateway.activities.WalletInfoActivity;
 import com.keyob.payment.gateway.activities.hiddenActivity.CaptureActivityAnyOrientation;
 import com.keyob.payment.gateway.activities.hiddenActivity.PayProxyActivity;
+import com.keyob.payment.gateway.model.HomeDto;
 import com.keyob.payment.gateway.model.QrCodeScanResponseDto;
 import com.keyob.payment.gateway.network.ApiClient;
 import com.keyob.payment.gateway.network.RetrofitApiService;
+import com.keyob.payment.gateway.viewModel.WalletViewModelNetWork;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.AMOUNT;
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.DESCRIPTION;
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.PAYER_WALLET_ID;
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.PUBLIC_ID;
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.WALLET;
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.WALLET_NAME;
 
 public class ScanQRCode extends Fragment {
 
@@ -32,13 +46,14 @@ public class ScanQRCode extends Fragment {
     private Button scanBtn;
     private TextView txtResult;
     private EditText phoneNumber;
-    private ImageButton phonNumnerBtn;
+    private ImageButton phoneNumberBtn;
     private String scanContent;
     private String scanFormat;
     private  QrCodeScanResponseDto qrCodeScanner ;
     private RetrofitApiService apiService;
     private QrCodeScanResponseDto qr;
     private Intent payProxy;
+    private WalletViewModelNetWork viewModel;
 
 //    private CameraSource cameraSource;
 //    private BarcodeDetector barcodeDetector;
@@ -78,10 +93,10 @@ public class ScanQRCode extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_scan_qrcode, container, false);
-        txtResult = (TextView) view.findViewById(R.id.qr_scan_txt_result);
+        txtResult = view.findViewById(R.id.qr_scan_txt_result);
         scanBtn = view.findViewById(R.id.qr_scan_btn);
         phoneNumber = view.findViewById(R.id.qr_scan_phoneNumber);
-        phonNumnerBtn= view.findViewById(R.id.qr_scan_phoneNumber_btn);
+        phoneNumberBtn = view.findViewById(R.id.qr_scan_phoneNumber_btn);
 
         scanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,16 +116,18 @@ public class ScanQRCode extends Fragment {
             }
         });
 
-        phonNumnerBtn.setOnClickListener(new View.OnClickListener() {
+        phoneNumberBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (phoneNumber.getText()==null){
                     Toast.makeText(getContext(), "لطفا شماره تلفن را وارد نمایید", Toast.LENGTH_LONG).show();
-                }else {
+                } else {
                     // TODO
                 }
             }
         });
+
+        phoneNumberBtnListener();
 
 //        camera_preview = (SurfaceView) view.findViewById(R.id.camera_scanner_view);
 //        barcodeDetector = new BarcodeDetector.Builder(getActivity())
@@ -185,6 +202,33 @@ public class ScanQRCode extends Fragment {
 //            }
 //        });
         return view;
+    }
+
+    private void phoneNumberBtnListener() {
+        phoneNumberBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String number = phoneNumber.getText().toString();
+                if (phoneNumber!=null){
+                    viewModel = ViewModelProviders.of(ScanQRCode.this).get(WalletViewModelNetWork.class);
+                    viewModel.findWalletByPhoneNumber(number).observe(ScanQRCode.this, new Observer<HomeDto>() {
+                        @Override
+                        public void onChanged(@Nullable HomeDto homeDto) {
+                            if (homeDto!=null){
+                                Intent intent = new Intent(getActivity(), WalletInfoActivity.class);
+                                intent.putExtra(WALLET,homeDto);
+                                startActivity(intent);
+                            }else {
+                                Toast.makeText(getContext(), "شماره مورد نظر صحیح نمیباشد", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }else {
+                    Toast.makeText(getContext(), "ابتدا شماره تلفون را وارد کنید!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
     }
 
     @Override

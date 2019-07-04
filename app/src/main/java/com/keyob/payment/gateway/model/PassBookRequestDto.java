@@ -8,8 +8,8 @@ public class PassBookRequestDto implements Serializable {
     private int Page;
     private Long WalletId;
     private int SearchType;
-    private Date startDate;
-    private Date EndDate;
+    private String StartDate;
+    private String EndDate;
 
     public int getPage() {
         return Page;
@@ -35,19 +35,19 @@ public class PassBookRequestDto implements Serializable {
         SearchType = searchType;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public String getStartDate() {
+        return StartDate;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setStartDate(String startDate) {
+        StartDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return EndDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         EndDate = endDate;
     }
 }

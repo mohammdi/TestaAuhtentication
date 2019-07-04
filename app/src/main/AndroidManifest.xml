@@ -22,7 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.WalletInfoActivity"></activity>
+        <activity android:name=".activities.TagContainerActivity"></activity>
+        <activity android:name=".activities.MessageActivity" />
+        <activity android:name=".activities.WalletInfoActivity" />
         <activity android:name=".activities.hiddenActivity.PayProxyActivity" />
         <activity android:name=".activities.DetailsWalletInfoActivity" />
         <activity android:name=".activities.PassBookListActivity" />
@@ -56,7 +58,7 @@
             android:name=".activities.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".activities.CreateWalletActivity" />
-        <activity android:name=".activities.WalletDetail" />
+        <activity android:name=".activities.WalletDetailActivity" />
         <activity android:name=".activities.EditeWalletActivity" />
         <activity
             android:name=".activities.hiddenActivity.CaptureActivityAnyOrientation"

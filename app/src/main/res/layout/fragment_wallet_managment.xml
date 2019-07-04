@@ -18,18 +18,30 @@
         android:layout_alignParentBottom="true"
         android:visibility="visible"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        android:layout_marginStart="@dimen/fab_margin"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="70dp"
-        android:paddingTop="@dimen/normal_textSize"
-        android:src="@drawable/ic_add_black_24dp"
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/fab"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom|start"-->
+        <!--android:layout_marginStart="@dimen/fab_margin"-->
+        <!--android:layout_marginEnd="@dimen/fab_margin"-->
+        <!--android:layout_marginBottom="70dp"-->
+        <!--android:paddingTop="@dimen/normal_textSize"-->
+        <!--android:src="@drawable/ic_add_black_24dp"-->
 
-        />
+        <!--/>-->
+    <Button
+        android:id="@+id/create_business_wallet"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_black"
+        android:text="ایجاد بکسگ تجاری "
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/iransans"
+        android:textColor="@color/bg_register" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/wallet_Recycle_View"

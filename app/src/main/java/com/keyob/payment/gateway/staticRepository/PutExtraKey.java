@@ -30,6 +30,7 @@ public class PutExtraKey {
     public static final String FROM_PAYER= "fromPayer";
     public static final String PAYMENT_UUID= "paymentUUId";
     public static final String DATE_MODEL= "dateModel";
+    public static final Long USERID= 15L;
 
 
     //    Users
@@ -38,7 +39,7 @@ public class PutExtraKey {
 
 
     // general
-    public static final String Message = "message";
+    public static final String MESSAGE = "message";
     public static final String ERROR = "error";
     public static final String RESULT = "result";
 

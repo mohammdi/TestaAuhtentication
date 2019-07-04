@@ -14,6 +14,7 @@ import com.keyob.payment.gateway.R;
 import com.keyob.payment.gateway.helper.CustomPersianCalendar;
 import com.keyob.payment.gateway.model.FromToDateModel;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -26,11 +27,13 @@ import static com.keyob.payment.gateway.staticRepository.PutExtraKey.DATE_MODEL;
 public class SelectDatePassBookActivity extends AppCompatActivity {
 
     private PersianDatePickerDialog picker;
-    private EditText fromDate;
-    private EditText toDate;
+    private Button fromDate;
+    private Button toDate;
     private Button confirmDate;
     private PersianCalendar persianFromDate =new PersianCalendar();
     private PersianCalendar persianToDate;
+    private Calendar gToDate;
+    private Calendar gFromDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +42,7 @@ public class SelectDatePassBookActivity extends AppCompatActivity {
         fromDate = findViewById(R.id.passbook_from_date);
         toDate = findViewById(R.id.passbook_to_date);
         confirmDate = findViewById(R.id.passbook_confirm_date);
-        fromDate.setKeyListener(null);
-        toDate.setKeyListener(null);
+
         PersianCalendar defaultPersianCalendar =new PersianCalendar();
         toDate.setText(defaultPersianCalendar.getPersianShortDate());
         fromDate.setText(defaultPersianCalendar.getPersianShortDate());
@@ -59,16 +61,27 @@ public class SelectDatePassBookActivity extends AppCompatActivity {
             }
         });
 
+
+
         confirmDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar gFromDate = CustomPersianCalendar.getGregorianCalendar(persianFromDate.getPersianYear(),
-                                                                                        persianFromDate.getPersianMonth(),
-                                                                                        persianFromDate.getPersianDay());
+                if (persianFromDate!=null){
+                    gFromDate = CustomPersianCalendar.getGregorianCalendar(persianFromDate.getPersianYear(),
+                            persianFromDate.getPersianMonth(),
+                            persianFromDate.getPersianDay());
+                }else {
+                    gToDate = Calendar.getInstance();
+                }
+                if (persianToDate!=null){
+                     gToDate = CustomPersianCalendar.getGregorianCalendar(persianToDate.getPersianYear(),
+                            persianToDate.getPersianMonth(),
+                            persianToDate.getPersianDay());
+                }else {
+                    gToDate = Calendar.getInstance();
+                }
 
-                Calendar gToDate = CustomPersianCalendar.getGregorianCalendar(persianToDate.getPersianYear(),
-                                                                                    persianToDate.getPersianMonth(),
-                                                                                    persianToDate.getPersianDay());
+
                 Intent intent = new Intent(SelectDatePassBookActivity.this,PassBookListActivity.class);
                 FromToDateModel dateModel = new FromToDateModel(gFromDate.getTime(),gToDate.getTime());
                 intent.putExtra(DATE_MODEL,dateModel);

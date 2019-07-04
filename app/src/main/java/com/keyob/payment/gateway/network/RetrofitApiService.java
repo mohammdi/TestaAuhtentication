@@ -1,11 +1,15 @@
 package com.keyob.payment.gateway.network;
 
+import com.keyob.payment.gateway.helper.enums.WalletType;
 import com.keyob.payment.gateway.model.HomeDto;
+import com.keyob.payment.gateway.model.PassBookRequestDto;
+import com.keyob.payment.gateway.model.PassBookResponseDto;
 import com.keyob.payment.gateway.model.QrCodeScanResponseDto;
 import com.keyob.payment.gateway.model.RequestMoneyDto;
 import com.keyob.payment.gateway.model.ResponseCorrelationDto;
 import com.keyob.payment.gateway.model.Wallet;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,6 +21,8 @@ import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -50,6 +56,17 @@ public interface RetrofitApiService {
     @GET("wallet/getByPhoneNumber/{phoneNumber}")
     Call<HomeDto> getWalletByPhoneNumber(@Path("phoneNumber") String phoneNumber);
 
+    @FormUrlEncoded
+    @POST("wallet/post")
+    Call<HomeDto> createWallet(@Field("Name") String Name,
+                               @Field("PassPayment") String PassPayment,
+                               @Field("Type") Integer Type,
+                               @Field("UserId") Long UserId,
+                               @Field("Address") String Address);
+
+
+    @DELETE("wallet/delete/{id}")
+    Call<Void> deleteWallet(@Path("id") Long id);
 
 
     // ******************** REQUEST ********************
@@ -109,6 +126,21 @@ public interface RetrofitApiService {
 
     @GET("qr/getQToken/{id}")
     Call<QrCodeScanResponseDto> getQToken(@Path("id") String id);
+
+
+    //**************** passBook ******************
+
+    @FormUrlEncoded
+    @POST("wallet/search")
+    Call<List<PassBookResponseDto>> getPassBook( @Field("Page") Integer Page,
+                                                 @Field("WalletId")Long WalletId,
+                                                 @Field("StartDate") String StartDate,
+                                                 @Field("EndDate") String EndDate,
+                                                 @Field("SearchType") Integer SearchType);
+
+
+    @GET("wallet/getRecentPassBook/{walletId}")
+    Call<List<PassBookResponseDto>> getRecentPassBook(@Path("walletId") Long walletId);
 
 
     @Multipart

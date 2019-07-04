@@ -2,7 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape  android:shape="rectangle">
-            <solid android:color="@color/bg_register"/>
+            <solid android:color="@color/input_register_hint"/>
             <size android:height="1px" android:width="300dp"/>
         </shape>
     </item>

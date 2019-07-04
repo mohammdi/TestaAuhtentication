@@ -1,103 +1,100 @@
 package com.keyob.payment.gateway.activities;
 
-import android.content.Intent;
+
+import android.support.v4.app.FragmentTransaction;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.TextView;
 
-import com.keyob.payment.gateway.model.WalletType;
 import com.keyob.payment.gateway.R;
-import com.keyob.payment.gateway.helper.spinnerManager.NothingSelectedSpinnerAdapter;
-import com.keyob.payment.gateway.staticRepository.PutExtraKey;
-import com.keyob.payment.gateway.helper.spinnerManager.SpinnerAdapter;
-
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.keyob.payment.gateway.fragment.WalletManagementFragment;
+import com.keyob.payment.gateway.model.HomeDto;
+import com.keyob.payment.gateway.network.AlertFactory;
+import com.keyob.payment.gateway.viewModel.WalletViewModelNetWork;
 
 public class CreateWalletActivity extends AppCompatActivity {
 
 
-    private Spinner spinner ;
-    private EditText wallet_name_ET;
-    private EditText description_ET;
-    private Button confirm_btn;
-    private String  walletName ;
-    private String  publcid ;
-    private String  banner ;
-    private Long  walletID ;
-    private String  walletpass ;
-    private String owner;
-    private EditText passpayment_ET;
-    private Long typeId;
-    private String walletType;
-    private JSONObject jsonObject ;
+    private EditText walletName;
+    private EditText passpayment;
+    private Button confirm;
+    private TextView repeatPass;
+    private WalletViewModelNetWork viewModel;
+    private HomeDto wallet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_wallet);
 
-//        ApiService apiService = new RetrofitApiService(this);
+        walletName = findViewById(R.id.c_w_Name);
+        confirm = (Button) findViewById(R.id.c_w_confirm);
+        passpayment = findViewById(R.id.c_w_pass);
+        repeatPass = findViewById(R.id.c_w_confirm_pass);
 
-        owner = getIntent().getStringExtra(PutExtraKey.OWNER);
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = walletName.getText().toString();
+                String pass = passpayment.getText().toString();
+                String repeatPas = repeatPass.getText().toString();
+                if (name!= null && pass!=null){
+                    if (!pass.equals(repeatPas)){
+                        AlertFactory alarm = new AlertFactory(getApplicationContext());
+                        alarm.singleButtonAlert("","رمز عبور اشباه است ");
+                        return;
+                    }
 
-
-        Intent intent = getIntent();
-//        spinner = (Spinner)findViewById(R.id.spinner_wallet_type);
-        wallet_name_ET = (EditText) findViewById(R.id.walletName);
-        description_ET = (EditText) findViewById(R.id.wallet_description);
-        confirm_btn = (Button) findViewById(R.id.create_wallet_confirm);
-        passpayment_ET =(EditText) findViewById(R.id.wallet_pass_Payment);
-
-
-        owner = intent.getStringExtra(PutExtraKey.EDIT);
-        walletName =intent.getStringExtra(PutExtraKey.WALLET_NAME);
-        publcid = intent.getStringExtra(PutExtraKey.PUBLIC_ID);
-        banner = intent.getStringExtra(PutExtraKey.BANNER);
-        walletID = intent.getLongExtra(PutExtraKey.WALLET_ID ,0L);
-        walletpass = intent.getStringExtra(PutExtraKey.WALLET_PASS);
-        typeId = intent.getLongExtra(PutExtraKey.WALLET_TYPE,0L);
-
-
-
-        if (owner!=null&& owner.equals(true)){
-            wallet_name_ET.setText(walletName);
-            if (typeId==1L){
-
-                walletType ="personal";
+                }else {
+                    AlertFactory alarm = new AlertFactory(getApplicationContext());
+                    alarm.singleButtonAlert("","اطلاهات ناقص میباشد");
+                    return;
+                }
+                wallet = new HomeDto();
+                wallet.setName(name);
+                wallet.setPassPayment(pass);
+                wallet.setType(1);
+                wallet.setAddress("");
+                wallet.setUserId(15L);
+                createWalletRequest();
             }
-            else{
-
-                walletType = "business";
-            }
-
-            spinner.setPrompt(walletType);
-
-        }
-
+        });
     }
 
-    private void addItemTOSpinner() {
 
-        List<WalletType> walletTypeList  = new ArrayList<>();
-        WalletType wp1 =new WalletType();
-        wp1.setId(1);
-        wp1.setName("personal");
 
-        WalletType wp2 = new WalletType();
-        wp2.setId(2);
-        wp2.setName("business");
+    private void createWalletRequest() {
+        viewModel = ViewModelProviders.of(CreateWalletActivity.this).get(WalletViewModelNetWork.class);
+        viewModel.createWallet(wallet).observe(CreateWalletActivity.this, new Observer<HomeDto>() {
+            @Override
+            public void onChanged(@Nullable HomeDto homeDto) {
 
-        walletTypeList.add(wp1);
-        walletTypeList.add(wp2);
-        String[] array = {"personal","business"};
-        SpinnerAdapter spinnerAdapter =new SpinnerAdapter(this,walletTypeList,array);
-        spinner.setPrompt("select type wallet");
-        spinner.setAdapter(new NothingSelectedSpinnerAdapter(spinnerAdapter,R.layout.nothing_spinner_selected,this));
+                String message = "";
+                WalletManagementFragment listView = new WalletManagementFragment();
+                Bundle data = new Bundle();
+
+                if (homeDto != null) {
+                    message = "بگسک با موفقیت ثبت شد";
+                    data.putString("wallet", message);
+                    listView.setArguments(data);
+                } else {
+                    message = "خطا در ثبت بگسک";
+                    data.putString("wallet", message);
+                    listView.setArguments(data);
+                }
+
+                FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
+                fr.replace(R.id.content, listView, "لیست بگسک ها");
+                fr.commit();
+
+            }
+        });
+
     }
-
 }

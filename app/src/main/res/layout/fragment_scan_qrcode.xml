@@ -7,7 +7,7 @@
     tools:context=".fragment.ScanQRCode"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/spinner_border"
+    android:background="@drawable/bold_border_green"
     android:layout_marginBottom="100dp"
     >
 
@@ -41,36 +41,35 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
+        android:padding="2dp"
         >
         <EditText
             android:id="@+id/qr_scan_phoneNumber"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_height="match_parent"
             android:layout_marginRight="10dp"
             android:background="@color/btn_login_bg"
             android:hint="موبایل نامبر"
-            android:padding="10dp"
             android:singleLine="true"
             android:inputType="number"
             android:textColor="@color/bg_register"
             android:textColorHint="@color/input_register_hint"
             tools:ignore="Deprecated"
             android:fontFamily="@font/iransans"
-            android:textSize="16sp"
-            android:layout_weight="8"
+            android:textSize="15sp"
+            android:layout_weight="6"
             android:layout_gravity="right"
-            android:layout_marginLeft="15dp"/>
+            android:layout_marginLeft="5dp"/>
 
         <ImageButton
             android:id="@+id/qr_scan_phoneNumber_btn"
             android:layout_width="0dp"
-            android:layout_height="52dp"
+            android:layout_height="40dp"
             android:background="@drawable/image_btn_shape"
-            android:layout_weight="1.5"
+            android:layout_weight=".8"
             android:layout_marginLeft="5dp"
             android:src="@drawable/ic_confirm_white"
             />

@@ -20,7 +20,8 @@ public class ApiClient {
             Gson gson = new GsonBuilder()
                     .enableComplexMapKeySerialization()
                     .serializeNulls()
-                    .setDateFormat(DateFormat.LONG)
+                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+//                    .setDateFormat(DateFormat.LONG)
                     .setPrettyPrinting().create();
             retrofit = new Retrofit.Builder()
                     .baseUrl(MyURLRepository.BASE_URL)

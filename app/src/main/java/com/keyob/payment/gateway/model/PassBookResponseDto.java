@@ -1,5 +1,7 @@
 package com.keyob.payment.gateway.model;
 
+import com.keyob.payment.gateway.helper.enums.EntryType;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
@@ -7,11 +9,11 @@ import java.util.UUID;
 public class PassBookResponseDto implements Serializable {
 
     private UUID CorrelationId;
-    private Long participant;
+    private String  Participant;
     private int Type;
-    private int amount;
+    private int Amount;
     private Date TransactionDate;
-    private String Status;
+    private Boolean Status;
     private String StatusSource;
 
     public UUID getCorrelationId() {
@@ -22,12 +24,12 @@ public class PassBookResponseDto implements Serializable {
         CorrelationId = correlationId;
     }
 
-    public Long getParticipant() {
-        return participant;
+    public String getParticipant() {
+        return Participant;
     }
 
-    public void setParticipant(Long participant) {
-        this.participant = participant;
+    public void setParticipant(String participant) {
+        Participant = participant;
     }
 
     public int getType() {
@@ -39,11 +41,11 @@ public class PassBookResponseDto implements Serializable {
     }
 
     public int getAmount() {
-        return amount;
+        return Amount;
     }
 
     public void setAmount(int amount) {
-        this.amount = amount;
+        Amount = amount;
     }
 
     public Date getTransactionDate() {
@@ -54,11 +56,11 @@ public class PassBookResponseDto implements Serializable {
         TransactionDate = transactionDate;
     }
 
-    public String getStatus() {
+    public Boolean getStatus() {
         return Status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Boolean status) {
         Status = status;
     }
 

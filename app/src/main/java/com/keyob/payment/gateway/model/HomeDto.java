@@ -1,5 +1,7 @@
 package com.keyob.payment.gateway.model;
 
+import com.keyob.payment.gateway.helper.enums.WalletType;
+
 import java.io.Serializable;
 
 public class HomeDto implements Serializable {
@@ -14,7 +16,7 @@ public class HomeDto implements Serializable {
 
     private String PassPayment;
 
-    private String  Type;
+    private int Type;
 
     private Long UserId;
 
@@ -70,11 +72,11 @@ public class HomeDto implements Serializable {
         PassPayment = passPayment;
     }
 
-    public String getType() {
+    public int getType() {
         return Type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         Type = type;
     }
 

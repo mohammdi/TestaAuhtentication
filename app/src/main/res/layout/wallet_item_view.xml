@@ -40,7 +40,6 @@
                     android:id="@+id/w_m_publicId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="K.z146486946546"
                     android:textColor="@color/white"
                     android:textSize="@dimen/small_textSize"
                     android:layout_toStartOf="@id/w_m_publicId_label"
@@ -58,7 +57,6 @@
                             app:civ_border_width="1.1dp"
                             app:civ_shadow="true"
                             app:civ_shadow_radius="5"
-                            android:src="@drawable/icon"
                             android:layout_marginTop="10dp"
                             android:layout_marginStart="20dp"
                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -81,10 +79,9 @@
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/w_m__name"
+                    android:id="@+id/w_m_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="schools"
                     android:textColor="@color/white"
                     android:textSize="@dimen/small_textSize"
                     android:fontFamily="@font/iransans"
@@ -114,7 +111,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:text="1,546,465"
             android:textSize="@dimen/small_textSize"
             android:layout_alignParentBottom="true"
             android:layout_alignBaseline="@+id/w_m_label_balance"

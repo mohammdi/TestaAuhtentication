@@ -31,6 +31,7 @@ import com.google.gson.Gson;
 import com.keyob.payment.gateway.R;
 import com.keyob.payment.gateway.activities.RequestMoneyContainerActivity;
 import com.keyob.payment.gateway.activities.SelectDatePassBookActivity;
+import com.keyob.payment.gateway.activities.TagContainerActivity;
 import com.keyob.payment.gateway.helper.SingletonWalletInfo;
 import com.keyob.payment.gateway.helper.dataBase.DataSharedPrefrence;
 import com.keyob.payment.gateway.helper.transform.PrettyShow;
@@ -44,6 +45,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.USERID;
+
 
 public class HomeFragment extends Fragment {
     private View view;
@@ -52,7 +55,7 @@ public class HomeFragment extends Fragment {
     private ActionBarDrawerToggle actionBarToggle;
     private TextView tagLink;
     private WalletViewModelNetWork walletViewModelNetwork;
-    private Long userId = 1L;
+    private Long userId = 15L;
     private CircularImageView profileHome;
     private TextView balanceHome;
     private TextView walletNameHome;
@@ -81,7 +84,7 @@ public class HomeFragment extends Fragment {
 
                 if (!hasInternet) {
                     AlertFactory alertFactory = new AlertFactory(getContext());
-                    alertFactory.alertFactory("هشدار", "عدم دسترسی به شبکه!");
+                    alertFactory.singleButtonAlert("هشدار", "عدم دسترسی به شبکه!");
                 } else
                     if (instance.getId()!= null) {
                     requestWalletByWalletId(walletViewModelNetwork,instance.getId());
@@ -154,7 +157,7 @@ public class HomeFragment extends Fragment {
 
     private void requestGetWalletByUserId(WalletViewModelNetWork viewModel) {
         viewModel = ViewModelProviders.of(this).get(WalletViewModelNetWork.class);
-        viewModel.getWalletByUserId(1L).observe(this, new Observer<List<HomeDto>>() {
+        viewModel.getWalletByUserId(USERID).observe(this, new Observer<List<HomeDto>>() {
             @Override
             public void onChanged(@Nullable List<HomeDto> wallets) {
                 if (wallets != null) {
@@ -245,6 +248,11 @@ public class HomeFragment extends Fragment {
                             intent = new Intent(getActivity(), SelectDatePassBookActivity.class);
                             startActivity(intent);
                             break;
+
+                        case R.id.home_tag_management:
+                            intent=new Intent(getActivity(), TagContainerActivity.class);
+                            startActivity(intent);
+
                         default:
                             Toast.makeText(getContext(), "click on index" + finalI, Toast.LENGTH_SHORT).show();
                             break;

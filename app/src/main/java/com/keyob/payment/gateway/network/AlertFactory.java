@@ -12,7 +12,7 @@ public class AlertFactory {
         this.context = context;
     }
 
-    public void alertFactory(String title, String message) {
+    public void singleButtonAlert(String title, String message) {
 
             AlertDialog.Builder builderr = new AlertDialog.Builder(context);
             builderr.setTitle(title);
@@ -25,5 +25,28 @@ public class AlertFactory {
             });
             AlertDialog alertDialog = builderr.create();
             alertDialog.show();
+    }
+
+
+    public void negetivButtonAlert(String title, String message) {
+
+        AlertDialog.Builder builderr = new AlertDialog.Builder(context);
+        builderr.setTitle(title);
+        builderr.setMessage(message);
+        builderr.setPositiveButton("بله", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builderr.setNegativeButton("خیز", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alertDialog = builderr.create();
+        alertDialog.show();
     }
 }
