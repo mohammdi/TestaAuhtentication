@@ -12,7 +12,7 @@
     <android.support.design.widget.TabLayout
         android:id="@+id/tab"
         android:layout_width="match_parent"
-        android:background="@color/calm_bg_login"
+        android:background="@drawable/wallet_item_gradient_selector"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         app:tabTextColor="@color/white"

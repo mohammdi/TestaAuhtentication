@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.keyob.payment.gateway.activities.ConfirmCodeActivity"
     android:gravity="center"
+    android:id="@+id/conf_code_rootView"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -18,13 +19,14 @@
         tools:ignore="UselessParent">
 
         <EditText
-            android:id="@+id/confCode"
+            android:id="@+id/register_confCode"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/btn_login_bg"
             android:hint="@string/hint_confirm_code_persian"
             android:padding="10dp"
+            android:fontFamily="@font/iransans"
             android:singleLine="true"
             android:inputType="textCapWords"
             android:textColor="@color/bg_register"
@@ -33,7 +35,7 @@
             tools:ignore="Deprecated" />
 
         <TextView
-            android:id="@+id/resend"
+            android:id="@+id/register_resend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -46,7 +48,7 @@
 
         <Button
             android:layout_width="fill_parent"
-            android:id="@+id/btn_submit"
+            android:id="@+id/register_btn_submit"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
             android:background="@drawable/image_btn_shape"

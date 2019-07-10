@@ -19,12 +19,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.keyob.payment.gateway.R;
 import com.keyob.payment.gateway.fragment.WalletManagementFragment;
 import com.keyob.payment.gateway.helper.PicassoImageDownloader;
+import com.keyob.payment.gateway.helper.SingletonWalletInfo;
 import com.keyob.payment.gateway.helper.URLAttacher;
 import com.keyob.payment.gateway.helper.reCycelerViewHandler.PassBookListRecyclerAdapter;
 import com.keyob.payment.gateway.helper.transform.PrettyShow;
@@ -67,6 +69,7 @@ public class WalletDetailActivity extends AppCompatActivity{
     private WalletViewModelNetWork viewModel;
     private RecyclerView recyclerView ;
     private CoordinatorLayout rootView;
+    private Switch defaultWallet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +86,7 @@ public class WalletDetailActivity extends AppCompatActivity{
         delete =findViewById(R.id.w_d_delete);
         recyclerView = findViewById(R.id.w_d_passbook);
         rootView = findViewById(R.id.w_d_rootView);
+        defaultWallet = findViewById(R.id.w_d_select_def);
 
         Toolbar toolbar = findViewById(R.id.w_d_toolbar);
         toolbar.setTitle("صفحه اصلی ");
@@ -97,7 +101,6 @@ public class WalletDetailActivity extends AppCompatActivity{
         link.setText(URLAttacher.doAttach(wallet.getBaseLink(),wallet.getWalletToken(),null));
         balance.setText(PrettyShow.separatedZero(wallet.getBalance()));
         Picasso.with(getApplicationContext()).load(new File(PicassoImageDownloader.getFileName(wallet.getName()))).into(logo);
-
         int wType = wallet.getType();
         if (wType==1){
 
@@ -106,6 +109,15 @@ public class WalletDetailActivity extends AppCompatActivity{
 
             this.type.setText("شخصی");
         }
+
+
+        defaultWallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 SingletonWalletInfo rootWallet = SingletonWalletInfo.getInstance();
+                 rootWallet.replace(wallet);
+            }
+        });
 
         viewModel= ViewModelProviders.of(this).get(WalletViewModelNetWork.class);
         viewModel.getRecentPassBook(wallet.getId()).observe(this, new Observer<List<PassBookResponseDto>>() {
@@ -147,12 +159,6 @@ public class WalletDetailActivity extends AppCompatActivity{
                                             }else {
                                                 message = " خطا در سرور";
                                             }
-//                                            Bundle data = new Bundle();
-//                                            WalletManagementFragment walletManagementFragment = new WalletManagementFragment();
-//                                            data.putString(MESSAGE, message);
-//                                            walletManagementFragment.setArguments(data);
-//                                            HomeActivity h = new HomeActivity();
-//                                            h.goToWalletFragment(message);
                                             Intent i = new Intent(WalletDetailActivity.this,HomeActivity.class);
                                             startActivity(i);
                                         }
@@ -167,6 +173,9 @@ public class WalletDetailActivity extends AppCompatActivity{
             }
         });
 
+        if (wallet.getId().toString().equals(SingletonWalletInfo.getInstance().getId().toString())){
+            defaultWallet.setChecked(true);
+        }
 
     }
 

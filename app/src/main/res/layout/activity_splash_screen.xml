@@ -6,7 +6,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp"
-    android:background="@color/white"
+    android:background="@drawable/nav_header_gradient_selector"
     >
 
         <ImageView
@@ -20,9 +20,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/welcom"
-            android:textSize="15dp"
-            android:textColor="@color/input_login"
+            android:textSize="20dp"
+            android:textColor="@color/white"
             android:layout_gravity="center"
+            android:fontFamily="@font/iransans"
+            android:textStyle="bold"
             />
 
 </LinearLayout>

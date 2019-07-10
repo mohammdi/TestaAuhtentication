@@ -14,7 +14,7 @@ public class Constants {
 
     public static final String QRCODE_WALLET_TYPE = "Wallet";
     public static final String QRCODE_REQUEST_TYPE = "Request";
-    public static final String QRCODE_TAG_TYPE = "tag";
+    public static final String QRCODE_TAG_TYPE = "Tag";
 
     public static final int REQUEST_ALL_TYPE_PASSBOOK = 0;
     public static final int REQUEST_SEND_TYPE_PASSBOOK = 1;

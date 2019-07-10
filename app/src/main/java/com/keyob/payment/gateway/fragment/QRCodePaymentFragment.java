@@ -29,8 +29,8 @@ public class QRCodePaymentFragment extends Fragment {
         viewPger = view.findViewById(R.id.viewPager_container);
         tableLayout = view.findViewById(R.id.tab);
         QrCodeViewPagerAdapter adapter = new QrCodeViewPagerAdapter(getFragmentManager());
-        adapter.addFragment(new ScanQRCode(),"scan QR Code");
-        adapter.addFragment(new QRCode(),"Share QR Code");
+        adapter.addFragment(new ScanQRCode(),"اسکن ");
+        adapter.addFragment(new QRCode(),"نمایش ");
         viewPger.setAdapter(adapter);
         tableLayout.setupWithViewPager(viewPger);
 

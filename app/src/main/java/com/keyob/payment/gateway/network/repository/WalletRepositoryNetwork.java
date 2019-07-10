@@ -10,6 +10,7 @@ import com.keyob.payment.gateway.model.PassBookResponseDto;
 import com.keyob.payment.gateway.model.QrCodeScanResponseDto;
 import com.keyob.payment.gateway.model.RequestMoneyDto;
 import com.keyob.payment.gateway.model.ResponseCorrelationDto;
+import com.keyob.payment.gateway.model.TagDto;
 import com.keyob.payment.gateway.model.Wallet;
 import com.keyob.payment.gateway.network.ApiClient;
 import com.keyob.payment.gateway.network.RetrofitApiService;
@@ -22,25 +23,39 @@ import java.util.UUID;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class WalletRepositoryNetwork {
     private static WalletRepositoryNetwork instance;
+
     private MutableLiveData<List<Wallet>> allWalletMutable;
+
     private MutableLiveData<List<HomeDto>> homeDtoWalletList;
+
     private MutableLiveData<HomeDto> oneWalletMutable;
+
     private MutableLiveData<String> perPaymentResponseMutable;
-    private MutableLiveData<QrCodeScanResponseDto> qrScanRespponseMutable;
-    private MutableLiveData<ResponseBody> responseBody;
+
+    private MutableLiveData<QrCodeScanResponseDto> qrScanResponseMutable;
+
     private MutableLiveData<RequestMoneyDto> requestMoneyMutable;
+
+    private MutableLiveData<TagDto> tagDtoMutable;
+
+    private MutableLiveData<List<TagDto>> tagDtoMutableList;
+
     private MutableLiveData<List<PassBookResponseDto>> passBookResponseLiveData;
+
     private MutableLiveData<ResponseCorrelationDto> responseCorrelationMutable;
+
     private MutableLiveData<List<RequestMoneyDto>> requestMoneyMutableList;
+
     private MutableLiveData<List<RequestMoneyDto>> receiveMoneyRequestMutableList;
+
     private RetrofitApiService apiService;
+
     public static Context context;
 
     public static WalletRepositoryNetwork getInstance() {
@@ -73,6 +88,7 @@ public class WalletRepositoryNetwork {
         return allWalletMutable;
     }
 
+
     public MutableLiveData<List<HomeDto>> findWalletByUserId(Long userId) {
         homeDtoWalletList = new MutableLiveData<>();
         apiService.getWalletByUserId(userId).enqueue(new Callback<List<HomeDto>>() {
@@ -89,6 +105,7 @@ public class WalletRepositoryNetwork {
 
         return homeDtoWalletList;
     }
+
 
     public MutableLiveData<HomeDto> findWalletByPublicId(String publicId) {
         oneWalletMutable = new MutableLiveData<>();
@@ -108,6 +125,7 @@ public class WalletRepositoryNetwork {
 
         return oneWalletMutable;
     }
+
 
     public MutableLiveData<HomeDto> findWalletByPhoneNumber(String phoneNumber) {
         oneWalletMutable = new MutableLiveData<>();
@@ -130,6 +148,7 @@ public class WalletRepositoryNetwork {
 
         return oneWalletMutable;
     }
+
 
     public MutableLiveData<HomeDto> createWallet(HomeDto wallet) {
         oneWalletMutable = new MutableLiveData<>();
@@ -155,6 +174,7 @@ public class WalletRepositoryNetwork {
         return oneWalletMutable;
     }
 
+
     public MutableLiveData<RequestMoneyDto> requestMoney(final CreateRequestMoneyDto requestMoney) {
         requestMoneyMutable = new MutableLiveData<>();
         apiService.requestMoney(requestMoney.getWalletId(), requestMoney.getPayerId(), requestMoney.getAmount(),
@@ -178,6 +198,7 @@ public class WalletRepositoryNetwork {
         });
         return requestMoneyMutable;
     }
+
 
     public MutableLiveData<String> payTheRequest(final RequestMoneyDto request, final long SenderWalletId) {
         perPaymentResponseMutable = new MutableLiveData<>();
@@ -203,6 +224,32 @@ public class WalletRepositoryNetwork {
         return perPaymentResponseMutable;
     }
 
+
+    public MutableLiveData<String> payTag(final TagDto tag, final long SenderWalletId) {
+        perPaymentResponseMutable = new MutableLiveData<>();
+        apiService.payTheTag(SenderWalletId, tag.getWalletId(), tag.getPrice(), tag.getId())
+                .enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        if (response.isSuccessful()){
+                            perPaymentResponseMutable.setValue(response.body());
+                        }else {
+                            response.errorBody();
+                            perPaymentResponseMutable.setValue(null);
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        call.cancel();
+                    }
+                });
+
+        return perPaymentResponseMutable;
+    }
+
+
     public MutableLiveData<String> pTOpPayment(Long senderId, Long ReceiverId, Integer amount) {
         perPaymentResponseMutable = new MutableLiveData<>();
         apiService.pTOpPayment(senderId, ReceiverId, amount).enqueue(new Callback<String>() {
@@ -226,14 +273,15 @@ public class WalletRepositoryNetwork {
         return perPaymentResponseMutable;
     }
 
+
     public MutableLiveData<QrCodeScanResponseDto> getQToken(String token) {
-        qrScanRespponseMutable = new MutableLiveData<>();
+        qrScanResponseMutable = new MutableLiveData<>();
         apiService.getQToken(token).enqueue(new Callback<QrCodeScanResponseDto>() {
             @Override
             public void onResponse(Call<QrCodeScanResponseDto> call, Response<QrCodeScanResponseDto> response) {
                 if (response.isSuccessful()) {
                     response.code();
-                    qrScanRespponseMutable.setValue(response.body());
+                    qrScanResponseMutable.setValue(response.body());
                 } else {
                     response.errorBody();
                 }
@@ -244,8 +292,9 @@ public class WalletRepositoryNetwork {
                 call.cancel();
             }
         });
-        return qrScanRespponseMutable;
+        return qrScanResponseMutable;
     }
+
 
     public MutableLiveData<ResponseCorrelationDto> reportRequsetPayment(String correlation) {
         responseCorrelationMutable = new MutableLiveData<>();
@@ -268,6 +317,7 @@ public class WalletRepositoryNetwork {
         return responseCorrelationMutable;
     }
 
+
     public MutableLiveData<HomeDto> getWalletById(Long walletId) {
         oneWalletMutable = new MutableLiveData<>();
         apiService.getWalletById(walletId).enqueue(new Callback<HomeDto>() {
@@ -275,7 +325,6 @@ public class WalletRepositoryNetwork {
             public void onResponse(Call<HomeDto> call, Response<HomeDto> response) {
                 if (response.isSuccessful()) {
                     oneWalletMutable.setValue(response.body());
-
                 }
             }
 
@@ -287,6 +336,7 @@ public class WalletRepositoryNetwork {
 
         return oneWalletMutable;
     }
+
 
     public MutableLiveData<RequestMoneyDto> getRequestById(UUID requestId) {
         requestMoneyMutable = new MutableLiveData<>();
@@ -311,6 +361,7 @@ public class WalletRepositoryNetwork {
         return requestMoneyMutable;
     }
 
+
     public synchronized MutableLiveData<List<RequestMoneyDto>> RequestMoneyGetByWalletId(Long walletId) {
         receiveMoneyRequestMutableList = new MutableLiveData<>();
         apiService.requestMoneyListByWalletId(walletId).enqueue(new Callback<List<RequestMoneyDto>>() {
@@ -332,7 +383,8 @@ public class WalletRepositoryNetwork {
         return receiveMoneyRequestMutableList;
     }
 
-    public synchronized MutableLiveData<List<RequestMoneyDto>> requestMoneyListByPeyerWalletId(Long walletId) {
+
+    public synchronized MutableLiveData<List<RequestMoneyDto>> requestMoneyListByPayerWalletId(Long walletId) {
         requestMoneyMutableList = new MutableLiveData<>();
         apiService.requestMoneyListByPeyerWalletId(walletId).enqueue(new Callback<List<RequestMoneyDto>>() {
             @Override
@@ -350,6 +402,7 @@ public class WalletRepositoryNetwork {
 
         return requestMoneyMutableList;
     }
+
 
     public MutableLiveData<List<PassBookResponseDto>> getPassBookList(PassBookRequestDto passBook) {
         passBookResponseLiveData = new MutableLiveData<>();
@@ -374,6 +427,8 @@ public class WalletRepositoryNetwork {
         });
         return passBookResponseLiveData;
     }
+
+
     public MutableLiveData<List<PassBookResponseDto>> getRecentPassBook(Long walletId) {
         passBookResponseLiveData = new MutableLiveData<>();
         apiService.getRecentPassBook(walletId).enqueue(new Callback<List<PassBookResponseDto>>() {
@@ -398,7 +453,105 @@ public class WalletRepositoryNetwork {
     }
 
 
-    // Map is used to multipart the file using okhttp3.RequestBody
+    public MutableLiveData<TagDto> getTagById(UUID id) {
+        tagDtoMutable = new MutableLiveData<>();
+        apiService.getTagById(id).enqueue(new Callback<TagDto>() {
+            @Override
+            public void onResponse(Call<TagDto> call, Response<TagDto> response) {
+
+                 if (response.isSuccessful()){
+                     tagDtoMutable.setValue(response.body());
+                 }else {
+                     response.errorBody();
+                 }
+            }
+
+            @Override
+            public void onFailure(Call<TagDto> call, Throwable t) {
+                 call.cancel();
+            }
+        });
+          return tagDtoMutable;
+    }
+
+
+    public MutableLiveData<List<TagDto>> getTagByWalletId(Long walletId) {
+        tagDtoMutableList = new MutableLiveData<>();
+        apiService.getTagByWalletId(walletId).enqueue(new Callback<List<TagDto>>() {
+            @Override
+            public void onResponse(Call<List<TagDto>> call, Response<List<TagDto>> response) {
+                if (response.isSuccessful()){
+                    tagDtoMutableList.setValue(response.body());
+                }else {
+                    response.errorBody();
+                    tagDtoMutable.setValue(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<TagDto>> call, Throwable t) {
+               call.cancel();
+            }
+
+        });
+        return tagDtoMutableList;
+    }
+
+
+    public MutableLiveData<TagDto> createTag(TagDto tag ,Long walletId) {
+        tagDtoMutable = new MutableLiveData<>();
+        apiService.createTag(tag.getSubject(), tag.getDescription(), tag.getPrice(),tag.isPriceByPayer(),
+                tag.getCount(), tag.getHasInfinitCount(), walletId)
+            .enqueue(new Callback<TagDto>() {
+                @Override
+                public void onResponse(Call<TagDto> call, Response<TagDto> response) {
+
+                    if (response.isSuccessful()){
+                        tagDtoMutable.setValue(response.body());
+                    }else {
+                        response.errorBody();
+                        tagDtoMutable.setValue(null);
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<TagDto> call, Throwable t) {
+                    call.cancel();
+                }
+            });
+
+        return tagDtoMutable;
+    }
+
+
+    public MutableLiveData<TagDto> updateTag(TagDto tag) {
+        tagDtoMutable = new MutableLiveData<>();
+        apiService.updateTag(tag.getId(),tag)
+                .enqueue(new Callback<TagDto>() {
+                    @Override
+                    public void onResponse(Call<TagDto> call, Response<TagDto> response) {
+
+                        if (response.isSuccessful()){
+                            tagDtoMutable.setValue(response.body());
+                        }else {
+                            response.errorBody();
+                            tagDtoMutable.setValue(null);
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<TagDto> call, Throwable t) {
+                        tagDtoMutable.setValue(null);
+                        call.cancel();
+                    }
+                });
+
+        return tagDtoMutable;
+    }
+
+
     public Integer upload(File file, String fileName) {
         File myfile = new File(file, fileName);
         final Integer[] responseStatus = new Integer[1];

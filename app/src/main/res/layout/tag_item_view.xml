@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.android.com/apk/res/android "
+    android:id="@+id/wallet_layout_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginStart="10dp"
+    >
+
+    <LinearLayout
+        android:id="@+id/t_c_layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/line_list_seperator_shape"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"/>
+        <RelativeLayout
+            android:id="@+id/relative_layout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/tag_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/normal_margin"
+                android:text="عنوان"
+                android:fontFamily="@font/iransans"
+                android:textColor="@color/bg_register"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/tag_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/iransans"
+                android:textColor="@color/input_register_hint"
+                android:textStyle="bold"
+                android:layout_alignBaseline="@id/tag_title"
+                android:layout_toRightOf="@id/tag_amount_label"
+                android:textSize="13dp" />
+
+
+
+            <TextView
+                android:id="@+id/tag_amount_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:text="افغانی"
+                android:textSize="8dp"
+                android:fontFamily="@font/iransans"
+                android:textColor="@color/input_register_hint"
+                android:layout_alignBaseline="@id/tag_amount"/>
+
+
+
+            <TextView
+                android:id="@+id/tag_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/bg_register"
+                android:textSize="12sp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignBaseline="@id/tag_date"
+                android:layout_alignParentRight="true"
+                />
+
+            <TextView
+                android:id="@+id/tag_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/bg_register"
+                android:textSize="12sp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="@dimen/normal_margin"
+                android:fontFamily="@font/iransans"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/tag_time"
+                android:layout_marginBottom="2dp"
+                />
+            <TextView
+                android:id="@+id/tag_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/bg_register"
+                android:textSize="10sp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="@dimen/normal_margin"
+                android:text="فعال"
+                android:fontFamily="@font/iransans"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="5dp"
+                />
+        </RelativeLayout>
+</RelativeLayout>

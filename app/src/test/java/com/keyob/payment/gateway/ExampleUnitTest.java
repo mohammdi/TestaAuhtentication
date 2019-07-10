@@ -1,6 +1,11 @@
 package com.keyob.payment.gateway;
 
+import com.google.gson.Gson;
 import com.keyob.payment.gateway.helper.CustomPersianCalendar;
+import com.keyob.payment.gateway.helper.SingletonWalletInfo;
+import com.keyob.payment.gateway.model.HomeDto;
+import com.keyob.payment.gateway.network.ApiClient;
+import com.keyob.payment.gateway.network.RetrofitApiService;
 
 import org.junit.Test;
 
@@ -8,9 +13,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.Scanner;
 
 import ir.hamsaa.persiandatepicker.util.PersianCalendar;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static org.junit.Assert.assertEquals;
 
@@ -42,11 +52,83 @@ public class ExampleUnitTest {
         System.out.println("persianDate1 " + persianDate1);
     }
 
+
+
+    @Test
+    public void getWalletByUserId() {
+        RetrofitApiService api = ApiClient.getInstance().create(RetrofitApiService.class);
+        api.getWalletByUserId(37L).enqueue(new Callback<List<HomeDto>>() {
+            @Override
+            public void onResponse(Call<List<HomeDto>> call, Response<List<HomeDto>> response) {
+
+                if (response.isSuccessful()){
+                    for (HomeDto w :response.body()){
+                        if (w.getDefault()){
+                            Gson g = new Gson();
+                            g.toJson(w);
+                            SingletonWalletInfo.getInstance().replace(w);
+                        }
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<HomeDto>> call, Throwable t) {
+                call.cancel();
+            }
+        });
+
+
+        Scanner scanner = new Scanner(System.in);
+        int i = scanner.nextInt();
+    }
+
+
     @Test
     public void prettySHow() {
+        RetrofitApiService api = ApiClient.getInstance().create(RetrofitApiService.class);
+        SingletonWalletInfo instance = SingletonWalletInfo.getInstance();
 
-        String str ="282d338d-c95c-4413-9834-6bfbf7e9f8c0";
-        String str2 ="26f3bf28-902e-474d-9226-7505631858a4";
+        HomeDto dto = new HomeDto();
+        dto.setId(10019L);
+        dto.setName("کیف پیش فرض");
+        dto.setCreateDate("2019-07-09T15:12:11.913");
+        dto.setPublicId("4444659118387354");
+        dto.setDefault(true);
+        dto.setPassPayment("1234");
+        dto.setType(2);
+        dto.setWalletToken("3YSrSMqa");
+        dto.setBaseLink("keyob.com/pg/");
+        dto.setUserId(37L);
+        dto.setBalance(0);
+
+
+        dto.setName("jsjsjsjs");
+        dto.setPassPayment("passsssss");
+        api.updateWallet(dto.getId(),dto).enqueue(new Callback<HomeDto>() {
+            @Override
+            public void onResponse(Call<HomeDto> call, Response<HomeDto> response) {
+
+                if (response.isSuccessful()){
+
+                    response.body();
+                }else {
+                    response.errorBody();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<HomeDto> call, Throwable t) {
+
+                call.cancel();
+
+            }
+        });
+
+        Scanner scanner = new Scanner(System.in);
+        int i = scanner.nextInt();
     }
 
 

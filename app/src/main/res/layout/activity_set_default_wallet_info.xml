@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.SetDefaultWalletInfoActivity"
+    android:gravity="center"
+    android:id="@+id/w_rootView">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/welcome_persian"
+            android:textColor="@color/bg_register"
+            android:fontFamily="@font/iransans"
+            android:textStyle="bold"
+            android:textSize="25dp"/>
+
+        <LinearLayout
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line_list_seperator_shape"
+            android:layout_below="@+id/welcome"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"/>
+        <TextView
+            android:id="@+id/direction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:text="@string/direction_2_persian"
+            android:textColor="@color/bg_register"
+            android:layout_below="@+id/line1"
+            android:fontFamily="@font/iransans"
+            android:layout_marginRight="20dp"
+            android:textSize="15dp"
+            android:layout_marginBottom="40dp"/>
+
+
+        <EditText
+            android:id="@+id/w_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/btn_login_bg"
+            android:hint="@string/hint_name_persian"
+            android:fontFamily="@font/iransans"
+            android:inputType="textVisiblePassword"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/bg_register"
+            android:layout_below="@+id/direction"
+            android:textColorHint="@color/input_register_hint"
+            tools:ignore="Deprecated" />
+
+        <EditText
+            android:id="@+id/w_password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/btn_login_bg"
+            android:hint="@string/hint_wallet_pass_payment_persian"
+            android:fontFamily="@font/iransans"
+            android:inputType="textVisiblePassword"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/bg_register"
+            android:layout_below="@+id/w_name"
+            android:textColorHint="@color/input_register_hint"
+            tools:ignore="Deprecated" />
+
+        <EditText
+            android:id="@+id/w_repeat_password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/btn_login_bg"
+            android:hint="@string/hint_repeat_pass_payment_persian"
+            android:fontFamily="@font/iransans"
+            android:inputType="textVisiblePassword"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/bg_register"
+            android:layout_below="@+id/w_password"
+            android:textColorHint="@color/input_register_hint"
+            tools:ignore="Deprecated" />
+
+        <Button
+            android:id="@+id/w_confirm_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@drawable/image_btn_shape"
+            android:fontFamily="@font/iransans"
+            android:text="@string/confirm_persian"
+            android:textColor="@color/white"
+            android:layout_below="@+id/w_repeat_password"
+            android:textSize="20dp"/>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

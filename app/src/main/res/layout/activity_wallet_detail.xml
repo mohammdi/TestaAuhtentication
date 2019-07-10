@@ -186,6 +186,42 @@
 
             </android.support.design.widget.CollapsingToolbarLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp">
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/btn_login_bg"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="20dp">
+
+                <Switch
+                    android:id="@+id/w_d_select_def"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:switchMinWidth="50dp"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="انتخاب به عنوان بگسک پیشفرض : "
+                    android:fontFamily="@font/iransans"
+                    android:textColor="@color/bg_register"
+                    android:checked="false"
+                    android:textDirection="rtl"
+                    android:thumbTint="@color/bg_Dark_main"
+                    android:trackTint="@color/green"
+                    android:layoutDirection="rtl"
+                    android:showText="true"
+                    android:textOff="خیر"
+                    android:textOn="بله"
+                    />
+            </android.support.v7.widget.CardView>
+
+        </RelativeLayout>
+
     </android.support.design.widget.AppBarLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -197,11 +233,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="10 گرارش اخر :"
+            android:text="10 عملکرد آخر :"
             android:textStyle="bold"
             android:fontFamily="@font/iransans"
             android:layout_marginRight="10dp"
-            android:textSize="20dp"/>
+            android:textSize="16dp"/>
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

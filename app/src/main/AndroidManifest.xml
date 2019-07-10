@@ -22,7 +22,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.TagContainerActivity"></activity>
+        <activity android:name=".activities.SetDefaultWalletInfoActivity"></activity>
+        <activity android:name=".activities.TagPaymentActivity" />
+        <activity android:name=".activities.TagDetailsActivity" />
+        <activity android:name=".activities.CreateTagActivity" />
+        <activity android:name=".activities.TagListActivity" />
         <activity android:name=".activities.MessageActivity" />
         <activity android:name=".activities.WalletInfoActivity" />
         <activity android:name=".activities.hiddenActivity.PayProxyActivity" />
@@ -43,7 +47,7 @@
         <!-- </activity> -->
         <activity android:name=".activities.GetPhoneNumberActivity" />
         <activity android:name=".activities.ConfirmCodeActivity" />
-        <activity android:name=".activities.GetDetaileActivity" />
+        <activity android:name=".activities.RegisterUserDetailsActivity" />
         <activity android:name=".activities.HomeActivity" />
         <activity
             android:name=".activities.SplashScreenActivity"

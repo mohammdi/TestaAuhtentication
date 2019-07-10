@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.keyob.payment.gateway.helper.SingletonUserInfo;
 import com.keyob.payment.gateway.model.Users;
 import com.keyob.payment.gateway.model.Wallet;
 import com.keyob.payment.gateway.R;
@@ -43,11 +44,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logine);
 
-        userName = (EditText) findViewById(R.id.userName);
+        userName = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         Button btn_login = (Button) findViewById(R.id.btn_login);
         Button btn_register = (Button) findViewById(R.id.btnLinkToLoginScreen);
 
+        SingletonUserInfo instance = SingletonUserInfo.getInstance();
+        instance.setId(42);
         btn_login.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -69,11 +72,13 @@ public class LoginActivity extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, ConfirmCodeActivity.class);
+                Intent intent = new Intent(LoginActivity.this, GetPhoneNumberActivity.class);
                 startActivity(intent);
             }
         });
     }
+
+
 
     private void saveToSharedPreference(Wallet wallet) {
         DataSharedPrefrence sharedPreference = new DataSharedPrefrence(context);

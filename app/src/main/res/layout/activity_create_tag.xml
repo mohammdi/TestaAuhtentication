@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CreateTagActivity"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="15dp"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/t_c_subject"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/border_gray_dark"
+        android:hint="@string/tag_subject_persian"
+        android:padding="5dp"
+        android:singleLine="true"
+        android:inputType="textCapWords"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/bg_register"
+        android:textColorHint="@color/input_login_hint"
+        tools:ignore="Deprecated"
+        android:fontFamily="@font/iransans"
+        android:textSize="16dp"/>
+
+    <EditText
+        android:id="@+id/t_c_desc"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/border_gray_dark"
+        android:hint="@string/description_persian"
+        android:inputType="textImeMultiLine"
+        android:padding="5dp"
+        android:textColor="@color/bg_register"
+        android:textColorHint="@color/input_login_hint"
+        android:fontFamily="@font/iransans"
+        android:textAlignment="viewEnd"
+        android:textSize="16dp"/>
+
+    <Switch
+        android:id="@+id/t_c_PriceByPayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:switchMinWidth="50dp"
+        android:layout_gravity="right"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:text="انتخاب مبلغ با پرداخت کننده : "
+        android:fontFamily="@font/iransans"
+        android:checked="false"
+        android:shadowColor="@color/bg_register"
+        android:textDirection="rtl"
+        android:showText="true"
+        android:layoutDirection="rtl"
+        android:textOff="خیر"
+        android:textOn="بله"/>
+
+        <EditText
+            android:id="@+id/t_c_amount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/border_gray_dark"
+            android:hint="@string/cost_persian"
+            android:padding="5dp"
+            android:textColor="@color/bg_register"
+            android:textColorHint="@color/input_login_hint"
+            android:maxLines="1"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="viewEnd"
+            android:textSize="16dp"/>
+
+        <Switch
+            android:id="@+id/t_c_InfiniteCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:switchMinWidth="50dp"
+            android:layout_gravity="right"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:text="تعداد بیهایت : "
+            android:fontFamily="@font/iransans"
+            android:shadowColor="@color/bg_register"
+            android:showText="true"
+            android:checked="false"
+            android:textDirection="rtl"
+            android:layoutDirection="rtl"
+            android:textOff="خیر"
+            android:textOn="بله"/>
+
+        <EditText
+            android:id="@+id/t_c_count"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/border_gray_dark"
+            android:hint="@string/tag_count_persian"
+            android:padding="5dp"
+            android:textColor="@color/bg_register"
+            android:textColorHint="@color/input_login_hint"
+            android:maxLines="1"
+            android:fontFamily="@font/iransans"
+            android:textAlignment="viewEnd"
+            android:textSize="16dp"/>
+
+        <Button
+            android:id="@+id/t_c_confirm"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@drawable/image_btn_shape"
+            android:text="@string/confirm_persian"
+            android:fontFamily="@font/iransans"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</RelativeLayout>

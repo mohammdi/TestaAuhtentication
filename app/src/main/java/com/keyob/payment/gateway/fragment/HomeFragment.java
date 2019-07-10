@@ -31,7 +31,8 @@ import com.google.gson.Gson;
 import com.keyob.payment.gateway.R;
 import com.keyob.payment.gateway.activities.RequestMoneyContainerActivity;
 import com.keyob.payment.gateway.activities.SelectDatePassBookActivity;
-import com.keyob.payment.gateway.activities.TagContainerActivity;
+import com.keyob.payment.gateway.activities.TagListActivity;
+import com.keyob.payment.gateway.helper.SingletonUserInfo;
 import com.keyob.payment.gateway.helper.SingletonWalletInfo;
 import com.keyob.payment.gateway.helper.dataBase.DataSharedPrefrence;
 import com.keyob.payment.gateway.helper.transform.PrettyShow;
@@ -45,7 +46,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import static com.keyob.payment.gateway.staticRepository.PutExtraKey.USERID;
 
 
 public class HomeFragment extends Fragment {
@@ -53,9 +53,7 @@ public class HomeFragment extends Fragment {
     private List<HomeDto> walletList;
     private GridLayout gridLayout;
     private ActionBarDrawerToggle actionBarToggle;
-    private TextView tagLink;
     private WalletViewModelNetWork walletViewModelNetwork;
-    private Long userId = 15L;
     private CircularImageView profileHome;
     private TextView balanceHome;
     private TextView walletNameHome;
@@ -67,8 +65,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         gridLayout = view.findViewById(R.id.home_grid_layout);
-        tagLink = view.findViewById(R.id.home_action_tag);
-        tagLink.setHovered(true);
         profileHome = view.findViewById(R.id.home_wallet_pic);
         walletNameHome = view.findViewById(R.id.home_walletName);
         balanceHome = view.findViewById(R.id.home_balance);
@@ -157,7 +153,7 @@ public class HomeFragment extends Fragment {
 
     private void requestGetWalletByUserId(WalletViewModelNetWork viewModel) {
         viewModel = ViewModelProviders.of(this).get(WalletViewModelNetWork.class);
-        viewModel.getWalletByUserId(USERID).observe(this, new Observer<List<HomeDto>>() {
+        viewModel.getWalletByUserId(Long.valueOf(SingletonUserInfo.getInstance().getId().toString())).observe(this, new Observer<List<HomeDto>>() {
             @Override
             public void onChanged(@Nullable List<HomeDto> wallets) {
                 if (wallets != null) {
@@ -250,7 +246,7 @@ public class HomeFragment extends Fragment {
                             break;
 
                         case R.id.home_tag_management:
-                            intent=new Intent(getActivity(), TagContainerActivity.class);
+                            intent=new Intent(getActivity(), TagListActivity.class);
                             startActivity(intent);
 
                         default:
@@ -266,15 +262,13 @@ public class HomeFragment extends Fragment {
 
     public void prepareActionBarInformation(HomeDto wallet) {
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(wallet.getBaseLink());
-        sb.append(wallet.getWalletToken());
-        tagLink.setText(sb.toString());
         String prettyBalance = PrettyShow.separatedZero(wallet.getBalance());
         balanceHome.setText(prettyBalance);
         walletNameHome.setText(wallet.getName());
         requestWalletImage(MyURLRepository.GET_LOGO_BY_WALLET_ID, wallet.getId());
-
+        if (profileHome.getDrawable()== null){
+            profileHome.setImageDrawable(getResources().getDrawable(R.drawable.ic_profile));
+        }
     }
     // daclare user information in drawer navigation
     @Override

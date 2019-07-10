@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.keyob.payment.gateway.activities.GetDetaileActivity"
+    tools:context="com.keyob.payment.gateway.activities.RegisterUserDetailsActivity"
     android:gravity="center"
     android:orientation="vertical"
+    android:id="@+id/register_getDetails_rootView"
     android:padding="10dp">
+
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -17,66 +19,80 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp" >
 
-
         <EditText
-            android:id="@+id/userName"
+            android:id="@+id/details_userName"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/btn_login_bg"
             android:hint="@string/hint_name_persian"
             android:fontFamily="@font/iransans"
-            android:padding="10dp"
+            android:padding="5dp"
             android:singleLine="true"
             android:inputType="textCapWords"
             android:textColor="@color/bg_register"
             android:textColorHint="@color/input_register_hint"
-            android:textSize="16dp"
+            android:textSize="15dp"
             tools:ignore="Deprecated" />
 
         <EditText
-            android:id="@+id/family"
+            android:id="@+id/details_family"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/btn_login_bg"
             android:hint="@string/hint_family_persian"
             android:fontFamily="@font/iransans"
-            android:padding="10dp"
+            android:padding="5dp"
             android:singleLine="true"
             android:inputType="textCapWords"
-            android:textSize="16dp"
+            android:textSize="15dp"
             android:textColor="@color/bg_register"
             android:textColorHint="@color/input_register_hint"
             tools:ignore="Deprecated" />
 
     
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/details_email"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
+            android:textSize="15dp"
             android:layout_marginBottom="10dp"
             android:background="@color/btn_login_bg"
             android:hint="@string/hint_email_persian"
             android:fontFamily="@font/iransans"
             android:inputType="textEmailAddress"
-            android:padding="10dp"
+            android:padding="5dp"
             android:singleLine="true"
             android:textColor="@color/bg_register"
             android:textColorHint="@color/input_register_hint"
             tools:ignore="Deprecated" />
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/details_password"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
+            android:textSize="15dp"
             android:layout_marginBottom="10dp"
             android:background="@color/btn_login_bg"
             android:hint="@string/hint_password_persian"
             android:fontFamily="@font/iransans"
             android:inputType="textVisiblePassword"
-            android:padding="10dp"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/bg_register"
+            android:textColorHint="@color/input_register_hint"
+            tools:ignore="Deprecated" />
+        <EditText
+            android:id="@+id/details_password_confirm"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/btn_login_bg"
+            android:hint="@string/repeat_password_persian"
+            android:fontFamily="@font/iransans"
+            android:inputType="textVisiblePassword"
+            android:padding="5dp"
             android:singleLine="true"
             android:textColor="@color/bg_register"
             android:textColorHint="@color/input_register_hint"
@@ -95,5 +111,13 @@
 
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/user_create_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:visibility="invisible"/>
     
 </LinearLayout>

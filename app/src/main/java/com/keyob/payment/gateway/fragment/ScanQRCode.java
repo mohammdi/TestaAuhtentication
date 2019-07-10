@@ -44,7 +44,6 @@ public class ScanQRCode extends Fragment {
 
     private View view;
     private Button scanBtn;
-    private TextView txtResult;
     private EditText phoneNumber;
     private ImageButton phoneNumberBtn;
     private String scanContent;
@@ -93,7 +92,6 @@ public class ScanQRCode extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_scan_qrcode, container, false);
-        txtResult = view.findViewById(R.id.qr_scan_txt_result);
         scanBtn = view.findViewById(R.id.qr_scan_btn);
         phoneNumber = view.findViewById(R.id.qr_scan_phoneNumber);
         phoneNumberBtn = view.findViewById(R.id.qr_scan_phoneNumber_btn);

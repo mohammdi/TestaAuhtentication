@@ -9,7 +9,7 @@ import com.keyob.payment.gateway.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    private final static int splash_count =4000;
+    private final static int splash_count =2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

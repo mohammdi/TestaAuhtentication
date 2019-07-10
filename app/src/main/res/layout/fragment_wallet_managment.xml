@@ -7,6 +7,40 @@
     tools:context=".fragment.WalletManagementFragment"
     android:fitsSystemWindows="true">
 
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/w_m_appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        android:layoutDirection="ltr">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/w_m_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleTextAppearance="@style/toolbar_Style">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="لیست بگسک ها  "
+                    android:fontFamily="@font/iransans"
+                    android:textColor="@color/white"
+                    android:layout_marginRight="20dp"/>
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
     <ProgressBar
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
@@ -41,7 +75,8 @@
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
         android:fontFamily="@font/iransans"
-        android:textColor="@color/bg_register" />
+        android:textColor="@color/bg_register"
+        android:visibility="invisible"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/wallet_Recycle_View"
@@ -49,7 +84,8 @@
         android:layout_height="match_parent"
         android:layoutDirection="ltr"
         android:minHeight="20dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
 
     </android.support.v7.widget.RecyclerView>
 

@@ -1,7 +1,5 @@
 package com.keyob.payment.gateway.model;
 
-import com.keyob.payment.gateway.helper.enums.WalletType;
-
 import java.io.Serializable;
 
 public class HomeDto implements Serializable {

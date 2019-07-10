@@ -8,29 +8,28 @@
     <string name="hint_wallet_address_english"> address </string>
     <string name="hint_wallet_address_persian"> ادرس </string>
     <string name="hint_name_english">name</string>
-    <string name="hint_name_persian">نام :</string>
-    <string name="hint_user_name_english">user name :</string>
+    <string name="hint_name_persian">نام</string>
+    <string name="hint_user_name_english">user name </string>
     <string name="hint_user_name_persian"> نام کاربری </string>
-    <string name="hint_family_english">family :</string>
-    <string name="hint_family_persian">نام خانوادگی :</string>
+    <string name="hint_family_english">family </string>
+    <string name="hint_family_persian">نام خانوادگی </string>
     <string name="btn_register_english">REGISTER</string>
     <string name="btn_register_persian">ثبت نام</string>
     <string name="btn_login_by_google_english">login google account</string>
     <string name="btn_login_by_google_persian">ثبت نام با گوگل </string>
     <string name="btn_link_to_register">Not a member? Sign up now.</string>
     <string name="btn_link_to_login">Already registred! Login Me.</string>
-    <string name="welcome">Welcome</string>
     <string name="btn_logout">LOGOUT</string>
     <string name="btn_login_english">LOGIN</string>
     <string name="btn_login_persian">ورود</string>
     <string name="Full_name_english">FullName</string>
     <string name="full_name_persian">فامیلی</string>
     <string name="phone_english">Enter your phone number:</string>
-    <string name="phone_persian">شماره موبایل:</string>
+    <string name="phone_persian">شماره موبایل</string>
     <string name="inter_confirm_code_english">enter ConfirmCode</string>
     <string name="inter_confirm_code_persian">کد تایید...</string>
     <string name="reSend_english">resend code</string>
-    <string name="reSend_persian">سعی دوباره</string>
+    <string name="reSend_persian"><u>ارسال دوباره</u></string>
     <string name="hint_confirm_code_english">Confirm Code</string>
     <string name="hint_confirm_code_persian">کد تایید</string>
     <string name="confirm_english">Confirm</string>
@@ -43,6 +42,8 @@
     <string name="register_persian">ثبت نام</string>
     <string name="password_english">password</string>
     <string name="password_persian">رمز عبور</string>
+    <string name="repeat_password_english">repeat password</string>
+    <string name="repeat_password_persian">تکرار رمز عبور</string>
     <string name="emailTittle">enter your email</string>
     <string name="publicId_persian"> کد عمومی :</string>
     <string name="publicId_english"> public Id</string>
@@ -69,13 +70,15 @@
     <string name="not_Paid_english">not Paid</string>
     <string name="not_Paid_persian">پرداخت نشده</string>
     <string name="pass_enter_english">enter password</string>
-    <string name="pass_enter_persian">پسورد خود را وارد کنید</string>
+    <string name="pass_enter_persian">رمز خود را وارد کنید</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="welcom">به سیستم پرداخت  keyoub  خوش امدید ...</string>
+    <string name="welcom">امنیت را با کیوب تجریه کنید...</string>
     <string name="title_activity_login">Sign in</string>
+    <string name="share_qrCode_english">share qrCode</string>
+    <string name="share_qrCode_persian"><u>اشتراک گزاری qrCode </u></string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -121,6 +124,23 @@
     <string name="unSuccessful_persian">ناموفق</string>
 
 
+    <!--******  tag   *******-->
+    <string name="tag_subject_english">subject</string>
+    <string name="tag_subject_persian">عنوان</string>
+    <string name="tag_count_english">count :</string>
+    <string name="tag_count_persian">تعداد :</string>
+    <string name="tag_pay_count_english"> pay counts :</string>
+    <string name="tag_pay_count_persian"> تعداد پرداخت ها :</string>
+    <string name="tag_total_pay_amount_english"> total pay received:</string>
+    <string name="tag_total_pay_amount_persian"> کل مبلغ دریافتی :</string>
+    <string name="tag_title_english">title</string>
+    <string name="tag_title_persian">عنوان :</string>
+    <string name="tag_share_qrCode_english"> share QrCode</string>
+    <string name="tag_share_qrCode_persian"><u> اشتراک گزاری QrCode </u></string>
+    <string name="tag_share_tag_english">share tag </string>
+    <string name="tag_share_tag_persian"> اشتراک گزاری برچسب </string>
+
+
     <!--menu drawer-->
     <string name="notification_english">notification</string>
     <string name="notification_persian">اعلان ها</string>
@@ -145,8 +165,8 @@
     <string name="hint_wallet_description_persian">توضیحات</string>
     <string name="hint_wallet_pass_payment_english">password payment</string>
     <string name="hint_repeat_pass_payment_english">repeat pass</string>
-    <string name="hint_repeat_pass_payment_persian"> تکرار رمز عبور</string>
-    <string name="hint_wallet_pass_payment_persian">رمز عبور</string>
+    <string name="hint_repeat_pass_payment_persian"> تکرار رمز پرداخت</string>
+    <string name="hint_wallet_pass_payment_persian">رمز پرداخت</string>
     <string name="spinner_selectable_english">choose  ...</string>
     <string name="spinner_selectable_persian">انتخاب کنید ...</string>
 
@@ -156,6 +176,8 @@
     <string name="wallet_type_personal_persian">شخصی</string>
     <string name="wallet_type_business_english">business</string>
     <string name="wallet_type_business_persian">تجاری</string>
+    <string name="welcome_english"> welcome to keyob </string>
+    <string name="welcome_persian">به کیوب خوش امدید</string>
     <string-array name="spinner_item">
         <item>personal</item>
         <item>business</item>
@@ -171,4 +193,10 @@
     <string name="internet_is_off_persian">شما به انیترنت دسترسی ندارید !!!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- sentences -->
+    <string name="direction_1_persian">از حالا شما دارای  یک بکسگ شخصی هستید</string>
+    <string name="direction_2_persian">لطفا مشخصات بگسک خود را وارد کنید</string>
+
+
 </resources>

@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.TagDetailsActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/t_d_appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        android:layoutDirection="ltr">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/t_d_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleTextAppearance="@style/toolbar_Style">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="برچسب "
+                    android:fontFamily="@font/iransans"
+                    android:textColor="@color/white"
+                    android:layout_marginRight="30dp"/>
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:padding="5dp"
+            >
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/t_d_qrCode"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_real_qr_code"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="0.5dp"
+                app:civ_shadow="true"
+                app:civ_shadow_radius="1"
+                android:layout_centerHorizontal="true"
+                android:padding="5dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="20dp"/>
+            <TextView
+                android:id="@+id/t_d_qrCode_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tag_share_qrCode_persian"
+                android:padding="1dp"
+                android:textStyle="bold"
+                android:textColor="@color/bg_Dark_main"
+                android:singleLine="true"
+                android:fontFamily="@font/iransans"
+                android:textSize="12dp"
+                android:layout_below="@+id/t_d_qrCode"
+                android:layout_centerHorizontal="true"
+                />
+            <LinearLayout
+                android:id="@+id/t_d_layout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/t_d_qrCode_share"
+                >
+
+                <TextView
+                    android:id="@+id/t_d_link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="keyoub/gt/45eSGGswf"
+                    android:padding="3dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/bg_Dark_main"
+                    android:singleLine="true"
+                    android:fontFamily="@font/iransans"
+                    android:textSize="15dp"
+                    android:layout_below="@id/t_d_qrCode_share"
+                    android:layout_centerHorizontal="true"
+                    />
+                <ImageView
+                    android:id="@+id/t_d_link_share"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_share_blue"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/t_d_pay_counts_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/t_d_layout1"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/iransans"
+                android:padding="1dp"
+                android:text="@string/tag_pay_count_persian"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/bg_Dark_main"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/t_d_pay_counts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:padding="1dp"
+                android:textColor="@color/bg_register"
+                android:fontFamily="@font/iransans"
+                android:textAlignment="viewEnd"
+                android:textSize="14dp"
+                android:layout_alignBaseline="@+id/t_d_pay_counts_label"
+                android:layout_toLeftOf="@+id/t_d_pay_counts_label"/>
+
+            <TextView
+                android:id="@+id/t_d_total_pay_amount_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/tag_total_pay_amount_persian"
+                android:padding="1dp"
+                android:textStyle="bold"
+                android:textColor="@color/bg_Dark_main"
+                android:fontFamily="@font/iransans"
+                android:textAlignment="viewEnd"
+                android:textSize="14dp"
+                android:layout_below="@+id/t_d_pay_counts_label"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:id="@+id/t_d_total_pay_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:padding="1dp"
+                android:textColor="@color/bg_register"
+                android:fontFamily="@font/iransans"
+                android:textAlignment="viewEnd"
+                android:textSize="14dp"
+                android:layout_alignBaseline="@+id/t_d_total_pay_amount_label"
+                android:layout_toLeftOf="@+id/t_d_total_pay_amount_label"/>
+
+            <TextView
+                android:id="@+id/t_d_title_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/tag_title_persian"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/bg_Dark_main"
+                android:singleLine="true"
+                android:fontFamily="@font/iransans"
+                android:textSize="16dp"
+                android:layout_below="@+id/t_d_total_pay_amount"
+                android:layout_alignParentRight="true"
+                />
+
+            <EditText
+                android:id="@+id/t_d_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:textColor="@color/bg_register"
+                android:background="@drawable/border_gray_dark"
+                android:layout_marginTop="10dp"
+                tools:ignore="Deprecated"
+                android:fontFamily="@font/iransans"
+                android:textSize="16dp"
+                android:layout_toLeftOf="@+id/t_d_title_label"
+                android:layout_alignBaseline="@+id/t_d_title_label"
+                />
+            <!--<LinearLayout-->
+
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/line_list_seperator_shape"-->
+                <!--android:layout_below="@+id/t_d_title_label"/>-->
+            <TextView
+                android:id="@+id/t_d_desc_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/description_persian"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/bg_Dark_main"
+                android:fontFamily="@font/iransans"
+                android:textSize="16dp"
+                android:layout_below="@+id/t_d_title_label"
+                android:layout_alignParentRight="true"
+                />
+
+            <EditText
+                android:id="@+id/t_d_desc"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:padding="5dp"
+                android:textColor="@color/bg_register"
+                android:textAlignment="viewEnd"
+                android:fontFamily="@font/iransans"
+                android:background="@drawable/border_gray_dark"
+                android:textSize="16dp"
+                android:layout_toLeftOf="@+id/t_d_desc_label"
+                android:layout_alignBaseline="@+id/t_d_desc_label"/>
+
+
+            <Switch
+                android:id="@+id/t_d_PriceByPayer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:switchMinWidth="50dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:text="انتخاب مبلغ با پرداخت کننده : "
+                android:fontFamily="@font/iransans"
+                android:checked="false"
+                android:textDirection="rtl"
+                android:showText="true"
+                android:layoutDirection="rtl"
+                android:textOff="خیر"
+                android:thumbTint="@color/input_login_hint"
+                android:trackTint="@color/red"
+                android:layout_below="@id/t_d_desc_label"
+                android:layout_alignParentRight="true"
+                android:textOn="بله"/>
+
+
+            <TextView
+                android:id="@+id/t_d_amount_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/bg_Dark_main"
+                android:text="@string/cost_persian"
+                android:fontFamily="@font/iransans"
+                android:textAlignment="viewEnd"
+                android:textSize="16dp"
+                android:layout_below="@+id/t_d_PriceByPayer"
+                android:layout_alignParentRight="true"/>
+
+            <EditText
+                android:id="@+id/t_d_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:padding="5dp"
+                android:background="@drawable/border_gray_dark"
+                android:textColor="@color/bg_register"
+                android:fontFamily="@font/iransans"
+                android:textAlignment="viewEnd"
+                android:textSize="16dp"
+                android:layout_alignBaseline="@+id/t_d_amount_label"
+                android:layout_toLeftOf="@+id/t_d_amount_label"/>
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/line_list_seperator_shape"-->
+                <!--android:layout_below="@+id/t_d_amount"/>-->
+
+            <Switch
+                android:id="@+id/t_d_InfiniteCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:switchMinWidth="50dp"
+                android:layout_gravity="right"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:text="تعداد بیهایت : "
+                android:fontFamily="@font/iransans"
+                android:shadowColor="@color/bg_register"
+                android:thumbTint="@color/input_login_hint"
+                android:trackTint="@color/red"
+                android:checked="false"
+                android:textDirection="rtl"
+                android:layoutDirection="rtl"
+                android:showText="true"
+                android:textOff="خیر"
+                android:textOn="بله"
+                android:layout_below="@id/t_d_amount"
+                android:layout_alignParentRight="true"/>
+
+
+            <TextView
+                android:id="@+id/t_d_count_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/tag_count_persian"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/bg_Dark_main"
+                android:fontFamily="@font/iransans"
+                android:textAlignment="viewEnd"
+                android:textSize="16dp"
+                android:layout_below="@+id/t_d_InfiniteCount"
+                android:layout_alignParentRight="true"/>
+
+            <EditText
+                android:id="@+id/t_d_count"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/bg_register"
+                android:fontFamily="@font/iransans"
+                android:background="@drawable/border_gray_dark"
+                android:textAlignment="viewEnd"
+                android:textSize="16dp"
+                android:layout_alignBaseline="@+id/t_d_count_label"
+                android:layout_toLeftOf="@+id/t_d_count_label"/>
+
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/line_list_seperator_shape"-->
+                <!--android:layout_below="@+id/t_d_count_label"/>-->
+
+            <Button
+                android:id="@+id/t_d_confirm_update"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:layout_marginBottom="50sp"
+                android:background="@drawable/image_btn_shape"
+                android:fontFamily="@font/iransans"
+                android:text="@string/confirm_persian"
+                android:textColor="@color/white"
+                android:layout_below="@+id/t_d_count_label"/>
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

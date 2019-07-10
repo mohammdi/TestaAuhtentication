@@ -18,7 +18,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/userName"
+            android:id="@+id/username"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"

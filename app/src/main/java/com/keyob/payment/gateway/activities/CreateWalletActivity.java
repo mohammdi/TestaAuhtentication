@@ -1,22 +1,31 @@
 package com.keyob.payment.gateway.activities;
 
 
+import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.keyob.payment.gateway.R;
 import com.keyob.payment.gateway.fragment.WalletManagementFragment;
+import com.keyob.payment.gateway.helper.SingletonUserInfo;
 import com.keyob.payment.gateway.model.HomeDto;
 import com.keyob.payment.gateway.network.AlertFactory;
 import com.keyob.payment.gateway.viewModel.WalletViewModelNetWork;
+
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.MESSAGE;
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.TRANSIT;
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.WALLET_LIST;
 
 public class CreateWalletActivity extends AppCompatActivity {
 
@@ -27,6 +36,7 @@ public class CreateWalletActivity extends AppCompatActivity {
     private TextView repeatPass;
     private WalletViewModelNetWork viewModel;
     private HomeDto wallet;
+    private RelativeLayout rootView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +44,10 @@ public class CreateWalletActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_wallet);
 
         walletName = findViewById(R.id.c_w_Name);
-        confirm = (Button) findViewById(R.id.c_w_confirm);
+        confirm = findViewById(R.id.c_w_confirm);
         passpayment = findViewById(R.id.c_w_pass);
         repeatPass = findViewById(R.id.c_w_confirm_pass);
+        rootView = findViewById(R.id.c_w_rootView);
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,16 +55,15 @@ public class CreateWalletActivity extends AppCompatActivity {
                 String name = walletName.getText().toString();
                 String pass = passpayment.getText().toString();
                 String repeatPas = repeatPass.getText().toString();
-                if (name!= null && pass!=null){
-                    if (!pass.equals(repeatPas)){
-                        AlertFactory alarm = new AlertFactory(getApplicationContext());
-                        alarm.singleButtonAlert("","رمز عبور اشباه است ");
-                        return;
-                    }
-
-                }else {
-                    AlertFactory alarm = new AlertFactory(getApplicationContext());
-                    alarm.singleButtonAlert("","اطلاهات ناقص میباشد");
+                if (name != null && pass != null) {
+                    Snackbar.make(rootView, "لطفا اطلاعات را وارد نمایید", 3000).show();
+                }
+                if (!pass.equals(repeatPas)) {
+                    Snackbar.make(rootView, "رمز پرداخت اشتباه است", 3000).show();
+                    return;
+                }
+                if (pass.length() < 5) {
+                    Snackbar.make(rootView, "حداقل تعداد رمز عبور 5 کاراکتر است", 3000).show();
                     return;
                 }
                 wallet = new HomeDto();
@@ -61,12 +71,11 @@ public class CreateWalletActivity extends AppCompatActivity {
                 wallet.setPassPayment(pass);
                 wallet.setType(1);
                 wallet.setAddress("");
-                wallet.setUserId(15L);
+                wallet.setUserId(Long.valueOf(SingletonUserInfo.getInstance().getId().toString()));
                 createWalletRequest();
             }
         });
     }
-
 
 
     private void createWalletRequest() {
@@ -76,23 +85,16 @@ public class CreateWalletActivity extends AppCompatActivity {
             public void onChanged(@Nullable HomeDto homeDto) {
 
                 String message = "";
-                WalletManagementFragment listView = new WalletManagementFragment();
-                Bundle data = new Bundle();
-
                 if (homeDto != null) {
                     message = "بگسک با موفقیت ثبت شد";
-                    data.putString("wallet", message);
-                    listView.setArguments(data);
                 } else {
                     message = "خطا در ثبت بگسک";
-                    data.putString("wallet", message);
-                    listView.setArguments(data);
                 }
 
-                FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
-                fr.replace(R.id.content, listView, "لیست بگسک ها");
-                fr.commit();
-
+                Intent intent = new Intent(CreateWalletActivity.this, HomeActivity.class);
+                intent.putExtra(TRANSIT, WALLET_LIST);
+                intent.putExtra(MESSAGE, message);
+                startActivity(intent);
             }
         });
 

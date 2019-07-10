@@ -21,6 +21,20 @@
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
         app:titleTextAppearance="@style/toolbar_Style">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="لیست درخواست ها "
+                android:fontFamily="@font/iransans"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_marginRight="20dp"/>
+        </RelativeLayout>
+
     </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

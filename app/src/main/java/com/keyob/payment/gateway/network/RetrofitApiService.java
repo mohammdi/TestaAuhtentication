@@ -7,6 +7,8 @@ import com.keyob.payment.gateway.model.PassBookResponseDto;
 import com.keyob.payment.gateway.model.QrCodeScanResponseDto;
 import com.keyob.payment.gateway.model.RequestMoneyDto;
 import com.keyob.payment.gateway.model.ResponseCorrelationDto;
+import com.keyob.payment.gateway.model.TagDto;
+import com.keyob.payment.gateway.model.Users;
 import com.keyob.payment.gateway.model.Wallet;
 
 import java.util.Date;
@@ -23,8 +25,11 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
 import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 
@@ -69,6 +74,11 @@ public interface RetrofitApiService {
     Call<Void> deleteWallet(@Path("id") Long id);
 
 
+    @Headers({ "Content-Type: text/json; charset=utf-8","x-ms-logging-context: fixtures.bodyformdata.Formdatas uploadFileViaBody"})
+    @PUT("wallet/put/{Id}")
+    Call<HomeDto> updateWallet(@Path("Id") Long Id,@Body HomeDto model);
+
+
     // ******************** REQUEST ********************
 
 
@@ -110,6 +120,13 @@ public interface RetrofitApiService {
                                                  @Field("ReceiverId") Long ReceiverId,
                                                  @Field("Amount")Integer Amount,
                                                  @Field("RequestId") UUID RequestId);
+
+    @FormUrlEncoded
+    @POST("payment/payTag")
+    Call<String> payTheTag(@Field("SenderId") Long SenderId,
+                               @Field("ReceiverId") Long ReceiverId,
+                               @Field("Amount")Integer Amount,
+                               @Field("TagId") UUID TagId);
     @FormUrlEncoded
     @POST("Payment/doPayment")
     Call<String> pTOpPayment(@Field("SenderId") Long SenderId,
@@ -143,9 +160,50 @@ public interface RetrofitApiService {
     Call<List<PassBookResponseDto>> getRecentPassBook(@Path("walletId") Long walletId);
 
 
+
+    //**************** TAG ******************
+
+    @GET("tag/get/{id}")
+    Call<TagDto> getTagById(@Path("id") UUID id);
+
+    @GET("Tag/getByWalletId/{id}")
+    Call<List<TagDto>> getTagByWalletId(@Path("id") Long id );
+
+    @FormUrlEncoded
+    @POST("tag/post")
+    Call<TagDto> createTag(@Field("Subject") String Subject,@Field("Description") String Description,
+                           @Field("Price")  Integer Price,@Field("PriceByPayer")  Boolean PriceByPayer,
+                           @Field("Count")  Integer Count,@Field("HasInfinitCount")  Boolean HasInfinitCount,
+                           @Field("WalletId")  Long  WalletId);
+
+
+    @Headers({ "Content-Type: text/json; charset=utf-8","x-ms-logging-context: fixtures.bodyformdata.Formdatas uploadFileViaBody"})
+    @PUT("tag/put/{Id}")
+    Call<TagDto> updateTag(@Path("Id") UUID Id ,@Body TagDto model);
+
+
+    @DELETE("tag/delete/{id}")
+    Call<Void> deleteTag(@Path("id") UUID id);
+
+
+    //**************** register ******************
+
+
+    @POST("account/registerMobileNumber")
+    Call<String> registerPhoneNumber(@Body String phoneNumber);
+
+
+    @FormUrlEncoded
+    @POST("account/register")
+    Call<Users> registerUser(@Field("Password") String Password,@Field("FirstName") String FirstName,
+                             @Field("MobileNumber") String MobileNumber,@Field("LastName") String LastName,
+                             @Field("Email") String Email);
+
     @Multipart
     @POST("/upload")
     Call<UploadImageResponse> uploadImage(@Part MultipartBody.Part file, @Part("name") RequestBody requestBody);
+
+
 
 
 }

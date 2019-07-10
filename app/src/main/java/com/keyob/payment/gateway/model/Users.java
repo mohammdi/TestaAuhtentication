@@ -1,92 +1,113 @@
 package com.keyob.payment.gateway.model;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
-
 import java.io.Serializable;
+import java.util.Date;
 
 /**
- * Created by Mahmood_mohammadi on 11/6/2018.
+ * Created by Mahmood_Mohammadi on 11/6/2018.
  */
-@Entity(tableName = "user")
+
 public class Users implements Serializable {
 
-    @PrimaryKey
-    private Long  id;
+    private int Id;
 
-    @ColumnInfo(name = "USER_NAME")
-    private String userName;
+    private String Username;
 
-    @ColumnInfo(name="MOBILE_NUMBER")
-    private String mobileNumber;
+    private String MobileNumber;
 
-    @ColumnInfo(name = "PASSWORD")
-    private String Password;
+    private String Email;
 
-    @ColumnInfo(name="EMAIL")
-    private String email;
+    private String FirstName;
 
-    @ColumnInfo(name = "NAME")
-    private String name ;
+    private String LastName;
 
-    @ColumnInfo(name = "FAMILY")
-    private String family;
+    private String AboutMe;
+
+    private Boolean Active;
+
+    private Date RegisterDate;
 
 
-    public Long getId() {
-        return id;
+    private String PassWord;
+
+    public int getId() {
+        return Id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public String getUsername() {
+        return Username;
+    }
+
+    public void setUsername(String username) {
+        Username = username;
     }
 
     public String getMobileNumber() {
-        return mobileNumber;
+        return MobileNumber;
     }
 
     public void setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
+        MobileNumber = mobileNumber;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        Email = email;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getFirstName() {
+        return FirstName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setFirstName(String firstName) {
+        FirstName = firstName;
     }
 
-    public String getName() {
-        return name;
+    public String getLastName() {
+        return LastName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLastName(String lastName) {
+        LastName = lastName;
     }
 
-    public String getFamily() {
-        return family;
+    public String getAboutMe() {
+        return AboutMe;
     }
 
-    public void setFamily(String family) {
-        this.family = family;
+    public void setAboutMe(String aboutMe) {
+        AboutMe = aboutMe;
+    }
+
+    public Boolean getActive() {
+        return Active;
+    }
+
+    public void setActive(Boolean active) {
+        Active = active;
+    }
+
+    public Date getRegisterDate() {
+        return RegisterDate;
+    }
+
+    public void setRegisterDate(Date registerDate) {
+        RegisterDate = registerDate;
+    }
+
+
+    public String getPassWord() {
+        return PassWord;
+    }
+
+    public void setPassWord(String passWord) {
+        PassWord = passWord;
     }
 }

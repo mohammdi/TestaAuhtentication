@@ -9,16 +9,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.keyob.payment.gateway.Constants;
 import com.keyob.payment.gateway.R;
+import com.keyob.payment.gateway.activities.TagPaymentActivity;
 import com.keyob.payment.gateway.activities.WalletInfoActivity;
 import com.keyob.payment.gateway.fragment.DetailsReceiveMoneyActivity;
 import com.keyob.payment.gateway.model.HomeDto;
 import com.keyob.payment.gateway.model.QrCodeScanResponseDto;
 import com.keyob.payment.gateway.model.RequestMoneyDto;
+import com.keyob.payment.gateway.model.TagDto;
 import com.keyob.payment.gateway.network.ApiClient;
 import com.keyob.payment.gateway.network.RetrofitApiService;
+import com.keyob.payment.gateway.staticRepository.PutExtraKey;
 import com.keyob.payment.gateway.viewModel.WalletViewModelNetWork;
 
 import java.util.UUID;
@@ -97,9 +101,25 @@ public class PayProxyActivity extends AppCompatActivity {
                     }
                 });
 
-            }else if (qrType.getType().equals(Constants.QRCODE_TAG_TYPE)){
-                //todo
-                progressBar.setVisibility(View.GONE);
+            }
+            else if (qrType.getType().equals(Constants.QRCODE_TAG_TYPE)){
+                final UUID tagId = UUID.fromString(qrType.getTargetId());
+                viewModel= ViewModelProviders.of(this).get(WalletViewModelNetWork.class);
+                viewModel.getTagById(tagId).observe(this, new Observer<TagDto>() {
+                            @Override
+                            public void onChanged(@Nullable TagDto tagDto) {
+                                if (tagDto!=null){
+
+                                    Intent tagIntent = new Intent(PayProxyActivity.this, TagPaymentActivity.class);
+                                    tagIntent.putExtra(PutExtraKey.TAG,tagDto);
+                                    startActivity(tagIntent);
+                                }else {
+                                    Toast.makeText(PayProxyActivity.this, "خطا در شبکه !!!", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+                        //todo
+                        progressBar.setVisibility(View.GONE);
             }
 
         }

@@ -7,8 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +23,10 @@ import android.widget.Toast;
 
 import com.keyob.payment.gateway.R;
 import com.keyob.payment.gateway.activities.CreateWalletActivity;
+import com.keyob.payment.gateway.activities.HomeActivity;
 import com.keyob.payment.gateway.activities.WalletDetailActivity;
 import com.keyob.payment.gateway.helper.PicassoImageDownloader;
+import com.keyob.payment.gateway.helper.SingletonUserInfo;
 import com.keyob.payment.gateway.helper.reCycelerViewHandler.WalletListRecyclerViewAdapter;
 import com.keyob.payment.gateway.model.HomeDto;
 import com.keyob.payment.gateway.network.AlertFactory;
@@ -31,7 +36,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.keyob.payment.gateway.staticRepository.PutExtraKey.MESSAGE;
-import static com.keyob.payment.gateway.staticRepository.PutExtraKey.USERID;
 import static com.keyob.payment.gateway.staticRepository.PutExtraKey.WALLET;
 
 public class WalletManagementFragment extends Fragment implements WalletListRecyclerViewAdapter.OnItemClickListener {
@@ -61,9 +65,10 @@ public class WalletManagementFragment extends Fragment implements WalletListRecy
         progressBar.setVisibility(View.VISIBLE);
         createBusinessBtn = view.findViewById(R.id.create_business_wallet);
 
+        setupToolbar();
         hasMessage();
         walletViewModelNetWork = ViewModelProviders.of(this).get(WalletViewModelNetWork.class);
-        walletViewModelNetWork.getWalletByUserId(USERID).observe(this, new Observer<List<HomeDto>>() {
+        walletViewModelNetWork.getWalletByUserId(Long.valueOf(SingletonUserInfo.getInstance().getId().toString())).observe(this, new Observer<List<HomeDto>>() {
             @Override
             public void onChanged(@Nullable List<HomeDto> wallets) {
                 if (wallets != null) {
@@ -76,25 +81,41 @@ public class WalletManagementFragment extends Fragment implements WalletListRecy
 
                         setUpRecyclerView(dataList);
                         progressBar.setVisibility(View.GONE);
-                        if (dataList.size() >= 2) {
-                            createBusinessBtn.setEnabled(false);
-                            createBusinessBtn.setVisibility(View.GONE);
+                        if (dataList.size() <2) {
+                            createBusinessBtn.setEnabled(true);
+                            createBusinessBtn.setVisibility(View.VISIBLE);
                         }
                     }
                 } else {
                     AlertFactory alertFactory = new AlertFactory(getContext());
-                    alertFactory.singleButtonAlert(null, "اختلال در سرور ! ");
-                    createBusinessBtn.setEnabled(false);
-                    createBusinessBtn.setVisibility(View.GONE);
-
+                    alertFactory.singleButtonAlert(null, "اختلال در شبکه  ");
                     progressBar.setVisibility(View.GONE);
-
                 }
             }
         });
 
         createBusinessWallet();
         return view;
+    }
+
+    private void setupToolbar() {
+        Toolbar toolbar = view.findViewById(R.id.w_m_toolbar);
+
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), HomeActivity.class));
+                getActivity().finish();
+            }
+        });
+        ActionBar actionBar =((AppCompatActivity)getActivity()).getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setElevation(10);
+        actionBar.setBackgroundDrawable(getActivity().getDrawable(R.drawable.wallet_item_gradient_selector));
     }
 
     private void hasMessage() {
@@ -133,7 +154,7 @@ public class WalletManagementFragment extends Fragment implements WalletListRecy
 
         } else {
 
-            Toast.makeText(this.getContext(), "nothing wallet in your account", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.getContext(), "اختلال در شبکه", Toast.LENGTH_SHORT).show();
             progressBar.setVisibility(View.GONE);
         }
 

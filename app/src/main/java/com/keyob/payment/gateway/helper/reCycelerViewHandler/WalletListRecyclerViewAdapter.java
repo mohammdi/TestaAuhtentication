@@ -62,6 +62,9 @@ public class WalletListRecyclerViewAdapter extends RecyclerView.Adapter<WalletLi
                 holder.public_Id.setText(PrettyShow.separatedPublicId(wallet.getPublicId()));
                 holder.balance.setText(PrettyShow.separatedZero(wallet.getBalance()));
 
+                if (holder.logoPath.getDrawable()==null){
+                    holder.logoPath.setImageDrawable(context.getDrawable(R.drawable.ic_profile));
+                }
             }
         },1000);
 

@@ -58,7 +58,7 @@ public class RequestMoneyContainerActivity extends AppCompatActivity {
         });
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("لیست درخواست ها");
+        actionBar.setBackgroundDrawable(getDrawable(R.drawable.wallet_item_gradient_selector));
     }
 
 }

@@ -19,15 +19,16 @@
         tools:ignore="UselessParent">
 
         <EditText
-            android:id="@+id/Email"
+            android:id="@+id/register_phoneNumber"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/btn_login_bg"
-            android:hint="@string/phone_english"
+            android:hint="@string/phone_persian"
             android:padding="10dp"
             android:singleLine="true"
             android:inputType="textCapWords"
+            android:fontFamily="@font/iransans"
             android:textColor="@color/bg_register"
             android:textColorHint="@color/input_register_hint"
             tools:ignore="Deprecated,HardcodedText"
@@ -42,6 +43,7 @@
             android:background="@drawable/image_btn_shape"
             android:text="تایید"
             android:textColor="@color/white"
+            android:fontFamily="@font/iransans"
             android:textSize="20dp"
             tools:ignore="HardcodedText,SpUsage" />
 

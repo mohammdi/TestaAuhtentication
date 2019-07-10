@@ -1,9 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.TagContainerActivity">
+    tools:context=".activities.TagListActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/tag_list_appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tag_list_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleTextAppearance="@style/toolbar_Style"
+            android:layoutDirection="inherit">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="لیست برچسب ها"
+                    android:fontFamily="@font/iransans"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="50dp"/>
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ProgressBar
+        android:id="@+id/tag_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/tag_create_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/fab_margin"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginBottom="70dp"
+        android:paddingTop="@dimen/normal_textSize"
+        android:src="@drawable/ic_add_black_24dp"
+        android:layout_gravity="bottom|end"
+        />
+
+         <android.support.v7.widget.RecyclerView
+             android:id="@+id/tag_recyclerView"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+         </android.support.v7.widget.RecyclerView>
+
+
+
+</android.support.design.widget.CoordinatorLayout>
