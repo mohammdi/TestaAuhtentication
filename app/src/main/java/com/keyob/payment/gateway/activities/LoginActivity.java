@@ -32,25 +32,31 @@ public class LoginActivity extends AppCompatActivity {
     private Context context = this;
     private EditText userName;
     private EditText password;
-    private JSONObject jsonObject;
+
+    private static String CLIENT_ID = "7WM5HpvoLf0W.apps.keyob.com";
+    private static String CLIENT_SECRET = "DtnQ2fqdqjQVXnMowz3Vz2c4HycONrFX";
+
+
     private Users myuser = new Users();
     private List<Wallet> walletList = new ArrayList<>();
     private Boolean online = true;
     private String extra_message_internet_statuse;
     private String id;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logine);
 
-        userName = (EditText) findViewById(R.id.username);
-        password = (EditText) findViewById(R.id.password);
-        Button btn_login = (Button) findViewById(R.id.btn_login);
-        Button btn_register = (Button) findViewById(R.id.btnLinkToLoginScreen);
+        userName = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        Button btn_login = findViewById(R.id.btn_login);
+        Button btn_register = findViewById(R.id.btnLinkToLoginScreen);
+
 
         SingletonUserInfo instance = SingletonUserInfo.getInstance();
-        instance.setId(42);
+        instance.setId(15);
         btn_login.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -58,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (!online) {
                     String internetIsOff = getResources().getString(R.string.internet_is_off_persian);
                     Toast.makeText(context, internetIsOff, Toast.LENGTH_LONG).show();
+                    return;
                 }
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                 if (online && extra_message_internet_statuse != null) {
@@ -68,6 +75,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override

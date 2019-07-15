@@ -3,6 +3,7 @@ package com.keyob.payment.gateway.network.repository;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 
+import com.keyob.payment.gateway.model.ContactDto;
 import com.keyob.payment.gateway.model.CreateRequestMoneyDto;
 import com.keyob.payment.gateway.model.HomeDto;
 import com.keyob.payment.gateway.model.PassBookRequestDto;
@@ -43,6 +44,8 @@ public class WalletRepositoryNetwork {
     private MutableLiveData<RequestMoneyDto> requestMoneyMutable;
 
     private MutableLiveData<TagDto> tagDtoMutable;
+
+    private MutableLiveData<List<ContactDto>> contactListMutable;
 
     private MutableLiveData<List<TagDto>> tagDtoMutableList;
 
@@ -549,6 +552,25 @@ public class WalletRepositoryNetwork {
                 });
 
         return tagDtoMutable;
+    }
+
+
+    public MutableLiveData<List<ContactDto>> getContactByUserId(Long userId) {
+        contactListMutable = new MutableLiveData<>();
+        apiService.getContactByUserId(userId).enqueue(new Callback<List<ContactDto>>() {
+            @Override
+            public void onResponse(Call<List<ContactDto>> call, Response<List<ContactDto>> response) {
+                if(response.isSuccessful()){
+                    contactListMutable.setValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ContactDto>> call, Throwable t) {
+                contactListMutable.setValue(null);
+            }
+        });
+        return contactListMutable;
     }
 
 

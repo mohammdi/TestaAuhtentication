@@ -107,4 +107,8 @@ public class WalletViewModelNetWork extends AndroidViewModel {
         return repositoryNetWork.updateTag(tag);
     }
 
+    public LiveData<List<ContactDto>> getContactByUserId(Long userId) {
+        return repositoryNetWork.getContactByUserId(userId);
+    }
+
 }

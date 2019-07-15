@@ -7,7 +7,6 @@
     tools:context=".fragment.ScanQRCode"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/border_blue"
     android:layout_marginBottom="100dp"
     >
 

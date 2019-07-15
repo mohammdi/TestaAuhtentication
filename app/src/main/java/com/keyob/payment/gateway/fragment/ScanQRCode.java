@@ -48,7 +48,6 @@ public class ScanQRCode extends Fragment {
     private ImageButton phoneNumberBtn;
     private String scanContent;
     private String scanFormat;
-    private  QrCodeScanResponseDto qrCodeScanner ;
     private RetrofitApiService apiService;
     private QrCodeScanResponseDto qr;
     private Intent payProxy;

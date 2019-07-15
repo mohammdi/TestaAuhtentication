@@ -57,15 +57,6 @@
                             app:civ_shadow="true"
                             app:civ_shadow_radius="1" />
 
-                        <ImageView
-                            android:id="@+id/home_notification"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:layout_alignBaseline="@+id/home_wallet_pic"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginStart="30dp"
-                            android:layout_marginEnd="30sp"
-                            android:src="@drawable/ic_action_name" />
 
                         <TextView
                             android:id="@+id/home_walletName"

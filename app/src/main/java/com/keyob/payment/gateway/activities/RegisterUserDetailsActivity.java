@@ -53,6 +53,8 @@ public class RegisterUserDetailsActivity extends AppCompatActivity {
         rootView = findViewById(R.id.register_getDetails_rootView);
 
 
+
+
         phoneNumber = getIntent().getStringExtra(PHONE_NUMBER);
 
         details_submit.setOnClickListener(new View.OnClickListener() {

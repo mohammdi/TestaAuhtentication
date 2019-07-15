@@ -26,4 +26,22 @@ public class ApiClient {
 
         return retrofit;
     }
+
+
+//    public static OkHttpClient getOAuthOkHttpClient(Context ctx) {
+//        // Define the OkHttp Client with its cache!
+//        // Assigning a CacheDirectory
+//        File myCacheDir=new File(ctx.getCacheDir(),"OkHttpCache");
+//        // You should create it...
+//        int cacheSize=1024*1024;
+//        Cache cacheDir=new Cache(myCacheDir,cacheSize);
+//        Interceptor oAuthInterceptor=new OauthInterseptore();
+//        HttpLoggingInterceptor httpLogInterceptor=new HttpLoggingInterceptor();
+//        httpLogInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//        return new OkHttpClient.Builder()
+//                .cache(cacheDir)
+//                .addInterceptor(oAuthInterceptor)
+//                .addInterceptor(httpLogInterceptor)
+//                .build();
+//    }
 }

@@ -1,12 +1,14 @@
 package com.keyob.payment.gateway.network;
 
 import com.keyob.payment.gateway.helper.enums.WalletType;
+import com.keyob.payment.gateway.model.ContactDto;
 import com.keyob.payment.gateway.model.HomeDto;
 import com.keyob.payment.gateway.model.PassBookRequestDto;
 import com.keyob.payment.gateway.model.PassBookResponseDto;
 import com.keyob.payment.gateway.model.QrCodeScanResponseDto;
 import com.keyob.payment.gateway.model.RequestMoneyDto;
 import com.keyob.payment.gateway.model.ResponseCorrelationDto;
+import com.keyob.payment.gateway.model.SubmitContactDto;
 import com.keyob.payment.gateway.model.TagDto;
 import com.keyob.payment.gateway.model.Users;
 import com.keyob.payment.gateway.model.Wallet;
@@ -198,6 +200,16 @@ public interface RetrofitApiService {
     Call<Users> registerUser(@Field("Password") String Password,@Field("FirstName") String FirstName,
                              @Field("MobileNumber") String MobileNumber,@Field("LastName") String LastName,
                              @Field("Email") String Email);
+
+    //****************  contact  ******************
+
+    @GET("contact/getByUserId/{UserId}")
+    Call<List<ContactDto>>getContactByUserId(@Path("UserId") Long UserId);
+
+
+
+    @POST("/contact/post")
+    Call<ContactDto>  submitContact (@Body SubmitContactDto contactDto);
 
     @Multipart
     @POST("/upload")

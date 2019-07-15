@@ -22,6 +22,8 @@
     <string name="btn_logout">LOGOUT</string>
     <string name="btn_login_english">LOGIN</string>
     <string name="btn_login_persian">ورود</string>
+    <string name="invite_english">invite</string>
+    <string name="invite_persian">دعوت</string>
     <string name="Full_name_english">FullName</string>
     <string name="full_name_persian">فامیلی</string>
     <string name="phone_english">Enter your phone number:</string>

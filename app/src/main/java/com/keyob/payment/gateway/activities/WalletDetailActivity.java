@@ -53,7 +53,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.keyob.payment.gateway.staticRepository.PutExtraKey.MESSAGE;
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.TRANSIT;
 import static com.keyob.payment.gateway.staticRepository.PutExtraKey.WALLET;
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.WALLET_LIST;
 
 public class WalletDetailActivity extends AppCompatActivity{
 
@@ -160,6 +162,8 @@ public class WalletDetailActivity extends AppCompatActivity{
                                                 message = " خطا در سرور";
                                             }
                                             Intent i = new Intent(WalletDetailActivity.this,HomeActivity.class);
+                                            i.putExtra(TRANSIT, WALLET_LIST);
+                                            i.putExtra(MESSAGE, message);
                                             startActivity(i);
                                         }
 

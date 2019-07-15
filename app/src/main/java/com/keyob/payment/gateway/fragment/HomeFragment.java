@@ -15,7 +15,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -34,7 +33,6 @@ import com.keyob.payment.gateway.activities.SelectDatePassBookActivity;
 import com.keyob.payment.gateway.activities.TagListActivity;
 import com.keyob.payment.gateway.helper.SingletonUserInfo;
 import com.keyob.payment.gateway.helper.SingletonWalletInfo;
-import com.keyob.payment.gateway.helper.dataBase.DataSharedPrefrence;
 import com.keyob.payment.gateway.helper.transform.PrettyShow;
 import com.keyob.payment.gateway.model.HomeDto;
 import com.keyob.payment.gateway.network.AlertFactory;
@@ -57,8 +55,6 @@ public class HomeFragment extends Fragment {
     private CircularImageView profileHome;
     private TextView balanceHome;
     private TextView walletNameHome;
-    private RecyclerView recyclerView;
-    private DataSharedPrefrence dataSharedPrefrence;
     private SingletonWalletInfo instance;
 
     @Override
@@ -71,7 +67,6 @@ public class HomeFragment extends Fragment {
 
         setSingleEvent(gridLayout);
         setUpToolBar();
-        dataSharedPrefrence = new DataSharedPrefrence(getContext());
         // check internet status
         InternetStatus internetStatus = new InternetStatus(getContext());
         Boolean hasInternet = internetStatus.statusNetWOrk();
@@ -184,6 +179,8 @@ public class HomeFragment extends Fragment {
         ActionBar actionBar =((AppCompatActivity) getActivity()).getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBarToggle = new ActionBarDrawerToggle(getActivity(),drawerLayout, toolbar, 0, 0);
+        actionBar.setElevation(10);
+        actionBar.setBackgroundDrawable(getActivity().getDrawable(R.drawable.wallet_item_gradient_selector_up_to_botom));
         CollapsingToolbarLayout collapsingToolbar = view.findViewById(R.id.collapsing_toolbar);
         drawerLayout.addDrawerListener(actionBarToggle);
         actionBarToggle.syncState();

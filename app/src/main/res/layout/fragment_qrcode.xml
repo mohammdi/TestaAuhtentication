@@ -7,8 +7,6 @@
     tools:context=".fragment.QRCode"
     android:weightSum="20"
     android:gravity="center"
-    android:background="@drawable/bold_border_green"
-    android:layout_marginBottom="100dp"
     >
 
     <ImageView
