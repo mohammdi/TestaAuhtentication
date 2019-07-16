@@ -1,30 +1,22 @@
 package com.keyob.payment.gateway.activities;
 
 import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.keyob.payment.gateway.R;
-import com.keyob.payment.gateway.fragment.WalletManagementFragment;
 import com.keyob.payment.gateway.helper.PicassoImageDownloader;
 import com.keyob.payment.gateway.helper.SingletonWalletInfo;
 import com.keyob.payment.gateway.helper.URLAttacher;
@@ -32,22 +24,14 @@ import com.keyob.payment.gateway.helper.reCycelerViewHandler.PassBookListRecycle
 import com.keyob.payment.gateway.helper.transform.PrettyShow;
 import com.keyob.payment.gateway.model.HomeDto;
 import com.keyob.payment.gateway.model.PassBookResponseDto;
-import com.keyob.payment.gateway.network.AlertFactory;
 import com.keyob.payment.gateway.network.ApiClient;
 import com.keyob.payment.gateway.network.RetrofitApiService;
-import com.keyob.payment.gateway.staticRepository.PutExtraKey;
 import com.keyob.payment.gateway.viewModel.WalletViewModelNetWork;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONObject;
-
 import java.io.File;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import okhttp3.HttpUrl;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

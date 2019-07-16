@@ -29,7 +29,7 @@ import com.keyob.payment.gateway.helper.PicassoImageDownloader;
 import com.keyob.payment.gateway.helper.SingletonUserInfo;
 import com.keyob.payment.gateway.helper.reCycelerViewHandler.WalletListRecyclerViewAdapter;
 import com.keyob.payment.gateway.model.HomeDto;
-import com.keyob.payment.gateway.network.AlertFactory;
+import com.keyob.payment.gateway.helper.AlertFactory;
 import com.keyob.payment.gateway.viewModel.WalletViewModelNetWork;
 
 import java.util.ArrayList;

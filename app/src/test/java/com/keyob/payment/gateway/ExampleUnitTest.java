@@ -1,5 +1,7 @@
 package com.keyob.payment.gateway;
 
+import android.util.Base64;
+
 import com.google.gson.Gson;
 import com.keyob.payment.gateway.helper.CustomPersianCalendar;
 import com.keyob.payment.gateway.helper.SingletonWalletInfo;
@@ -89,21 +91,19 @@ public class ExampleUnitTest {
 
     @Test
     public void prettySHow() {
-        Matcher m;
-        final String regex = "\n^\\+?\\(?[0-9]{1,3}\\)? ?-?[0-9]{1,3} ?-?[0-9]{3,5} ?-?[0-9]{4}( ?-?[0-9]{3})?";
-        Pattern r = Pattern.compile(regex);
-        String number = "01914268369";
-            m = r.matcher(number.trim());
-        String s = number.replaceAll(regex, "");
-        System.out.println(s);
-        if (m.find()) {
-            System.out.println("MATCH");
-        } else {
-            System.out.println("NO MATCH");
-        }
+         String CLIENT_ID = "7WM5HpvoLf0W.apps.keyob.com";
+         String CLIENT_SECRET = "hXEKlX5hBm0IZ1eMB9V8tTGp2H6o9cqq";
 
-        Scanner scanner = new Scanner(System.in);
-        int i = scanner.nextInt();
+        String sum =CLIENT_ID+CLIENT_SECRET;
+        byte[] encrypt= sum.getBytes();
+        String base64 = Base64.encodeToString(encrypt, Base64.DEFAULT);
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("Basic");
+        sb.append(" ");
+        sb.append(base64);
+        System.out.println(sb.toString());
+
     }
 
 

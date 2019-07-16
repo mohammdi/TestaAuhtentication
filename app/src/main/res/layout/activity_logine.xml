@@ -7,6 +7,7 @@
     tools:context="com.keyob.payment.gateway.activities.LoginActivity"
     android:gravity="center"
     android:orientation="vertical"
+    android:id="@+id/login_root_view"
     android:padding="10dp">
 
     <LinearLayout

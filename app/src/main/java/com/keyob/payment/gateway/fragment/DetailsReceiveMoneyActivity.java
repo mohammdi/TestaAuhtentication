@@ -14,7 +14,6 @@ import com.keyob.payment.gateway.activities.ConfirmRequestPaymentActivity;
 import com.keyob.payment.gateway.helper.SingletonWalletInfo;
 import com.keyob.payment.gateway.helper.URLAttacher;
 import com.keyob.payment.gateway.model.RequestMoneyDto;
-import com.keyob.payment.gateway.network.AlertFactory;
 import com.keyob.payment.gateway.network.MyURLRepository;
 import com.keyob.payment.gateway.viewModel.WalletViewModelNetWork;
 import com.squareup.picasso.Picasso;

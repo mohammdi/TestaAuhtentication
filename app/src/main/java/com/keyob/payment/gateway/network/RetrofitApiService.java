@@ -13,6 +13,8 @@ import com.keyob.payment.gateway.model.SubmitContactDto;
 import com.keyob.payment.gateway.model.TagDto;
 import com.keyob.payment.gateway.model.Users;
 import com.keyob.payment.gateway.model.Wallet;
+import com.keyob.payment.gateway.network.dto.OauthToken;
+import com.keyob.payment.gateway.network.dto.OauthUserInfo;
 
 import java.util.Date;
 import java.util.List;
@@ -215,12 +217,15 @@ public interface RetrofitApiService {
 
     //****************  LOGIN  ******************
 
-//    @GET("")
-//
-//
-//    @POST("token")
+    @POST("userinfo")
+    Call<OauthUserInfo> getUserInfo();
 
-
+    @FormUrlEncoded
+    @POST("token")
+    Call<OauthToken> getAuthorizationToken (@Field("grant_type") String grant_type,
+                                            @Field("scope") String scope,
+                                            @Field("username") String username,
+                                            @Field("password") String password );
 
 
     @Multipart

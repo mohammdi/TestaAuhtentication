@@ -2,7 +2,6 @@ package com.keyob.payment.gateway.fragment;
 
 import android.Manifest;
 import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -33,7 +32,7 @@ import com.keyob.payment.gateway.helper.reCycelerViewHandler.ContactListRecycler
 import com.keyob.payment.gateway.model.ContactDto;
 import com.keyob.payment.gateway.model.ContactLessDto;
 import com.keyob.payment.gateway.model.SubmitContactDto;
-import com.keyob.payment.gateway.network.AlertFactory;
+import com.keyob.payment.gateway.helper.AlertFactory;
 import com.keyob.payment.gateway.network.ApiClient;
 import com.keyob.payment.gateway.network.RetrofitApiService;
 import com.keyob.payment.gateway.viewModel.WalletViewModelNetWork;

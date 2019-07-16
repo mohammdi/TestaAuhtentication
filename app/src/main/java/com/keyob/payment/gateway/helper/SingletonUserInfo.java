@@ -131,4 +131,12 @@ public class SingletonUserInfo implements Serializable {
         setRegisterDate(user.getRegisterDate());
         setUserName(user.getUsername());
     }
+
+    public  void selfReplace(SingletonUserInfo user){
+        setId(user.getId());
+        setFirstName(user.getFirstName());
+        setLastName(user.getLastName());
+        setMobileNumber(user.getMobileNumber());
+        setUserName(user.getUserName());
+    }
 }

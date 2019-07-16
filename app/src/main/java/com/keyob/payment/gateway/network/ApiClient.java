@@ -1,18 +1,26 @@
 package com.keyob.payment.gateway.network;
 
+import android.util.Base64;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.IOException;
+
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    private  static Retrofit retrofit = null ;
+    private static Retrofit retrofit = null;
 
-    public static Retrofit getInstance(){
+    public static Retrofit getInstance() {
 
-        if (retrofit==null){
+        if (retrofit == null) {
             Gson gson = new GsonBuilder()
                     .enableComplexMapKeySerialization()
                     .serializeNulls()
@@ -28,20 +36,77 @@ public class ApiClient {
     }
 
 
-//    public static OkHttpClient getOAuthOkHttpClient(Context ctx) {
-//        // Define the OkHttp Client with its cache!
-//        // Assigning a CacheDirectory
-//        File myCacheDir=new File(ctx.getCacheDir(),"OkHttpCache");
-//        // You should create it...
-//        int cacheSize=1024*1024;
-//        Cache cacheDir=new Cache(myCacheDir,cacheSize);
-//        Interceptor oAuthInterceptor=new OauthInterseptore();
-//        HttpLoggingInterceptor httpLogInterceptor=new HttpLoggingInterceptor();
-//        httpLogInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-//        return new OkHttpClient.Builder()
-//                .cache(cacheDir)
-//                .addInterceptor(oAuthInterceptor)
-//                .addInterceptor(httpLogInterceptor)
-//                .build();
-//    }
+    public static Retrofit geOauthTokenInstance(final String authorizationValue) {
+
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.addInterceptor(new Interceptor() {
+                                                      @Override
+                                                      public Response intercept(Interceptor.Chain chain) throws IOException {
+                                                          Request original = chain.request();
+
+                                                          Request request = original.newBuilder()
+                                                                  .header("Content_type", "application/x-www-form-urlencoded")
+                                                                  .header("Authorization", authorizationValue)
+                                                                  .method(original.method(), original.body())
+                                                                  .build();
+
+                                                          return chain.proceed(request);
+                                                      }
+                                                  });
+        OkHttpClient client = httpClient.build();
+
+
+        if (retrofit == null) {
+            Gson gson = new GsonBuilder()
+                    .enableComplexMapKeySerialization()
+                    .serializeNulls()
+                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                    .setPrettyPrinting().create();
+            retrofit = new Retrofit.Builder()
+                    .baseUrl("http://account.keyob.com/identity/connect/")
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .client(client)
+                    .build();
+        }
+
+        return retrofit;
+
+    }
+
+
+    public static Retrofit geUserInfoInstance(final String authorizationValue) {
+
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.addInterceptor(new Interceptor() {
+                                                      @Override
+                                                      public Response intercept(Interceptor.Chain chain) throws IOException {
+                                                          Request original = chain.request();
+
+                                                          Request request = original.newBuilder()
+                                                                  .header("Authorization", authorizationValue)
+                                                                  .method(original.method(), original.body())
+                                                                  .build();
+
+                                                          return chain.proceed(request);
+                                                      }
+                                                  });
+        OkHttpClient client = httpClient.build();
+
+
+        if (retrofit == null) {
+            Gson gson = new GsonBuilder()
+                    .enableComplexMapKeySerialization()
+                    .serializeNulls()
+                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                    .setPrettyPrinting().create();
+            retrofit = new Retrofit.Builder()
+                    .baseUrl("http://account.keyob.com/identity/connect/")
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .client(client)
+                    .build();
+        }
+
+        return retrofit;
+
+    }
 }

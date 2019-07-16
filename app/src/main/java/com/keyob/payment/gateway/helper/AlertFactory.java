@@ -1,4 +1,4 @@
-package com.keyob.payment.gateway.network;
+package com.keyob.payment.gateway.helper;
 
 import android.content.Context;
 import android.content.DialogInterface;
