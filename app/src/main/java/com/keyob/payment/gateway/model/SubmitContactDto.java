@@ -5,7 +5,7 @@ import java.util.List;
 public class SubmitContactDto {
 
     private String OwnerMobileNumber;
-    private List<ContactDto> contacts;
+    private List<ContactLessDto> Contacts;
 
     public String getOwnerMobileNumber() {
         return OwnerMobileNumber;
@@ -15,11 +15,11 @@ public class SubmitContactDto {
         OwnerMobileNumber = ownerMobileNumber;
     }
 
-    public List<ContactDto> getContacts() {
-        return contacts;
+    public List<ContactLessDto> getContacts() {
+        return Contacts;
     }
 
-    public void setContacts(List<ContactDto> contacts) {
-        this.contacts = contacts;
+    public void setContacts(List<ContactLessDto> contacts) {
+        Contacts = contacts;
     }
 }

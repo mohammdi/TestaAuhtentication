@@ -17,4 +17,10 @@ public class PrettyShow {
         String pretty = publicId.replaceAll(".{4}(?!$)", "$0" + delimiter);
         return pretty;
     }
+
+    public static String separatedPhonNumber(String phoneNumber){
+        String delimiter=" ";
+        String pretty = phoneNumber.replaceAll(".{4}(?!$)", "$0" + delimiter);
+        return pretty;
+    }
 }

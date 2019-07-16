@@ -2,6 +2,7 @@ package com.keyob.payment.gateway.network;
 
 import com.keyob.payment.gateway.helper.enums.WalletType;
 import com.keyob.payment.gateway.model.ContactDto;
+import com.keyob.payment.gateway.model.ContactLessDto;
 import com.keyob.payment.gateway.model.HomeDto;
 import com.keyob.payment.gateway.model.PassBookRequestDto;
 import com.keyob.payment.gateway.model.PassBookResponseDto;
@@ -208,8 +209,19 @@ public interface RetrofitApiService {
 
 
 
-    @POST("/contact/post")
-    Call<ContactDto>  submitContact (@Body SubmitContactDto contactDto);
+    @POST("contact/post")
+    Call<Void>  submitContact (@Body SubmitContactDto model);
+
+
+    //****************  LOGIN  ******************
+
+//    @GET("")
+//
+//
+//    @POST("token")
+
+
+
 
     @Multipart
     @POST("/upload")

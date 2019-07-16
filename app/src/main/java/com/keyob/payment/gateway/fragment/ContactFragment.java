@@ -1,6 +1,8 @@
 package com.keyob.payment.gateway.fragment;
 
+import android.Manifest;
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -10,8 +12,10 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,15 +31,24 @@ import com.keyob.payment.gateway.activities.HomeActivity;
 import com.keyob.payment.gateway.helper.SingletonUserInfo;
 import com.keyob.payment.gateway.helper.reCycelerViewHandler.ContactListRecyclerAdapter;
 import com.keyob.payment.gateway.model.ContactDto;
+import com.keyob.payment.gateway.model.ContactLessDto;
+import com.keyob.payment.gateway.model.SubmitContactDto;
+import com.keyob.payment.gateway.network.AlertFactory;
+import com.keyob.payment.gateway.network.ApiClient;
+import com.keyob.payment.gateway.network.RetrofitApiService;
 import com.keyob.payment.gateway.viewModel.WalletViewModelNetWork;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ContactFragment extends Fragment  implements  ContactListRecyclerAdapter.OnItemClickListener {
 
 
-    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS =1;
+    private static final int PERMISSION_REQUEST_CONTACT =79;
     private RecyclerView recyclerView;
     private ContactListRecyclerAdapter adapter;
     private View view;
@@ -44,6 +57,8 @@ public class ContactFragment extends Fragment  implements  ContactListRecyclerAd
     private WalletViewModelNetWork viewModel;
     private ContactListRecyclerAdapter recyclerAdapter;
     private ProgressBar progressBar;
+    private Boolean hasPermission = false;
+    private RetrofitApiService apiService;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,24 +69,27 @@ public class ContactFragment extends Fragment  implements  ContactListRecyclerAd
         recyclerView = view.findViewById(R.id.contact_list_Recycler_View);
         progressBar = view.findViewById(R.id.contact_list_progressBar);
 
-//        RequestPermission();
 
 
-        getContactList(Long.valueOf(SingletonUserInfo.getInstance().getId()));
+        RequestPermission();
+
         setupToolbar();
+
         return view;
 
     }
 
-//    private void RequestPermission() {
-//        if (ActivityCompat.checkSelfPermission(getActivity(),Manifest.permission.READ_CONTACTS)!= PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_CONTACTS},1);
-//        }else {
-//
-//            getAllContacts();
-//        }
-//
-//    }
+
+
+    private void RequestPermission() {
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_CONTACTS)== PackageManager.PERMISSION_GRANTED) {
+
+            getContactListRequest(Long.valueOf(SingletonUserInfo.getInstance().getId()));
+        }else {
+            requestLocationPermission();
+        }
+
+    }
 
     public void setUpRecyclerView(List<ContactDto> dataList) {
 
@@ -112,7 +130,24 @@ public class ContactFragment extends Fragment  implements  ContactListRecyclerAd
 
     }
 
-    private void getContactList(Long userId) {
+    protected void requestLocationPermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_CONTACTS)) {
+
+            if (progressBar.getVisibility()== View.VISIBLE){
+                progressBar.setVisibility(View.GONE);
+            }
+            // show UI part if you want here to show some rationale !!!
+            AlertFactory alert  = new AlertFactory(getContext());
+            alert.singleButtonAlert("مجوز خواندن مخاطبین" ,"برای دست رسی به مخاطبین مجوز نیاز است . لطفا دوباره تلاش کنید ");
+
+
+        } else {
+            requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, PERMISSION_REQUEST_CONTACT);
+        }
+
+    }
+
+    private void getContactListRequest(Long userId) {
         progressBar.setVisibility(View.VISIBLE);
         viewModel = ViewModelProviders.of(this).get(WalletViewModelNetWork.class);
         viewModel.getContactByUserId(userId).observe(this, new Observer<List<ContactDto>>() {
@@ -124,9 +159,8 @@ public class ContactFragment extends Fragment  implements  ContactListRecyclerAd
         });
     }
 
-
-
     private void getAllContacts() {
+        progressBar.setVisibility(View.VISIBLE);
         ContactDto cnt = null ;
         ContentResolver contentResolver = getContext().getContentResolver();
         Cursor cursor = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC");
@@ -159,13 +193,78 @@ public class ContactFragment extends Fragment  implements  ContactListRecyclerAd
 
                 phoneContactList.add(cnt);
             }
+
+            SubmitContactDto dto = new SubmitContactDto();
+            dto.setOwnerMobileNumber(SingletonUserInfo.getInstance().getMobileNumber());
+            List<ContactLessDto> MuCustomMb = new ArrayList<>();
+            for (ContactDto c:phoneContactList) {
+                if (c.getMobileNumber() != null){
+                    switch (c.getMobileNumber()) {
+
+                        case "0935 495 6762":
+                            ContactLessDto contact = new ContactLessDto();
+                            contact.setMobileNumber(c.getMobileNumber());
+                            contact.setName(c.getName());
+                            MuCustomMb.add(contact);
+                            break;
+                        case "0935 652 5277":
+                            ContactLessDto contact1 = new ContactLessDto();
+                            contact1.setMobileNumber(c.getMobileNumber());
+                            contact1.setName(c.getName());
+                            MuCustomMb.add(contact1);
+                            break;
+                        case "+989101917006":
+                            ContactLessDto contact2 = new ContactLessDto();
+                            contact2.setMobileNumber(c.getMobileNumber());
+                            contact2.setName(c.getName());
+                            MuCustomMb.add(contact2);
+                            break;
+                    }
+
+                }
+
+            }
+            dto.setContacts(MuCustomMb);
+            apiService = ApiClient.getInstance().create(RetrofitApiService.class);
+            apiService.submitContact(dto).enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+
+                    if (response.isSuccessful()){
+                        getContactListRequest(Long.valueOf(SingletonUserInfo.getInstance().getId()));
+                    }else {
+                        phoneContactList = new ArrayList<>();
+                        progressBar.setVisibility(View.GONE);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Toast.makeText(getContext(), "submit number Canceled", Toast.LENGTH_SHORT).show();
+                    call.cancel();
+                }
+            });
         }
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == PERMISSION_REQUEST_CONTACT) {
+            // If request is cancelled, the result arrays are empty.
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getAllContacts();
+            } else {
+                progressBar.setVisibility(View.GONE);
+                new  AlertDialog.Builder(getContext()).setTitle("مجوز دسترسی به مخاطبین").
+                        setMessage("شما مجوز دسترسی به مخاطبین را رد کرده اید. این سرویس برای شما غیر فعال است").show();
+            }
+        }else {
+
+        }
+    }
 
     @Override
     public void onclick(int position) {
-
         Toast.makeText(getContext(), "test listener info ", Toast.LENGTH_SHORT).show();
     }
 }

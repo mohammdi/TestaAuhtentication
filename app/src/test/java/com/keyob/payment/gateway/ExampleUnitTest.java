@@ -16,6 +16,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import ir.hamsaa.persiandatepicker.util.PersianCalendar;
 import retrofit2.Call;
@@ -87,49 +89,25 @@ public class ExampleUnitTest {
 
     @Test
     public void prettySHow() {
-        RetrofitApiService api = ApiClient.getInstance().create(RetrofitApiService.class);
-        SingletonWalletInfo instance = SingletonWalletInfo.getInstance();
-
-        HomeDto dto = new HomeDto();
-        dto.setId(10019L);
-        dto.setName("کیف پیش فرض");
-        dto.setCreateDate("2019-07-09T15:12:11.913");
-        dto.setPublicId("4444659118387354");
-        dto.setDefault(true);
-        dto.setPassPayment("1234");
-        dto.setType(2);
-        dto.setWalletToken("3YSrSMqa");
-        dto.setBaseLink("keyob.com/pg/");
-        dto.setUserId(37L);
-        dto.setBalance(0);
-
-
-        dto.setName("jsjsjsjs");
-        dto.setPassPayment("passsssss");
-        api.updateWallet(dto.getId(),dto).enqueue(new Callback<HomeDto>() {
-            @Override
-            public void onResponse(Call<HomeDto> call, Response<HomeDto> response) {
-
-                if (response.isSuccessful()){
-
-                    response.body();
-                }else {
-                    response.errorBody();
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<HomeDto> call, Throwable t) {
-
-                call.cancel();
-
-            }
-        });
+        Matcher m;
+        final String regex = "\n^\\+?\\(?[0-9]{1,3}\\)? ?-?[0-9]{1,3} ?-?[0-9]{3,5} ?-?[0-9]{4}( ?-?[0-9]{3})?";
+        Pattern r = Pattern.compile(regex);
+        String number = "01914268369";
+            m = r.matcher(number.trim());
+        String s = number.replaceAll(regex, "");
+        System.out.println(s);
+        if (m.find()) {
+            System.out.println("MATCH");
+        } else {
+            System.out.println("NO MATCH");
+        }
 
         Scanner scanner = new Scanner(System.in);
         int i = scanner.nextInt();
     }
+
+
+
 
 
 }

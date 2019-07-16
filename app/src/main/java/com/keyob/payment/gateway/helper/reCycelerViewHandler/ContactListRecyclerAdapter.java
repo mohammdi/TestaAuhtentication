@@ -10,11 +10,13 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.keyob.payment.gateway.R;
 import com.keyob.payment.gateway.helper.PersianDateCoordinatore;
+import com.keyob.payment.gateway.helper.transform.PrettyShow;
 import com.keyob.payment.gateway.model.ContactDto;
 import com.keyob.payment.gateway.model.RequestMoneyDto;
 import com.squareup.picasso.Picasso;
@@ -61,13 +63,17 @@ public class ContactListRecyclerAdapter extends RecyclerView.Adapter<ContactList
         holder.mobileNumber.setText(contact.getMobileNumber());
         holder.contactName.setText(contact.getName());
 
-        String base64Image = contact.getImage().split(",")[1];
+        String[] split = contact.getImage().split(",");
+        String base64Image = split[1];
         byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
         holder.image.setImageBitmap(decodedByte);
         if (holder.image.getDrawable()==null){
             Picasso.with(context).load(R.drawable.ic_profile).into(holder.image);
+        }
+        if (!contact.isRegistered()){
+            holder.inviteBtn.setVisibility(View.VISIBLE);
         }
 
     }
@@ -102,6 +108,7 @@ public class ContactListRecyclerAdapter extends RecyclerView.Adapter<ContactList
         private TextView contactName;
         private TextView mobileNumber;
         private ImageView image;
+        private Button inviteBtn;
 
         public ContactListViewHolder(final View itemView) {
             super(itemView);
@@ -109,6 +116,7 @@ public class ContactListRecyclerAdapter extends RecyclerView.Adapter<ContactList
             contactName =itemView.findViewById(R.id.contact_name);
             mobileNumber = itemView.findViewById(R.id.contact_mobile_number);
             image= itemView.findViewById(R.id.contact_logo);
+            inviteBtn= itemView.findViewById(R.id.contact_invite_btn);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         SingletonUserInfo instance = SingletonUserInfo.getInstance();
+        instance.setMobileNumber("09194268369");
         instance.setId(15);
         btn_login.setOnClickListener(new View.OnClickListener() {
 

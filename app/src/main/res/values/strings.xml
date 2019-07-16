@@ -124,6 +124,10 @@
     <string name="successful_persian">موفق</string>
     <string name="unSuccessful_english">unSuccessful</string>
     <string name="unSuccessful_persian">ناموفق</string>
+    <string name="no_english">no</string>
+    <string name="no_persian">خیر</string>
+    <string name="yes_english">yes</string>
+    <string name="yes_persian">بله</string>
 
 
     <!--******  tag   *******-->

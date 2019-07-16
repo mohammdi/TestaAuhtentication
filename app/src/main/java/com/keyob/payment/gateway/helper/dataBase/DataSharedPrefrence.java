@@ -33,7 +33,7 @@ public class DataSharedPrefrence {
 
     public DataSharedPrefrence(Context context){
 
-        sharedPreferences = context.getSharedPreferences("user storage", context.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences("contact Request", context.MODE_PRIVATE);
     }
 
    /**
