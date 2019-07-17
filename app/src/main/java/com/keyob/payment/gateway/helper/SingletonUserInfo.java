@@ -30,6 +30,7 @@ public class SingletonUserInfo implements Serializable {
 
     private byte[] Image;
 
+    private String refreshToken;
     public static synchronized SingletonUserInfo getInstance(){
 
         if (instance==null){
@@ -119,6 +120,13 @@ public class SingletonUserInfo implements Serializable {
         Image = image;
     }
 
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+    }
 
     public  void replace(Users user){
         setId(user.getId());
@@ -138,5 +146,18 @@ public class SingletonUserInfo implements Serializable {
         setLastName(user.getLastName());
         setMobileNumber(user.getMobileNumber());
         setUserName(user.getUserName());
+        setRefreshToken(user.getRefreshToken());
     }
+
+
+    public  void clean(){
+        setId(0);
+        setFirstName(null);
+        setLastName(null);
+        setMobileNumber(null);
+        setUserName(null);
+        setRefreshToken(null);
+    }
+
+
 }

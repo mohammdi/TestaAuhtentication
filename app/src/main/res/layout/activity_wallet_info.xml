@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.WalletInfoActivity"
-    android:gravity="center"
-    android:id="@+id/wallet_info_root_view">
+    android:id="@+id/wallet_info_root_view"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/wallet_info_appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        android:layoutDirection="ltr"
+        android:layout_alignParentTop="true"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/wallet_info_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleTextAppearance="@style/toolbar_Style">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="مشخصات بگسک"
+                    android:fontFamily="@font/iransans"
+                    android:textColor="@color/white"
+                    android:layout_marginRight="30dp"/>
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,6 +49,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/border_blue"
+        android:layout_centerVertical="true"
         android:padding="20dp">
 
         <com.mikhaellopez.circularimageview.CircularImageView
@@ -155,4 +191,4 @@
 
     </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>

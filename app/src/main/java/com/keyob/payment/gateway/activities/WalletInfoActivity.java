@@ -5,8 +5,10 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,7 +40,7 @@ public class WalletInfoActivity extends AppCompatActivity {
     private EditText pass;
     private EditText amount;
     private Button payBtn;
-    private LinearLayout rootView;
+    private RelativeLayout rootView;
     private WalletViewModelNetWork viewModel;
 
     @Override
@@ -85,5 +87,26 @@ public class WalletInfoActivity extends AppCompatActivity {
             }
         });
 
+        setUpToolBar();
+    }
+
+
+    public void setUpToolBar(){
+        Toolbar toolbar = findViewById(R.id.wallet_info_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                finish();
+            }
+        });
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setElevation(10);
+        actionBar.setBackgroundDrawable(getDrawable(R.drawable.wallet_item_gradient_selector));
     }
 }

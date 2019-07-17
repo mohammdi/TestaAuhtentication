@@ -1,14 +1,19 @@
 package com.keyob.payment.gateway.fragment;
 
 import android.Manifest;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -36,8 +41,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.keyob.payment.gateway.R;
+import com.keyob.payment.gateway.activities.HomeActivity;
+import com.keyob.payment.gateway.activities.LoginActivity;
 import com.keyob.payment.gateway.activities.RequestMoneyContainerActivity;
 import com.keyob.payment.gateway.activities.SelectDatePassBookActivity;
+import com.keyob.payment.gateway.activities.SplashScreenActivity;
 import com.keyob.payment.gateway.activities.TagListActivity;
 import com.keyob.payment.gateway.helper.SingletonUserInfo;
 import com.keyob.payment.gateway.helper.SingletonWalletInfo;
@@ -238,28 +246,6 @@ public class HomeFragment extends Fragment {
 
     }
 
-//    private Boolean getterArguments() {
-//        boolean hasResult = false;
-//        Bundle arguments = this.getArguments();
-//        if (arguments != null) {
-//            String wallet = arguments.getString("wallet");
-//
-//            if (wallet != null) {
-//                Gson gson = new Gson();
-//                HomeDto homeDto = gson.fromJson(wallet, HomeDto.class);
-//                instance.setId(homeDto.getId());
-//                instance.setWalletToken(homeDto.getWalletToken());
-//                instance.setWalletName(homeDto.getName());
-//                instance.setBalance(homeDto.getBalance());
-//                instance.setBaseLink(homeDto.getBaseLink());
-//                instance.setPublicId(homeDto.getPublicId());
-//                instance.setPassPayment(homeDto.getPassPayment());
-//                prepareActionBarInformation(homeDto);
-//                hasResult = true;
-//            }
-//        }
-//        return hasResult;
-//    }
 
     private void requestWalletImage(String url, Long walletId) {
         StringBuilder sb = new StringBuilder();
@@ -364,6 +350,29 @@ public class HomeFragment extends Fragment {
                         Toast.makeText(getContext(), "pressed _ feedBack", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
+                    case R.id.nav_logout:
+                        AlertDialog.Builder builderr = new AlertDialog.Builder(getContext());
+                        builderr.setTitle("خروج");
+                        builderr.setIcon(R.drawable.icon);
+                        builderr.setMessage("شما میخواهید خارج شوید.ایا مطمئن هستید ؟");
+                        builderr.setPositiveButton(R.string.yes_persian, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                getActivity().finishAffinity();
+                                System.exit(0);
+
+                            }
+                        });
+                        builderr.setNegativeButton(R.string.no_persian, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                               dialog.dismiss();
+                            }
+                        });
+
+                        builderr.show();
+                        break;
+
                 }
                 return true;
             }

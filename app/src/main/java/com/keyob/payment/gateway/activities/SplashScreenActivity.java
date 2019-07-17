@@ -1,6 +1,9 @@
 package com.keyob.payment.gateway.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +11,8 @@ import android.os.Bundle;
 
 import com.keyob.payment.gateway.R;
 import com.keyob.payment.gateway.network.MyURLRepository;
+
+import static com.keyob.payment.gateway.staticRepository.PutExtraKey.MESSAGE;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -18,22 +23,46 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-//        Intent intent = new Intent(
-//                Intent.ACTION_VIEW,
-//                Uri.parse(MyURLRepository.BASE_URL + "/account" + "?client_id=" + clientId + "&redirect_uri=" + redirectUri));
-//        startActivity(intent);
-
-
-
-
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreenActivity.this ,LoginActivity.class);
-                startActivity(intent);
-                finish();
+                Boolean hasNet = statusNetWOrk();
+                if (hasNet){
+
+                    Intent intent = new Intent(SplashScreenActivity.this ,LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                }else {
+
+                    Intent intent = new Intent(SplashScreenActivity.this ,AlarmActivity.class);
+                    intent.putExtra(MESSAGE,"MIS_NET");
+                    startActivity(intent);
+                    finish();
+                }
+
+
             }
         },splash_count);
+    }
+
+
+
+    public Boolean statusNetWOrk() {
+
+        ConnectivityManager connect = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo netInfo = connect.getActiveNetworkInfo();
+
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
     }
 }

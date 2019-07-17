@@ -9,10 +9,10 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <uses-feature android:name="android.hardware.wifi" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
-
 
     <application
         android:allowBackup="true"
@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.SetDefaultWalletInfoActivity"></activity>
+        <activity android:name=".activities.AlarmActivity"></activity>
+        <activity android:name=".activities.SetDefaultWalletInfoActivity" />
         <activity android:name=".activities.TagPaymentActivity" />
         <activity android:name=".activities.TagDetailsActivity" />
         <activity android:name=".activities.CreateTagActivity" />
@@ -48,8 +49,9 @@
         <activity android:name=".activities.GetPhoneNumberActivity" />
         <activity android:name=".activities.ConfirmCodeActivity" />
         <activity android:name=".activities.RegisterUserDetailsActivity" />
-        <activity android:name=".activities.HomeActivity"
-                  android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.HomeActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.SplashScreenActivity"
             android:theme="@style/SplashScreenTheme">
@@ -60,8 +62,10 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:host="keyob"
                     android:scheme="/app" />
