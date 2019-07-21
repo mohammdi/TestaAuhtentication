@@ -229,10 +229,10 @@ public interface RetrofitApiService {
                                             @Field("username") String username,
                                             @Field("password") String password );
 
-
+    @Headers({ "Content-Type: text/json; charset=utf-8","x-ms-logging-context: fixtures.bodyformdata.Formdatas uploadFileViaBody"})
     @Multipart
-    @POST("/upload")
-    Call<UploadImageResponse> uploadImage(@Part MultipartBody.Part file, @Part("name") RequestBody requestBody);
+    @PUT("wallet/changePicture/{id}")
+    Call<UploadImageResponse> uploadImage(@Part MultipartBody.Part file,@Path("id")Long id);
 
 
 

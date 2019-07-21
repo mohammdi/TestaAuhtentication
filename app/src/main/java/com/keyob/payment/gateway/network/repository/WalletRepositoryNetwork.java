@@ -574,15 +574,15 @@ public class WalletRepositoryNetwork {
     }
 
 
-    public Integer upload(File file, String fileName) {
-        File myfile = new File(file, fileName);
+    public Integer upload(File file,Long walletId) {
+        File myfile = new File(file, String.valueOf(walletId));
         final Integer[] responseStatus = new Integer[1];
         // Parsing any Media type file
         RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"), file);
         MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
         RequestBody filename = RequestBody.create(MediaType.parse("text/plain"), file.getName());
 
-        Call<UploadImageResponse> call = apiService.uploadImage(fileToUpload, filename);
+        Call<UploadImageResponse> call = apiService.uploadImage(fileToUpload,walletId);
         call.enqueue(new Callback<UploadImageResponse>() {
             @Override
             public void onResponse(Call<UploadImageResponse> call, Response<UploadImageResponse> response) {

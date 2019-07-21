@@ -1,52 +1,39 @@
 package com.keyob.payment.gateway.fragment;
 
 import android.Manifest;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.ContentResolver;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.keyob.payment.gateway.R;
-import com.keyob.payment.gateway.activities.HomeActivity;
-import com.keyob.payment.gateway.activities.LoginActivity;
+import com.keyob.payment.gateway.activities.ProfileActivity;
 import com.keyob.payment.gateway.activities.RequestMoneyContainerActivity;
 import com.keyob.payment.gateway.activities.SelectDatePassBookActivity;
-import com.keyob.payment.gateway.activities.SplashScreenActivity;
 import com.keyob.payment.gateway.activities.TagListActivity;
+import com.keyob.payment.gateway.helper.AlertFactory;
 import com.keyob.payment.gateway.helper.SingletonUserInfo;
 import com.keyob.payment.gateway.helper.SingletonWalletInfo;
 import com.keyob.payment.gateway.helper.dataBase.DataSharedPrefrence;
@@ -55,7 +42,6 @@ import com.keyob.payment.gateway.model.ContactDto;
 import com.keyob.payment.gateway.model.ContactLessDto;
 import com.keyob.payment.gateway.model.HomeDto;
 import com.keyob.payment.gateway.model.SubmitContactDto;
-import com.keyob.payment.gateway.helper.AlertFactory;
 import com.keyob.payment.gateway.network.ApiClient;
 import com.keyob.payment.gateway.network.InternetStatus;
 import com.keyob.payment.gateway.network.MyURLRepository;
@@ -63,7 +49,6 @@ import com.keyob.payment.gateway.network.RetrofitApiService;
 import com.keyob.payment.gateway.viewModel.WalletViewModelNetWork;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,21 +73,30 @@ public class HomeFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private RetrofitApiService apiService;
 
+
+    private ImageView home_requestMoney;
+    private ImageView home_passbook;
+    private ImageView home_tag;
+    private ImageView menuBar;
+    private ImageView notification;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        gridLayout = view.findViewById(R.id.home_grid_layout);
         profileHome = view.findViewById(R.id.home_wallet_pic);
         walletNameHome = view.findViewById(R.id.home_walletName);
         balanceHome = view.findViewById(R.id.home_balance);
+        home_passbook = view.findViewById(R.id.home_pass_Book);
+        home_requestMoney= view.findViewById(R.id.home_request_money);
+        home_tag = view.findViewById(R.id.home_tag_management);
+        menuBar = view.findViewById(R.id.home_drawer);
+        notification = view.findViewById(R.id.home_notifation);
+
         sharedPreferences = getContext().getSharedPreferences("contact Request", getActivity().getApplicationContext().MODE_PRIVATE);
         if (!sharedPreferences.getBoolean(FIRST_LOGIN, false)) {
-
             checkContactPermission();
         }
-        setSingleEvent(gridLayout);
-        setUpToolBar();
-        // check internet status
+
         InternetStatus internetStatus = new InternetStatus(getContext());
         Boolean hasInternet = internetStatus.statusNetWOrk();
 
@@ -118,7 +112,53 @@ public class HomeFragment extends Fragment {
         }
 
 
-//            }
+        home_requestMoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), RequestMoneyContainerActivity.class);
+                 startActivity(intent);
+            }
+        });
+
+        home_tag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent = new Intent(getActivity(), TagListActivity.class);
+               startActivity(intent);
+            }
+        });
+
+        home_passbook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent = new Intent(getActivity(), SelectDatePassBookActivity.class);
+               startActivity(intent);
+            }
+        });
+
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent i = new Intent(getActivity(), ProfileActivity.class);
+//                startActivity(i);
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                    getActivity().overridePendingTransition(R.anim.slid_in_right, R.anim.slid_out_right);
+//                }
+//
+            }
+        });
+
+        menuBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(),ProfileActivity.class);
+                startActivity(i);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    getActivity().overridePendingTransition(R.anim.slid_in_right, R.anim.slid_out_right);
+                }
+            }
+        });
+
         return view;
     }
 
@@ -222,7 +262,6 @@ public class HomeFragment extends Fragment {
 
     }
 
-
     private void requestWalletByWalletId(WalletViewModelNetWork viewModel, Long walletId) {
 
         viewModel = ViewModelProviders.of(this).get(WalletViewModelNetWork.class);
@@ -246,7 +285,6 @@ public class HomeFragment extends Fragment {
 
     }
 
-
     private void requestWalletImage(String url, Long walletId) {
         StringBuilder sb = new StringBuilder();
         sb.append(url);
@@ -257,7 +295,6 @@ public class HomeFragment extends Fragment {
                 .into(profileHome);
 
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -301,117 +338,6 @@ public class HomeFragment extends Fragment {
         });
     }
 
-
-    private void setUpToolBar() {
-        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-
-        final DrawerLayout drawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout);
-
-        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBarToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, 0, 0);
-        actionBar.setElevation(10);
-        actionBar.setBackgroundDrawable(getActivity().getDrawable(R.drawable.wallet_item_gradient_selector_up_to_botom));
-        CollapsingToolbarLayout collapsingToolbar = view.findViewById(R.id.collapsing_toolbar);
-        drawerLayout.addDrawerListener(actionBarToggle);
-        actionBarToggle.syncState();
-        NavigationView navigationView = (NavigationView) view.findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                switch (menuItem.getItemId()) {
-                    case R.id.nav_setting:
-                        Toast.makeText(getContext(), "perssed _ Setting ", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.nav_share:
-                        Toast.makeText(getContext(), "pressed _ share", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.nav_wallet_create:
-                        Toast.makeText(getContext(), "pressed _ wallet creation", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.nav_profile:
-                        Toast.makeText(getContext(), "pressed _ profile", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.nav_about_us:
-                        Toast.makeText(getContext(), "pressed _ about us", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.nav_support:
-                        Toast.makeText(getContext(), "pressed _ support", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.nav_feedback:
-                        Toast.makeText(getContext(), "pressed _ feedBack", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.nav_logout:
-                        AlertDialog.Builder builderr = new AlertDialog.Builder(getContext());
-                        builderr.setTitle("خروج");
-                        builderr.setIcon(R.drawable.icon);
-                        builderr.setMessage("شما میخواهید خارج شوید.ایا مطمئن هستید ؟");
-                        builderr.setPositiveButton(R.string.yes_persian, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                getActivity().finishAffinity();
-                                System.exit(0);
-
-                            }
-                        });
-                        builderr.setNegativeButton(R.string.no_persian, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                               dialog.dismiss();
-                            }
-                        });
-
-                        builderr.show();
-                        break;
-
-                }
-                return true;
-            }
-        });
-    }
-
-    public void setSingleEvent(final GridLayout singleEvent) {
-        for (int i = 0; i < singleEvent.getChildCount(); i++) {
-            final CardView cardView = (CardView) singleEvent.getChildAt(i);
-            final int finalI = i;
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent;
-                    switch (cardView.getId()) {
-                        case R.id.home_request_money:
-                            intent = new Intent(getActivity(), RequestMoneyContainerActivity.class);
-                            startActivity(intent);
-                            break;
-                        case R.id.home_pass_Book:
-                            intent = new Intent(getActivity(), SelectDatePassBookActivity.class);
-                            startActivity(intent);
-                            break;
-
-                        case R.id.home_tag_management:
-                            intent = new Intent(getActivity(), TagListActivity.class);
-                            startActivity(intent);
-
-                        default:
-                            Toast.makeText(getContext(), "click on index" + finalI, Toast.LENGTH_SHORT).show();
-                            break;
-
-                    }
-
-                }
-            });
-        }
-    }
-
     public void prepareActionBarInformation(HomeDto wallet) {
 
         String prettyBalance = PrettyShow.separatedZero(wallet.getBalance());
@@ -427,9 +353,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-
     }
-
 
     @Override
     public void onDestroyView() {

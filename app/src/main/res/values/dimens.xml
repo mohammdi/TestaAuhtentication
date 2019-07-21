@@ -19,6 +19,8 @@
     <dimen name="large_margin">20sp</dimen>
     <dimen name="cardCornerRadios">2sp</dimen>
     <dimen name="cardElevation">10sp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 
 
 </resources>

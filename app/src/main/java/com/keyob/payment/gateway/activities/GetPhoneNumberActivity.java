@@ -32,8 +32,8 @@ public class GetPhoneNumberActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_phone_number);
-        button = (Button) findViewById(R.id.btnRegister);
-        textView = (TextView) findViewById(R.id.register_phoneNumber);
+        button =  findViewById(R.id.btnRegister);
+        textView =  findViewById(R.id.register_phoneNumber);
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -46,25 +46,25 @@ public class GetPhoneNumberActivity extends AppCompatActivity {
                 startActivity(intent);
 
 
-//                RetrofitApiService apiService  = ApiClient.getInstance().create(RetrofitApiService.class);
-//                apiService.registerPhoneNumber(phoneNumber).enqueue(new Callback<String>() {
-//                    @Override
-//                    public void onResponse(Call<String> call, Response<String> response) {
-//                        if (response.isSuccessful()){
-//                            Intent intent = new Intent(GetPhoneNumberActivity.this,ConfirmCodeActivity.class);
-//                            intent.putExtra(PHONE_NUMBER,phoneNumber);
-//                            intent.putExtra(CONFIRM_CODE,response.body());
-//                            startActivity(intent);
-//                        }else {
-//
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<String> call, Throwable t) {
-//                        call.cancel();
-//                    }
-//                });
+                RetrofitApiService apiService  = ApiClient.getInstance().create(RetrofitApiService.class);
+                apiService.registerPhoneNumber(phoneNumber).enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        if (response.isSuccessful()){
+                            Intent intent = new Intent(GetPhoneNumberActivity.this,ConfirmCodeActivity.class);
+                            intent.putExtra(PHONE_NUMBER,phoneNumber);
+                            intent.putExtra(CONFIRM_CODE,response.body());
+                            startActivity(intent);
+                        }else {
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        call.cancel();
+                    }
+                });
 
             }
         });

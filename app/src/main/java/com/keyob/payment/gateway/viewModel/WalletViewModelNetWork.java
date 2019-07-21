@@ -111,4 +111,5 @@ public class WalletViewModelNetWork extends AndroidViewModel {
         return repositoryNetWork.getContactByUserId(userId);
     }
 
+
 }

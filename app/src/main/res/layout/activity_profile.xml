@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ProfileActivity"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/view_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:background="@drawable/nav_header_gradient_selector"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:paddingBottom="10dp"
+        >
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/profile_userImage"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="1.1dp"
+                    app:civ_shadow="true"
+                    app:civ_shadow_radius="5"
+                    android:src="@drawable/icon"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_alignParentRight="true"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    />
+
+        <TextView
+            android:id="@+id/profile_phoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 0919 426 8369"
+            android:textStyle="bold"
+            android:fontFamily="@font/iransans"
+            android:textSize="@dimen/small_textSize"
+            android:textColor="@color/btn_login_bg"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/profile_userImage"/>
+
+
+        <TextView
+            android:id="@+id/profile_fullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="محمود محمدی"
+            android:fontFamily="@font/iransans"
+            android:textSize="@dimen/small_textSize"
+            android:textColor="@color/btn_login_bg"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/profile_phoneNumber" />
+
+
+        <ImageView
+            android:id="@+id/profile_back"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_back_arrow"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignBaseline="@id/profile_userImage"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/profile_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="20"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center_vertical"
+        android:layout_below="@id/view_container">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="19"
+            android:text="پروفایل کاربری "
+            android:textSize="15dp"
+            android:fontFamily="@font/iransans"
+            android:layout_marginRight="20dp"/>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_profile"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/profile_support"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="20"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@+id/profile_user"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="19"
+            android:text="پشتیبانی"
+            android:textSize="15dp"
+            android:fontFamily="@font/iransans"
+            android:layout_marginRight="20dp"/>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_support"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/profile_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="20"
+        android:layout_below="@+id/profile_support"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="19"
+            android:text="تیظیمات"
+            android:textSize="15dp"
+            android:fontFamily="@font/iransans"
+            android:layout_marginRight="20dp"/>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_setting"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/profile_share"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="20"
+        android:layout_below="@id/profile_setting"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="19"
+            android:text="شریک سازی"
+            android:textSize="15dp"
+            android:fontFamily="@font/iransans"
+            android:layout_marginRight="20dp"/>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_share"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/profile_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="20"
+        android:layout_below="@id/profile_share"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="19"
+            android:text="پیشنهادات "
+            android:textSize="15dp"
+            android:fontFamily="@font/iransans"
+            android:layout_marginRight="20dp"/>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_feed_back"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/profile_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="20"
+        android:layout_below="@id/profile_feedback"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="19"
+            android:text="خروج "
+            android:textSize="15dp"
+            android:fontFamily="@font/iransans"
+            android:layout_marginRight="20dp"/>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_off"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/profile_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/line_list_seperator_shape_dark"/>
+
+        <TextView
+            android:id="@+id/profile_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="نسخه 1.0.0"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/iransans"
+            android:layout_gravity="bottom"/>
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

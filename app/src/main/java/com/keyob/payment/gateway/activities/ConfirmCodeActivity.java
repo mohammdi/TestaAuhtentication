@@ -51,14 +51,14 @@ public class ConfirmCodeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String code = confCode.getText().toString();
-//                if (code.equals(confirmCode)){
+                if (code.equals(confirmCode)){
                     Intent intent = new Intent(ConfirmCodeActivity.this, RegisterUserDetailsActivity.class);
                     intent.putExtra(PHONE_NUMBER,phoneNumber);
                     startActivity(intent);
-//                }
-//                else {
-//                    Snackbar.make(rootView,"کد وارد شده صحیح نمیباشد!!!",Snackbar.LENGTH_LONG).show();
-//                }
+                }
+                else {
+                    Snackbar.make(rootView,"کد وارد شده صحیح نمیباشد!!!",Snackbar.LENGTH_LONG).show();
+                }
             }
         });
 

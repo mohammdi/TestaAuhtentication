@@ -76,7 +76,7 @@ public class WalletManagementFragment extends Fragment implements WalletListRecy
                         dataList = new ArrayList<>();
                         dataList.addAll(wallets);
                         for (HomeDto dto : dataList) {
-                            PicassoImageDownloader.imageDownload(getContext(), dto.getId(), dto.getName());
+                            PicassoImageDownloader.imageDownload(getContext(), dto.getId(), dto.getPublicId());
                         }
 
                         setUpRecyclerView(dataList);

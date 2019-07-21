@@ -91,18 +91,7 @@ public class ExampleUnitTest {
 
     @Test
     public void prettySHow() {
-         String CLIENT_ID = "7WM5HpvoLf0W.apps.keyob.com";
-         String CLIENT_SECRET = "hXEKlX5hBm0IZ1eMB9V8tTGp2H6o9cqq";
 
-        String sum =CLIENT_ID+CLIENT_SECRET;
-        byte[] encrypt= sum.getBytes();
-        String base64 = Base64.encodeToString(encrypt, Base64.DEFAULT);
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("Basic");
-        sb.append(" ");
-        sb.append(base64);
-        System.out.println(sb.toString());
 
     }
 

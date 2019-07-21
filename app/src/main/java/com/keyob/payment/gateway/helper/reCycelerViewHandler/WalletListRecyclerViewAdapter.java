@@ -57,7 +57,7 @@ public class WalletListRecyclerViewAdapter extends RecyclerView.Adapter<WalletLi
             @Override
             public void run() {
                 wallet = walletList.get(position);
-                Picasso.with(context).load(new File(PicassoImageDownloader.getFileName(wallet.getName()))).into(holder.logoPath);
+                Picasso.with(context).load(new File(PicassoImageDownloader.getFileName(wallet.getPublicId()))).into(holder.logoPath);
                 holder.name_Wallet.setText(wallet.getName());
                 holder.public_Id.setText(PrettyShow.separatedPublicId(wallet.getPublicId()));
                 holder.balance.setText(PrettyShow.separatedZero(wallet.getBalance()));

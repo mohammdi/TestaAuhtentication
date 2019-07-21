@@ -54,12 +54,14 @@ public class PassBookListRecyclerAdapter extends RecyclerView.Adapter<PassBookLi
         holder.publicId.setText(PrettyShow.separatedPublicId(passbook.getParticipant()));
         if (passbook.getType()== 1) {
                 holder.type.setText("ارسال به");
-                holder.iconStatus.setImageResource(R.drawable.ic_send_money);
+                holder.type.setTextColor(context.getResources().getColor(R.color.green));
+//                holder.iconStatus.setImageResource(R.drawable.ic_send_money);
             }
             if (passbook.getType()== 0){
 
                 holder.type.setText("دریافت از");
-                holder.iconStatus.setImageResource(R.drawable.ic_receive_money);
+                holder.type.setTextColor(context.getResources().getColor(R.color.colorPrimary));
+//                holder.iconStatus.setImageResource(R.drawable.ic_receive_money);
             }
 
         String persianDate = PersianDateCoordinatore.ConvertGregorianToPersian(passbook.getTransactionDate());
@@ -102,7 +104,7 @@ public class PassBookListRecyclerAdapter extends RecyclerView.Adapter<PassBookLi
             date = itemView.findViewById(R.id.pk_date);
             time = itemView.findViewById(R.id.pk_time);
             status = itemView.findViewById(R.id.pk_status);
-            iconStatus = itemView.findViewById(R.id.pk_icon_status);
+//            iconStatus = itemView.findViewById(R.id.pk_icon_status);
             publicId =itemView.findViewById(R.id.pk_publicId);
 
 
